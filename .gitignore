@@ -16,6 +16,9 @@
 # but, of course, you should modify/extend/prune
 # to fit your needs!
 ################################################
+node_modules
+
+/*以及其他你想要忽略的文件或文件夹*/
 
 
 
