@@ -1,17 +1,18 @@
-var domain = require('./lib/jquery-3.2.1.min.js');
-var $ = require('./lib/jquery-3.2.1.min.js');
-var Vue = require('./lib/vue.js');
-var axios  = require('./lib/axios.min.js');
-
-var headerview = require('./components/header.js');
-var footerview = require('./components/footer.js');
-var chartview = require('./components/chartview.js');
-var modaltip = require('./components/modaltip.js');
-var pageBus = require('./common/bus.js');
+import $ from './lib/jquery-3.2.1.min.js';
+import Vue from './lib/vue.js';
+import axios  from './lib/axios.min.js';
+import pageBus from './common/bus';
+import headerview from './components/header.js';
+import footerview from './components/footer.js';
+import modaltip from './components/modaltip.js';
+import sidebarview from './components/sidebar.js';
+import chartview from './components/chartview.js';
 
 var app = new Vue({
     el: '#pageHome',
     data: {
+        headerview: 'headerview',
+        footerview: 'footerview'
 
     },
     components: {
@@ -19,7 +20,7 @@ var app = new Vue({
         modaltip:modaltip,
         footerview:footerview,
         headerview:headerview,
-
+        sidebarview:sidebarview
     },
     created:function(){},
     mounted:function () {
@@ -27,15 +28,15 @@ var app = new Vue({
     },
     methods: {
         init(){
-            var self = this;
-            console.log("$$$")
+            let self = this;
 
         },
+        eve:function(){
+            pageBus.$emit('change','accounttip');
+        },
         sliderPart(index){
-            $('.slider-part').slideToggle(700);
+            $(".slider-part").slideToggle(800);
         },
-        showbox(){
-            $('.modal-out').addClass('show-box')
-        },
+
     }
-})
+});

@@ -7,6 +7,9 @@
 @import "./components/footer.less";
 @import "./components/modaltip.less";
 
+html, body {
+    background-color: @bgcolor;
+}
 #pageHome{
       position: relative;
       .content-wrap{
@@ -172,6 +175,23 @@
                                                                   }
 
                                                             }
+                                                            &.BTC-icon{
+                                                                 background-image: url("../images/BTC.png");
+                                                            }
+                                                            &.LTC-icon{
+                                                                background-image: url("../images/LTC.png");
+                                                            }
+                                                            &.BCH-icon{
+                                                                background-image: url("../images/BCH.png");
+                                                            }
+                                                            &.ETC-icon{
+                                                                background-image: url("../images/ETC.png");
+                                                            }
+                                                            &.ETH-icon{
+                                                               background-image: url("../images/ETH.png");
+
+                                                            }
+
 
                                                       }
                                                 }
@@ -180,6 +200,7 @@
                                     &.order-t{
                                           padding: 8px 20px 14px 26px;
                                     }
+
                                     .input-w{
                                           .row{
                                                 margin-bottom: 18px;
@@ -294,6 +315,7 @@
 
                                     }
                               }
+
 
                         }
                         .slider-part{
@@ -608,6 +630,9 @@
 
             }
       }
+      .footer{
+        position:inherit;
+      }
 }
 @media (max-width: 1200px) {
       #pageHome{
@@ -874,7 +899,12 @@
                         }
                   }
             }
+            .footer{
+              position:inherit;
+            }
       }
+
+
 }
 @media (max-width: 992px) {
       #pageHome{
