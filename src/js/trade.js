@@ -5,8 +5,8 @@ import pageBus from './common/bus';
 import headerview from './components/header.js';
 import footerview from './components/footer.js';
 import modaltip from './components/modaltip.js';
-
-
+import sidebarview from './components/sidebar.js';
+import chartview from './components/chartview.js';
 
 var app = new Vue({
     el: '#pageHome',
@@ -16,9 +16,11 @@ var app = new Vue({
 
     },
     components: {
+        chartview:chartview,
+        modaltip:modaltip,
         footerview:footerview,
         headerview:headerview,
-        modaltip:modaltip,
+        sidebarview:sidebarview
     },
     created:function(){},
     mounted:function () {
