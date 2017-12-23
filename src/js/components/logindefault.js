@@ -1,10 +1,10 @@
-import pageBus from '../common/bus'
-import axios from '../lib/axios.min'
 import $ from '../lib/jquery-3.2.1.min';
+import Axios from '../common/axios_default';
+import pageBus from '../common/bus'
+
 import Vue from '../lib/vue.js';
 
-axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8;';
-axios.defaults.baseURL = 'http://106.14.210.142:8080';
+
 
 let template= require('./logindefault.html');
 let logindefault = {
@@ -17,6 +17,7 @@ let logindefault = {
     methods: {
         init:function(){
             this.binEvent();
+
         },
         ame:function(){},
         eve:function(){
@@ -29,7 +30,7 @@ let logindefault = {
                 email:arg['email'],
                 password:arg['password'],
             };
-            axios.get('/user_account.act?cmd=login?',{params:paraObj})
+            Axios.get('/user_account.act?cmd=login?',{params:paraObj})
                 .then(function (response) {
                     var cuData =  response.data;
                     

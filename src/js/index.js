@@ -1,3 +1,4 @@
+var domain = require('./lib/jquery-3.2.1.min.js');
 var $ = require('./lib/jquery-3.2.1.min.js');
 var Vue = require('./lib/vue.js');
 var axios  = require('./lib/axios.min.js');

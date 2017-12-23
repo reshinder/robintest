@@ -1,3 +1,4 @@
+import Axios from '../common/axios_default';
 import pageBus from '../common/bus'
 import $ from '../lib/jquery-3.2.1.min';
 import Vue from '../lib/vue.js';
