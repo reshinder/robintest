@@ -21,23 +21,22 @@
                            <td @click.prevent.stop="showbox()"><span>24HR</span><span class="arrow-t choose-down"></span></td>
                            <td @click.prevent.stop="showbox()"><span>VOLUME SELF</span><span class="arrow-t"></span></td>
                        </tr>
-
                     </thead>
                     <tbody>
                         <tr v-for='item in tickerArary'>
                             <td>
-                                <span></span>
-                                <span>BTC</span>
+                                <span class="BTC-icon"></span>
+                                <span>{{item.busitype | getCoinType(0)}}</span>
                             </td>
                             <td class="tr">
-                                <span>7.662</span>
+                                <span> {{item.usdvol | dataformat(2)}}</span>
                                 <span class="fc">USD</span>
                             </td>
                             <td class="fc-red">
-                                <span>10.12%</span>
+                                <span>{{item.float*100}}%</span>
                             </td>
                             <td>
-                                <span>12.234566</span>
+                                <span>{{item.vol | dataformat(4)}}</span>
                             </td>
                         </tr>
                     </tbody>

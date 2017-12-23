@@ -1,9 +1,7 @@
-//var axios  = require('./axios.min.js');
-var axios=require('./axios.min.js');
+
 var vlm={};
 if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
     define(function() {
-        vlm.url="server/";
         vlm.coinType={
                  "coin-usd-btc":["BTC","USD"]
                 ,"coin-usd-eth":["ETH","USD"]
@@ -11,7 +9,6 @@ if (typeof define === 'function' && typeof define.amd === 'object' && define.amd
                 ,"coin-usd-etc":["ETC","USD"]
                 ,"coin-usd-bch":["BCH","USD"]
                }
-        vlm.axios=axios;
         return vlm;
     });
 
