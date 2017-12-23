@@ -1,10 +1,8 @@
 import pageBus from '../common/bus'
-import axios from '../lib/axios.min'
+import Axios from '../common/axios_default'
 import $ from '../lib/jquery-3.2.1.min';
 import Vue from '../lib/vue.js';
 
-axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8;';
-axios.defaults.baseURL = 'http://106.14.210.142:8080';
 
 const helpObj ={
     getQueryString:function(key){
@@ -48,7 +46,7 @@ let registerdefault = {
                     email:arg['email'],
                     password:arg['password'],
                 };
-            axios.get('/user_account.act?cmd=registerByEmail?',{params:paraObj})
+            Axios.get('/user_account.act?cmd=registerByEmail?',{params:paraObj})
                 .then(function (response) {
                     var cuData =  response.data;
                     console.log(123)
@@ -56,7 +54,7 @@ let registerdefault = {
                 })
                 .catch(function (error) {
                     console.log(456)
-                    location.href='register.html?main=registerprogress&sub=4'
+                  //  location.href='register.html?main=registerprogress&sub=4'
                     console.info(error)
                 });
         },

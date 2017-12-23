@@ -13,7 +13,7 @@
 <div class="pageHome" id="pageHome">
     <headerview></headerview>
     <transition name="usersystem">
-        <component :is="currentView"  v-on:logincheck="viewHandler" :msg="msg"></component>
+        <component :is="currentView"  v-on:logincheck="viewHandler"  :sub="subInfo"　:isfromreset="resettag"></component>
     </transition>
     <footerview :is="footercurrentView"></footerview>
 </div>

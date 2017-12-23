@@ -1,7 +1,10 @@
 import domain from './domain';
-import Axios from '../lib/axios.min'
+import axios from '../lib/axios.min'
 
-Axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8;';
-Axios.defaults.baseURL = domain.testDomain;
+let axiosInstance = axios.create({
+    baseURL:domain.testDomain,
+    responseType: 'json',
+    headers: {'Content-Type': 'application/json;charset=UTF-8;'}
+});
 
-export default Axios;
+export default axiosInstance;

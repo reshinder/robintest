@@ -31,14 +31,11 @@ var app = new Vue({
         header_empty:header_empty,
         footer_empty:footer_empty,
         headerview:headerview,
-        registerdefault:registerdefault,
-        registerprogress:registerprogress,
+        registerdefault:registerdefault,  //1
+        registerprogress:registerprogress, //2
     },
     created:function(){
         var self=this;
-        this.view.main = helper.getQueryString("main");
-        this.view.sub = helper.getQueryString("sub");
-        console.log("this.view.main")
 
     },
     mounted:function () {
@@ -54,9 +51,9 @@ var app = new Vue({
             this.pageView()
         },
         pageView(){
-            var tarStr = helper.getQueryString('tab')
-            var sub = helper.getQueryString('subTab')
-            if(tarStr=="registerprogress"){
+            var main = helper.getQueryString('main')
+            var sub = helper.getQueryString('sub')
+            if(main==2){
                 this.headercurrentView = headerview
                 this.footercurrentView = footerview
                 this.currentView = registerprogress
