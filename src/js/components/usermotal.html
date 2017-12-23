@@ -1,0 +1,85 @@
+<div class="modal-out">
+    <div class="modal-backdrop" @webkitTransitionEnd="ame()"></div>
+    <div id="modal" class="modal">
+        <span class="close" @click.prevent.stop="closeTip()"></span>
+        <div class="modal-content sms-check" v-if="showpart=='accounttip'">
+            <div class="modal-header">
+                <h3>SMS CHECK</h3>
+                <p class="">This action requires an additional security check.Pleasure confirm using SMS code.</p>
+            </div>
+            <div class="modal-body">
+                <div class="input-out">
+                    <input type="text" placeholder="Enter SMS Code" /><button type="button" class="resend" v-if="status==1">Resend</button><button type="button" class="resend" v-if="status==2">Get Code</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="small"><span class="light"></span>For the sake of your account safety.google-authentication or phone authentication is requires for large amount withdrawal,and strongly recommended for all the trading and withdrawal process.
+                Please consider to keep one of the authentication enabled</p>
+            </div>
+        </div>
+        <div class="modal-content sms-check" v-if="showpart=='2facheck'">
+            <div class="modal-header">
+                <h3>2FA CHECK</h3>
+                <p class="">This action requires an additional security check.Pleasure confirm 2FA token.</p>
+            </div>
+            <div class="modal-body">
+                <div class="input-out">
+                    <input type="text" placeholder="Enter SMS Code" /><button type="button" class="resend">Submit</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="small"><span class="light"></span>For the sake of your account safety.google-authentication or phone authentication is requires for large amount withdrawal,and strongly recommended for all the trading and withdrawal process.
+                    Please consider to keep one of the authentication enabled</p>
+            </div>
+        </div>
+        <div class="modal-content change-method" v-if="showpart=='changemethod'">
+            <div class="modal-header">
+                <h3>change method</h3>
+            </div>
+            <div class="modal-body">
+                <p class="only-p">For the sake of your axxount safety,two-factor authentication or phone authentication is
+                    required for large amount winthdrawal.You can choose to enable either of the authentication method,but only one of them could be enabled at one time</p>
+                <p class="only-p">If you want to change,please disable or unbind the current authentication method first.</p>
+            </div>
+            <div class="modal-footer">
+                 <button type="button" class="okbtn">ok</button>
+            </div>
+        </div>
+        <div class="modal-content enabletfa" v-if="showpart=='enabletfa'">
+            <div class="modal-header">
+                <h3>Enable 2FA</h3>
+            </div>
+            <div class="modal-body">
+                <p class="only-p">The first step is to download the google Authenticator app for your Android or IOS device.If you need help getting started,please
+                see Google's Support Page<br>If you do not have access to android Market or APP Store,there are other options for getting Goole Authenticator,Android Download,Goole Chrome Plugin,or iTunes App Store</p>
+                <p class="only-p">The token will not be shown again after 2FA is enabled.If you have multiple devices,add your account token to all of them before clicking enable.(Note:Your Account Token will change each time you reload your browser)</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="okbtn" @click.prevent.stop="closeTip()">ok</button>
+            </div>
+        </div>
+        <div class="modal-content deltip" v-if="showpart=='deltip'">
+            <div class="modal-header">
+                <h3>Delete Address</h3>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td>Address Name</td>
+                        <td>Sandy's BTC Address</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>DDSDSDSDSDSDDSDSDSDSD</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-out">
+                    <button type="button" class="active">Cancel</button>
+                    <button type="button">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

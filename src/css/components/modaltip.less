@@ -1,0 +1,117 @@
+.modal-out{
+  position: relative;
+  z-index: -1;
+   .modal-backdrop{
+     position: fixed;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     left: 0;
+     z-index: 56;
+     background-color:rgba(0,0,0,0.8);
+     opacity: 0;
+     transition:all 300ms ease 0s;
+   }
+   .modal{
+     position: fixed;
+     padding: 28px;
+     left: 50%;
+     top: 50%;
+     z-index: 58;
+     width: 30%;
+     max-width: 430px;
+     min-width: 300px;
+     background-color: @blue1;
+     color: @white;
+     transform: translate(-50%,500%);
+     border-radius: 2px;
+     overflow: hidden;
+     border: 1px solid #2d3e4b;
+     transition:all 700ms ease-in-out 300ms;
+     .close{
+       &:before, &:after{
+         background-color: #8d99a3;
+         height: 2px;
+         width: 100%;
+       }
+     }
+     .modal-header{
+        margin: 30px auto 20px;
+        color: #fff;
+        h3{
+          text-align: center;
+          font-family: HelveticaNeue-Bold;
+          font-size: 16px;
+          color: #6C94B0;
+       }
+
+    }
+     .modal-body{
+    p{
+      font-size: 14px;
+      line-height: 1.5;
+      &.href-p{
+        a{
+          font-family: PingFangSC-Regular;
+          font-size: 14px;
+          color: #4AABF0;
+          letter-spacing: 0;
+          display: inline-block;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+     .modal-footer{
+       margin-top: 100px;
+       text-align: right;
+       button{
+         display: inline-block;
+          margin-right: 20px;
+          height: 32px;
+          line-height: 32px;
+          width: 82px;
+          border-radius: 24px;
+          background-color: @blue3;
+          border: 0;
+          color: #fff;
+       }
+    }
+  }
+  &.show-box{
+    .modal-backdrop{
+      opacity: 1;
+      transition:all 300ms ease 0s;
+    }
+    .modal{
+      transition:all 700ms ease-in-out 300ms;
+      transform: translate(-50%,-50%);
+    }
+  }
+  &.hide-box{
+    .modal-backdrop{
+      transition:all 300ms ease-in-out 700ms;
+      opacity: 0;
+    }
+    .modal{
+      transition:all 700ms ease 0s;
+      transform: translate(-50%,500%);
+    }
+  }
+}
+
+@media screen and (max-width:1200px){
+
+}
+@media screen and (max-width:992px){
+
+
+}
+@media screen and (max-width:768px){
+
+
+}
+@media screen and (max-width:750px){
+
+
+}

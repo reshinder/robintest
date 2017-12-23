@@ -1,0 +1,102 @@
+.account-out{
+  width: 100%;
+  .tab-unit{
+    position: relative;
+    margin-bottom: 10px;
+    padding-top: 21px;
+    padding-bottom: 26px;
+    padding-left: 40px;
+    background-color: @white;
+    h2{
+      margin-bottom: 38px;
+      opacity: 0.9;
+      font-family: HelveticaNeue-Bold;
+      font-size: 24px;
+      color: #000000;
+    }
+    p{
+      opacity: 0.7;
+      font-family: HelveticaNeue;
+      font-size: 18px;
+      color: #000000;
+      letter-spacing: 0;
+      line-height: 18px;
+      &.small{
+        font-family: HelveticaNeue;
+        font-size: 14px;
+        line-height: 16px;
+      }
+      &.swallow-grey{
+        margin-top: 10px;
+        opacity: 0.7;
+        font-family: HelveticaNeue;
+        font-size: 14px;
+        line-height: 28px;
+      }
+      &.href-p{
+        margin-top: 23px;
+        line-height: 22px;
+        a{
+          font-family: HelveticaNeue-Bold;
+          font-size: 18px;
+          color: #4AABF0;
+          cursor: pointer;
+        }
+      }
+      &.click-tip{
+        color: #4AABF0;
+      }
+    }
+    .swallow-green{
+      margin: 20px 0 27px;
+      font-family: HelveticaNeue;
+      font-size: 12px;
+      color: #B0B02F;
+    }
+    .level-out{
+      position: absolute;
+      text-align: right;
+      width: 100%;
+      height: 16px;
+      line-height: 16px;
+      top:41px;
+      right: 31px;
+      span{
+        display: inline-block;
+        vertical-align: middle;
+        font-family: HelveticaNeue;
+        font-size: 12px;
+        opacity: .7;
+        &:last-child{
+          position: relative;
+          opacity: 1;
+          top:1px;
+          width: 60px;
+          height: 6px;
+          background-color: #ebebce;
+          border-radius: 3px;
+          &:before{
+            content: "";
+            position: absolute;
+            background-color: #b0b02f;
+            width: 50%;
+            height: 6px;
+            border-radius: 3px;
+            left: 0;
+            margin-top: -3px;
+            top:50%;
+          }
+        }
+      }
+      &.vp{
+        span:last-child{
+          margin-left: 23px;
+          width: 18px;
+          height: 18px;
+          border-radius: 9px;
+          background: #B0B02F;
+        }
+      }
+    }
+  }
+}

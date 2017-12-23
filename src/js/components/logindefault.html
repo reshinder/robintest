@@ -1,0 +1,31 @@
+<div class="content-wrap row" >
+    <div class="left-wrap col-lg-6 col-md-6 col-sm-6" >
+        <p>SUPERBIT<br>SUPER LIFE</p>
+    </div>
+    <div class="right-wrap col-lg-6 col-md-6 col-sm-6">
+        <div class="row  content-wrap">
+            <h2>Log in</h2>
+            <form id="loginForm">
+                <div class="input-wrap">
+                    <div class="input-wrap">
+                        <input id="email" class="email" data-required="required" type="email" name="email" value=""  pattern="^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$" placeholder="Email address" data-errortip="Please enter a valid email address."  data-emptytip="*Cannot be empty" />
+                        <p class="error-tip" id="email-tip"></p>
+                        <!-- <p class="error-tip top-tip">Please enter a valid email address</p>-->
+
+                    </div>
+                    <div class="input-wrap" >
+                        <input id="password" class="password" data-required="required" type="password" name="password" value="" pattern="^(\w-*\.*){8}$"  placeholder="Password"   data-emptytip="*Cannot be empty" data-errortip="Passwords must be at least 8 characters with 1 capital letter, 1 lowercase character, and 1 number, and without spaces." />
+                        <p class="error-tip" id="password-tip"></p>
+                    </div>
+                    <div class="input-forget">
+                        <a  @click.prevnt.stop="toggleTabs('reset')">Forget password?</a>
+                    </div>
+                    <div class="btns-out">
+                        <button type="button" class="active" @click.prevnt.stop="loginAction">Login in</button>
+                    </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+

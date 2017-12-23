@@ -1,0 +1,238 @@
+@charset "utf-8";
+@import "../fonts/HelveticaNeue-Bold.less";
+@import "../fonts/HelveticaNeue.less";
+@import "./grid.less";
+
+@bgcolor: #f0f1f3;          //背景色
+@fonts-color: #fff;         //字体颜色
+@black: #000;               //背景色
+@white: #fff;
+@blue1: #1F4764;             //头部底部背景色
+@blue2: #387daf;             //背景色
+@blue3: #4AABF0;             //
+@green: #39c46a;             //
+@red: #f54d4e;               //
+@lightblue: #2E506C;         //
+@grey: #000;                 //
+@grey1: #efefef;
+@hovercolor: #e9eef2;        //
+@placeholdercolor: #a8a8a8;   //input placeholder颜色
+
+
+
+button[type="button"], button[type="submit"], button[type="reset"] {
+  -webkit-appearance: none;
+  border: 0;
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: @placeholdercolor;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color: @placeholdercolor;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: @placeholdercolor;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: @placeholdercolor;
+}
+input:focus, textarea:focus,button:focus {
+  outline: none;
+  border: 0;
+}
+*{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  &:before,&:after{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  }
+}
+
+html {
+  font-size: 14px;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  background-color: @white;
+}
+.pull-left {
+  float: left;
+  display: inline;
+}
+.pull-right {
+  float: right;
+  display: inline;
+}
+a{
+  text-decoration: none;
+}
+ul,li{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.fc{
+  color: #aeaeae!important;
+}
+.tl{
+  text-align: left!important;
+}
+.tr{
+  text-align: right!important;
+}
+
+.arrow{
+   display: inline-block;
+   vertical-align: middle;
+   position: relative;
+   width: 8px;
+   height: 8px;
+   margin-right: 6px;
+   margin-left: 10px;
+   &.right-arrow{
+     border-right: 2px solid;
+     border-bottom: 2px solid;
+     -webkit-transform: rotate(-45deg);
+     transform: rotate(-45deg);
+   }
+   &.down-arrow{
+     top: -2px;
+     border-right: 2px solid;
+     border-bottom: 2px solid;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  &.up-arrow{
+    top: 3px;
+    border-right: 2px solid;
+    border-top: 2px solid;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+}
+.arrow-t{
+  position: relative;
+  width: 8px;
+  height: 6px;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+  color: #58728a;
+  &:before,&:after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -3px;
+    margin-left: -6.5px;
+    width: 0;
+    height: 0;
+    border: 3px solid transparent;
+    border-bottom-color: gray;
+  }
+  &:after{
+    top: 4px;
+    margin-left: -6.5px;
+    border: 3px solid transparent;
+    border-top-color: gray;
+  }
+  &.choose-up{
+    &:before{
+      border-bottom-color: #2E506C;
+    }
+  }
+  &.choose-down{
+    &:after{
+      border-top-color: #2E506C;
+    }
+  }
+}
+.close{
+  position: absolute;
+  display: inline-block;
+  z-index: 18;
+  vertical-align: middle;
+  right: 16px;
+  top:16px;
+   width: 21px;
+   height: 20px;
+   overflow: hidden;
+   &:before, &:after{
+    position: absolute;
+     content: "";
+     top:50%;
+     left:50%;
+     margin-left: -10px;
+     margin-top: -1px;
+     background-color: #000;
+     height: 2px;
+     width: 100%;
+     -webkit-transform: rotate(45deg);
+     transform: rotate(45deg);
+   }
+  &:after{
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+}
+
+.plus{
+  margin-right: 28px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 12px;
+  height: 12px;
+  overflow: hidden;
+  &:before, &:after{
+    position: absolute;
+    content: "";
+    top:50%;
+    left:50%;
+    margin-left: -6px;
+    margin-top: -1px;
+    background-color: #000;
+    height: 2px;
+    width: 12px;
+  }
+  &:after{
+    margin-left: -1px;
+    margin-top: -6px;
+    background-color: #000;
+    height: 12px;
+    width: 2px;
+  }
+}
+.minus{
+  position: relative;
+  margin-right: 28px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 12px;
+  height: 12px;
+  overflow: hidden;
+  &:after{
+    position: absolute;
+    content: "";
+    top:50%;
+    left:50%;
+    margin-left: -6px;
+    margin-top: -1px;
+    background-color: #000;
+    height: 2px;
+    width: 12px;
+  }
+}
+.sc-blue{
+  color: @blue3!important;
+  opacity: 1!important;
+}
+.bc{
+  color: #4AABF0!important;
+  opacity: 1!important;
+}
+

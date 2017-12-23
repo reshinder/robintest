@@ -1,0 +1,78 @@
+@import "./account.less";
+@import "./security.less";
+@import "./notification.less";
+@import "./verification.less";
+@import "./addressbook.less";
+
+body,html{
+   background-color: @bgcolor;
+}
+.content-wrap{
+   margin-top: 20px;
+   margin-bottom: 100px;
+  .l-panel{
+    float: left;
+    width: 15%;
+    margin-right: 20px;
+    background-color: @white;
+    ul{
+      margin-left: -15px;
+      margin-right: -15px;
+      li{
+        height: 70px;
+        line-height: 70px;
+        text-align: center;
+        opacity: 0.9;
+        font-family: HelveticaNeue;
+        font-size: 14px;
+        color: #000000;
+        &:last-child{
+          border-bottom: 0;
+        }
+        &:hover{
+          background-color: @blue2;
+          color: #fff;
+          cursor: pointer;
+        }
+        &.active{
+          color: #fff;
+          background-color: @blue1;
+        }
+      }
+    }
+  }
+  .r-tab{
+    float: left;
+    position: relative;
+    width: 83%;
+    padding: 0;
+
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .content-wrap{
+    .r-tab{
+      width: 82%;
+    }
+  }
+}
+@media (max-width: 992px) {
+
+}
+@media (max-width: 768px) {
+
+}
+@media (max-width: 750px) {
+  .content-wrap{
+    .l-panel{
+      display: none;
+      background-color:green;
+    }
+    .r-tab{
+      float: none;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<div class="content-wrap reset-out">
+    <div class="container">
+        <div class="row">
+            <div class="t-box" v-if="tab==0">
+                <h2>Reset password</h2>
+                <p>An email has been sent with a link to reset your paeeword.</p>
+                <p>We have sent a reset password email to 1333333333@gmail.com. Please check it to proceed with the password reset process</p>
+                <p>
+                    if you have not received your email within 5minutes,please check the following:
+                </p>
+                <ul>
+                    <li>check if you have correct email</li>
+                    <li>check if you have correct email</li>
+                    <li>check if you have correct email</li>
+                </ul>
+                <p class="back-href">
+                    <a href="">Back to Home</a><span t-arrow></span>
+                </p>
+            </div>
+            <div class="t-box" v-if="tab==1">
+                <h2>Congratulations !</h2>
+                <p>Your password has been reset successfully. You can log in again with your new password.</p>
+                <p class="back-href">
+                    <a href="">Log in now</a><span t-arrow></span>
+                </p>
+            </div>
+            <div class="t-box" v-if="tab==2">
+                <h2>Congratulations !</h2>
+                <p>Your have signed up successfully,our system will log you in within 5s. If not succeeded,please login by yourself.</p>
+                <p class="back-href">
+                    <a href="">Log in now</a><span t-arrow></span>
+                </p>
+            </div>
+            <div class="t-box" v-if="tab==3">
+                <h2>Ooh !</h2>
+                <p>The link has expired,please make sure you click on the link in the lateset confirmation email sent within one hour of registration.</p>
+                <p class="back-href">
+                    <a href="">Sign up now</a><span t-arrow></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

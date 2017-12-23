@@ -1,0 +1,132 @@
+html,body{
+  background: @white;
+}
+.content-wrap{
+  min-height: 100%;
+  .sub-box{
+    margin: 0 auto;
+    width: 452px;
+    text-align: left;
+    .unit{
+      input[placeholder], [placeholder], *[placeholder] {
+        color:#9f9f9f!important;
+      }
+      h2{
+        margin:128px auto 72px;
+        opacity: 0.9;
+        font-family: HelveticaNeue-Bold;
+        font-size: 36px;
+        color: #000000;
+
+      }
+      .input-wrap{
+        margin-bottom: 80px;
+        height: 50px;
+        line-height: 50px;
+        border-bottom:1px solid #000000;
+        input{
+          padding: 0 15px;
+          float: left;
+          width: 72%;
+          line-height: 48px;
+          border: 0;
+        }
+        .resend,.count-time,.get-code-tip{
+          float: left;
+          margin:17px 0;
+          line-height: 18px;
+          padding-left: 8px;
+          width: 26%;
+          border-left: 2px solid #efefef;
+          font-family: HelveticaNeue;
+          font-size: 14px;
+          color: #B0B02F;
+          letter-spacing: 0;
+          background-color: #fff;
+        }
+        .count-time{
+          text-align: center;
+          color:#000;
+        }
+        .get-code-tip{
+          text-align: center;
+        }
+      }
+      &.tfa{
+        .input-wrap{
+          input{
+            width: 100%;
+          }
+        }
+      }
+    }
+    .btns-out{
+      margin-bottom: 294px;
+      text-align: right;
+      height: 44px;
+      line-height: 44px;
+      button{
+        width: 120px;
+        height: 44px;
+        line-height: 44px;
+        text-align: center;
+        background-color: @blue1;
+        color: #fff;
+        border-radius: 2px;
+        border: 0;
+      }
+    }
+  }
+}
+@media (max-width: 1200px) {  }
+@media (max-width: 992px) {  }
+@media (max-width: 768px) {  }
+@media (max-width: 750px) {
+  .content-wrap{
+    .sub-box{
+      margin: 0 auto;
+      width: 80%;
+      .unit{
+        h2{
+          margin:88px auto 52px;
+          font-size: 30px;
+        }
+        .input-wrap{
+          margin-bottom: 80px;
+          height: 40px;
+          line-height: 40px;
+          input{
+            padding: 0 10px;
+            line-height: 38px;
+          }
+          .resend,.count-time,.get-code-tip{
+            margin:10px 0;
+            line-height: 18px;
+            padding-left: 6px;
+          }
+          &.fCode{
+            input{
+              width: 56%;
+            }
+            .get-code-tip{
+              width: 44%;
+            }
+          }
+        }
+
+      }
+      .btns-out{
+        margin-bottom: 188px;
+        height: 38px;
+        line-height: 38px;
+        button{
+          width: 100px;
+          height: 38px;
+          line-height: 38px;
+        }
+      }
+
+
+    }
+  }
+}

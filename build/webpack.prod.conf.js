@@ -93,7 +93,7 @@ if (config.build.productionGzip) {
     )
 }
 
-var pages = utils.getEntries('./livemesrc/pages/**/*.html')
+var pages = utils.getEntries('./src/pages/**/*.html')
 for (var page in pages) {
     // 配置生成的html文件，定义路径等
     var conf = {

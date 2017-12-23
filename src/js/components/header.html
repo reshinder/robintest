@@ -1,0 +1,56 @@
+<header class="head-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="logo-word">SUPERBIT</div>
+            <button type="button" class="mobile-menu" @click.prevent.stop="open=!open">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="main-nav">
+                <li class="trade">
+                    <a class="link">Trade</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">BTC/USD</a></li>
+                        <li><a href="#">LTC/USD</a></li>
+                        <li><a href="#">ETH/USD</a></li>
+                    </ul>
+                </li>
+                <li><a class="link">Deposit</a></li>
+                <li><a class="link">Withdraw</a></li>
+                <li class="icon-li-b"><a class="link">Asset</a></li>
+                <li class="icon-li"><a class="a"></a></li>
+                <li class="icon-li"><a class="b"></a></li>
+                <li class="icon-li"><a class="c"></a></li>
+                <li class="icon-li"><a class="d"></a></li>
+                <li class="icon-li"><a class="e"></a></li>
+            </ul>
+            <transition name="slide-fade">
+                <ul class="mobile-nav" v-if="open" @click="open=!open">
+                    <li>
+                        <a class="link" href="">Trade</a>
+                        <ul class="sub-menu">
+                            <li><a href="#">BTC/USD</a></li>
+                            <li><a href="#">LTC/USD</a></li>
+                            <li><a href="#">ETH/USD</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="link">Deposit</a></li>
+                    <li><a class="link">Withdraw</a></li>
+                    <li><a class="link">Asset</a></li>
+                    <li><a class="link">Account</a></li>
+                    <li><a class="link">Security</a></li>
+                    <li><a class="link">Notification</a></li>
+                    <li><a class="link">Verification</a></li>
+                    <li><a class="link">Address Book</a></li>
+                    <li><a class="icon a"></a></li>
+                    <li><a class="icon b"></a></li>
+                    <li><a class="icon c"></a></li>
+                    <li><a class="icon d"></a></li>
+                    <li><a class="icon e"></a></li>
+                </ul>
+            </transition>
+
+        </div>
+    </div>
+</header>

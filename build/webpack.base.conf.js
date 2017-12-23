@@ -5,7 +5,7 @@ var projectRoot = path.resolve(__dirname, '../')
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     // 获取多入口, 注意这个路径， 至于为什么是 ./src仍然需要了解，我觉得应该是 ../src
-    entry: utils.getEntries('./livemesrc/pages/**/*.js'),
+    entry: utils.getEntries('./src/pages/**/*.js'),
     output: {
         path: config.build.assetsRoot,
         publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
@@ -15,9 +15,9 @@ module.exports = {
         extensions: ['.js'],
         //        fallback: [path.join(__dirname, '../node_modules')],
         alias: {
-            'src': path.resolve(__dirname, '../livemesrc'),
-            'assets': path.resolve(__dirname, '../livemesrc/assets'),
-            'components': path.resolve(__dirname, '../livemesrc/components')
+            'src': path.resolve(__dirname, '../src'),
+            'assets': path.resolve(__dirname, '../src/assets'),
+            'components': path.resolve(__dirname, '../src/components')
         }
     },
     resolveLoader: {
@@ -110,7 +110,7 @@ module.exports = {
       },
             {
                 test: /\.(png|jpe?g|gif)(\?.*)?$/,
-                exclude: /livemesrc\images\originImg/,
+                exclude: /src\images\originImg/,
                 use: [
                     {
                         loader: 'url-loader',

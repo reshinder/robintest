@@ -1,0 +1,79 @@
+#pageHome{
+   background: @white;
+}
+.content-out{
+   .unit{
+     margin: 120px auto;
+     width: 450px;
+     h1{
+       opacity: 0.9;
+       font-family: HelveticaNeue-Bold;
+       font-size: 36px;
+       color: #000000;
+       letter-spacing: 0;
+     }
+     .input-out{
+       margin-top: 70px;
+       width: 100%;
+       line-height: 42px;
+       border-bottom: 1px solid #5e5e5e;
+       input{
+          width: 100%;
+          padding: 0 15px;
+          border: 0;
+          height: 42px;
+          line-height: 42px;
+          background: @white;
+       }
+     }
+     .button-out{
+       margin-top: 80px;
+       text-align: right;
+       button{
+         width: 120px;
+         height: 42px;
+         line-height: 42px;
+         text-align: center;
+         font-family: HelveticaNeue-Bold;
+         font-size: 16px;
+         letter-spacing: 0;
+         color: @white;
+         background: @blue1;
+         cursor: pointer;
+       }
+     }
+      &.sms-authen{
+        .input-out{
+           position: relative;
+           .clearfix();
+            input{
+              padding-right: 118px;
+           }
+            span{
+              position: absolute;
+              right: 0;
+              top:50%;
+              transform: translateY(-50%);
+              width: 118px;
+              height: 16px;
+              text-align: center;
+              font-family: HelveticaNeue;
+              font-size: 14px;
+              border-left: 2px solid #efefef;
+              color: #B0B02F;
+              letter-spacing: 0;
+              line-height: 18px;
+            }
+        }
+     }
+   }
+
+}
+@media (max-width: 750px) {
+  .content-out{
+    .unit{
+      margin: 120px auto;
+      width: 80%;
+    }
+  }
+}
