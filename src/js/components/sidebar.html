@@ -1,0 +1,136 @@
+<div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 sidebar">
+    <div class="row unit-pan first-pan">
+        <div class="top-title">
+            <span class="c-logo"></span><span class="bs">BTC/USD</span>
+            <span class="pull-right">
+                <span class="coin-value">7121.5</span><span class="s-arrow">13.72%</span>
+            </span>
+
+        </div>
+        <div class="tickers-table ">
+            <div class="top-name" @click.stop.prevent="slider($event)">
+                <span class="arrow down-arrow"></span>
+                <span>TICKERS</span>
+            </div>
+            <div class="tickers-content">
+                <table>
+                    <thead>
+                       <tr>
+                           <td @click.prevent.stop="showbox()"><span>SYMBOL</span><span class="arrow-t"></span></td>
+                           <td class="tr" @click.prevent.stop="showbox()"><span>LST</span><span class="arrow-t choose-up"></span></td>
+                           <td @click.prevent.stop="showbox()"><span>24HR</span><span class="arrow-t choose-down"></span></td>
+                           <td @click.prevent.stop="showbox()"><span>VOLUME SELF</span><span class="arrow-t"></span></td>
+                       </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr v-for='item in tickerArary'>
+                            <td>
+                                <span></span>
+                                <span>BTC</span>
+                            </td>
+                            <td class="tr">
+                                <span>7.662</span>
+                                <span class="fc">USD</span>
+                            </td>
+                            <td class="fc-red">
+                                <span>10.12%</span>
+                            </td>
+                            <td>
+                                <span>12.234566</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row unit-pan">
+        <div class="tickers-table">
+            <div class="top-name" @click.stop.prevent="slider($event)">
+                <span class="arrow down-arrow"></span>
+                <span>ORDER FROM</span>
+            </div>
+            <div class="tickers-content order-t">
+                <div class="input-w">
+                    <div class="row">
+                        <div class="price-w select-t">
+                            <input type="text" id="limit" value="Limit"  readonly="readonly" />
+                        </div>
+                    </div>
+                </div>
+                <div class="input-w ">
+                    <div class="row">
+                        <div class="price-w">
+                            <label><span>PRICE</span><span>USD</span></label>
+                            <input type="text" id="price"  v-bind:value="price"/>
+                        </div>
+                        <div class="price-w">
+                            <label><span>AMOUNT</span><span>BTC</span></label>
+                            <input type="text" id="amount" v-bind:value="amount"/>
+                        </div>
+                    </div>
+                    <div class="row btns">
+                        <button type="button" class="buy" v-on:click="buyEvent($event)">Buy</button>
+                        <button type="button" class="sell" v-on:click="sellEvent($event)">Sell</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row unit-pan">
+        <div class="tickers-table">
+            <div class="top-name" @click.stop.prevent="slider($event)">
+                <span class="arrow down-arrow"></span>
+                <span>BALANCES</span>
+            </div>
+            <div class="tickers-content balances">
+                <h5 class="b-tip">EXCHANGE</h5>
+                <ul>
+                    <li @click.stop.prevent="sliderPart($event,1)">
+                       <span>USD</span>
+                       <span>155776.23</span>
+                   </li>
+                    <li @click.stop.prevent="sliderPart($event,2)">
+                       <span>BTC</span>
+                       <span>155776.23</span>
+                   </li>
+                    <li @click.stop.prevent="sliderPart($event,3)">
+                       <span>LTC</span>
+                       <span>155776.23</span>
+                   </li>
+                    <li @click.stop.prevent="sliderPart($event,4)">
+                       <span>ETH</span>
+                       <span>155776.23</span>
+                   </li>
+               </ul>
+            </div>
+        </div>
+        <div class="slider-part" >
+            <span class="close" @click.stop.prevent="sliderPart($event,0)"></span>
+            <div class="title">
+                <span>US Dollar Sent</span>
+            </div>
+            <div class="tab-nav">
+                <div class="tab">Deposit USD</div>
+                <div class="tab">Withdraw USD</div>
+            </div>
+            <ul>
+                <li>
+                    <span>Total</span>
+                    <span>
+                          <span>8.1</span><span class="fc">00000</span><span class="tmt">BTC</span>
+                    </span>
+                </li>
+                <li>
+                    <span>Avaliabble</span>
+                    <span>
+                          <span>8.1</span><span class="fc">00000</span><span class="tmt">BTC</span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+</div>
