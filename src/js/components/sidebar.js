@@ -48,7 +48,6 @@ var sidebar = {
           axios.get('cointrade.act?cmd=getAllTicker')
             .then(function (response) {
                 if(response.data.sucess){
-                  debugger;
                     that.tickerArary=response.data.data;
                 }else{
                    alert(response.data.message)
@@ -114,7 +113,6 @@ var sidebar = {
             return value.toFixed(num)
       },
        getCoinType:function(value,index){
-         debugger;
             return vlm.coinType[value][index];
        }
 
