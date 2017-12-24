@@ -300,10 +300,10 @@
                             <div class="top-name" @click.stop.prevent="slider($event)">
                                 <span class="arrow down-arrow"></span>
                                 <span>ORDER HISTORY</span>
-                                <div class="select_column">
+                                <div class="select_column" @click.stop.prevent="selectType($event)">
                                     <em class="sel_text">BTC</em>
                                     <i class="down_gray_arrow"></i>
-                                    <ul>
+                                    <ul @click.stop.prevent="chooseLi($event)">
                                         <li>BTC</li>
                                         <li>BTC2</li>
                                         <li>BTC3</li>

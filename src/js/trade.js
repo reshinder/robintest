@@ -46,6 +46,7 @@ var app = new Vue({
 
         //选中
         chooseLi(e){
+            $(e.target).parents('.select_column').find('.sel_text').html($(e.target).html());
             $(e.target).parent().slideUp(100);
         }
 
