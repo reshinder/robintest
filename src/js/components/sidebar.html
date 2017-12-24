@@ -84,24 +84,35 @@
                 <span>BALANCES</span>
             </div>
             <div class="tickers-content balances">
-                <h5 class="b-tip">EXCHANGE</h5>
+                <h5 class="b-tip">AVAILABLE</h5>
+                <h5 class="b-tip">TOTAL</h5>
                 <ul>
                     <li @click.stop.prevent="sliderPart($event,1)">
                        <span>USD</span>
                        <span>155776.23</span>
+                       <span>155776.23</span
                    </li>
                     <li @click.stop.prevent="sliderPart($event,2)">
                        <span>BTC</span>
                        <span>155776.23</span>
+                       <span>155776.23</span
                    </li>
                     <li @click.stop.prevent="sliderPart($event,3)">
                        <span>LTC</span>
                        <span>155776.23</span>
+                       <span>155776.23</span
                    </li>
                     <li @click.stop.prevent="sliderPart($event,4)">
                        <span>ETH</span>
                        <span>155776.23</span>
+                       <span>155776.23</span
                    </li>
+               </ul>
+               <ul>
+                 <li @click.stop.prevent="sliderPart($event,4)">
+                    <span>USD EQUIV/MARKET</span>
+                    <span>155776.23</span
+                </li>
                </ul>
             </div>
         </div>
@@ -127,6 +138,7 @@
                           <span>8.1</span><span class="fc">00000</span><span class="tmt">BTC</span>
                     </span>
                 </li>
+
             </ul>
         </div>
     </div>

@@ -15,7 +15,8 @@ var sidebar = {
            "tickerArary":[],
            "unCompleteOrders":[],
            "completeOrders":[],
-           "recentTradeRecords":[]
+           "recentTradeRecords":[],
+           "balances":[]
         }
     },
     methods: {
@@ -26,14 +27,15 @@ var sidebar = {
               axios.get('user.act?cmd=login&accountType=1&account=test1@test.com&password=abc12345'),
               axios.get('cointrade.act?cmd=getUnCompleteOrders&busitype=coin-usd-btc'), //获取委托订单
               axios.get('cointrade.act?cmd=getCompleteOrders&busitype=coin-usd-btc'), //获取历史订单
-              //axios.get('cointrade.act?cmd=getDefaultDeepenDatas&busitype=coin-usd-btc') //获取交易
-              //axios.get('cointrade.act?cmd=getRecentTradeRecords&busitype=coin-usd-btc') //获取最新成交
-            ])
-          .then(axios.spread(function (response1,response2){
-            that.unCompleteOrders=response1.data.data;
-            that.recentTradeRecords=response2.data.data;
+              axios.get('cointrade.act?cmd=userFund.act.act?cmd=getUserAssetInfo&coinCode=btc'), //获取资产信息
 
-            console.log(that.tickerArary);
+            ])
+          .then(axios.spread(function (response1,response2,response3,response4){
+            debugger
+            that.unCompleteOrders=response2.data.data;
+            that.completeOrders=response3.data.data;
+            that.balances=response4.data.data;
+
           }))
           .catch(function (error) {
              console.log(error);
