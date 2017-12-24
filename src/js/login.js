@@ -54,6 +54,9 @@ var app = new Vue({
             this.pageView();
 
         },
+        gtest(){
+            console.log(999)
+        },
         viewHandler(arg){ //触发即打开验证页
            if(arg.main==1){
                this.footercurrentView = footer_empty;

@@ -1,8 +1,14 @@
 
 import pageBus from '../common/bus'
-let template= require('./header_empty.html');
 let header_empty = {
-    template: template,
+    template: ` <div class="container-fluid head-out">
+        <div class="row">
+            <div class="logo">Superbit</div>
+             <div class="login-enter">
+                 <p>Alredy have an account? <a href="login.html">Log in</span></p>
+             </div>
+        </div>
+   </div>`,
     data: function() {
         return {
 

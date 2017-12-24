@@ -7,7 +7,7 @@ import Vue from '../lib/vue.js';
 let template= require('./registerprogress.html');
 let logincheck = {
     template: template,
-    props : ['childMsg'],
+    props : ['childMsg','registerEmail'],
     data: function() {
         return {
             haschosen:false,
