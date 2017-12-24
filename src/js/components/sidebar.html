@@ -40,7 +40,7 @@
                             <span class="fc">USD</span>
                         </td>
                         <td class="fc-red">
-                            <span>{{item.float*100}}%</span>
+                            <span> {{item.float*100 | dataformat(2)}}%</span>
                         </td>
                         <td>
                             <span>{{item.vol | dataformat(4)}}</span>
@@ -91,23 +91,34 @@
                 <span>BALANCES</span>
             </div>
             <div class="tickers-content balances">
-                <h5 class="b-tip">EXCHANGE</h5>
+                <div class="side_balance_tit">
+                    <h5 class="b-tip mr30">TOTAL</h5>
+                    <h5 class="b-tip">AVAILABLE</h5>
+                </div>
+
                 <ul>
                     <li @click.stop.prevent="sliderPart($event,1)">
                         <span>USD</span>
+                        <span>155776.2300</span>
                         <span>155776.23</span>
                     </li>
                     <li @click.stop.prevent="sliderPart($event,2)">
                         <span>BTC</span>
+                        <span>0.0000</span>
                         <span>155776.23</span>
                     </li>
                     <li @click.stop.prevent="sliderPart($event,3)">
                         <span>LTC</span>
+                        <span>0.0000</span>
                         <span>155776.23</span>
                     </li>
                     <li @click.stop.prevent="sliderPart($event,4)">
                         <span>ETH</span>
                         <span>155776.23</span>
+                    </li>
+                    <li>
+                        <span>USD EQUIV<i class="market_color"> / MARKET</i></span>
+                        <span>131.0037</span>
                     </li>
                 </ul>
             </div>

@@ -1,0 +1,457 @@
+<div class="content-wrap">
+    <div class="container">
+        <div class="row">
+            <sidebarview></sidebarview>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 charts-line">
+                <div class="row unit-pan">
+                    <div class="tickers-table">
+                        <div class="top-name" @click.stop.prevent="slider($event)">
+                            <span class="arrow down-arrow"></span>
+                            <span>CHARTS</span>
+                        </div>
+                        <div class="charts-view-out">
+                            <chartview></chartview>
+                        </div>
+                    </div>
+                </div>
+                <div class="row unit-pan">
+                    <div class="tickers-table">
+                        <div class="top-name" @click.stop.prevent="slider($event)">
+                            <span class="arrow down-arrow"></span>
+                            <span>ORDERS</span>
+                            <div class="select_column" @click.stop.prevent="selectType($event)">
+                                <em class="sel_text">BTC</em>
+                                <i class="down_gray_arrow"></i>
+                                <ul @click.stop.prevent="chooseLi($event)">
+                                    <li v-for='item in busiTypeInfos'>{{item.commodityCode|uppercase}}</li>
+                                </ul>
+                            </div>
+
+                            <!--右侧tab start-->
+                            <div class="fr right_col_tab">
+                                <a href="javascript:;" @click="bidsAndAsks='Bids'" :class="{active:bidsAndAsks=='Bids'}">Bids<i></i></a>
+                                <a href="javascript:;" @click="bidsAndAsks='Asks'" :class="{active:bidsAndAsks=='Asks'}">Asks<i></i></a>
+                                <a href="javascript:;"  @click="bidsAndAsks='All'"  :class="{active:bidsAndAsks=='All'}">All<i></i></a>
+                            </div>
+                            <!--右侧tab end-->
+                        </div>
+                        <div class="tickers-content order-table">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <td><span class="clear-arrow">PAIR</span></td>
+                                    <td><span>CONTEXT</span><span class="arrow-t"></span></td>
+                                    <td><span>TYPE</span><span class="arrow-t choose-up"></span></td>
+                                    <td><span>AMOUNT</span><span class="arrow-t"></span></td>
+
+                                    <td><span>PRICE</span><span class="arrow-t"></span></td>
+                                    <td><span>STATUS</span><span class="arrow-t"></span></td>
+                                    <td class="tl"><span>PLACES</span><span class="arrow-t"></span></td>
+                                    <td class="delete-td">
+                                        <span></span>
+                                    </td>
+                                </tr>
+
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="circle"></span>
+                                        <span>ETC/USD</span>
+                                    </td>
+                                    <td>
+                                        <span>EXCHANGE</span>
+                                    </td>
+                                    <td>
+                                        <span>LIMIT</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>-2.000000</span>
+                                    </td>
+
+                                    <td>
+                                        <span>14.570</span>
+                                    </td>
+                                    <td class="sc-blue">
+                                        <span>Active</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>21-11-17</span>
+                                        <span>10:45:32</span>
+                                    </td>
+                                    <td class="delete-td">
+                                        <span></span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="circle"></span>
+                                        <span>ETC/USD</span>
+                                    </td>
+                                    <td>
+                                        <span>EXCHANGE</span>
+                                    </td>
+                                    <td>
+                                        <span>LIMIT</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>-2.000000</span>
+                                    </td>
+
+                                    <td>
+                                        <span>14.570</span>
+                                    </td>
+                                    <td class="sc-blue">
+                                        <span>Active</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>21-11-17</span>
+                                        <span>10:45:32</span>
+                                    </td>
+                                    <td class="delete-td">
+                                        <span></span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="circle"></span>
+                                        <span>ETC/USD</span>
+                                    </td>
+                                    <td>
+                                        <span>EXCHANGE</span>
+                                    </td>
+                                    <td>
+                                        <span>LIMIT</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>-2.000000</span>
+                                    </td>
+
+                                    <td>
+                                        <span>14.570</span>
+                                    </td>
+                                    <td class="sc-blue">
+                                        <span>Active</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>21-11-17</span>
+                                        <span>10:45:32</span>
+                                    </td>
+                                    <td class="delete-td">
+                                        <span></span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="circle"></span>
+                                        <span>ETC/USD</span>
+                                    </td>
+                                    <td>
+                                        <span>EXCHANGE</span>
+                                    </td>
+                                    <td>
+                                        <span>LIMIT</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>-2.000000</span>
+                                    </td>
+
+                                    <td>
+                                        <span>14.570</span>
+                                    </td>
+                                    <td class="sc-blue">
+                                        <span>Active</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>21-11-17</span>
+                                        <span>10:45:32</span>
+                                    </td>
+                                    <td class="delete-td">
+                                        <span></span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="circle"></span>
+                                        <span>ETC/USD</span>
+                                    </td>
+                                    <td>
+                                        <span>EXCHANGE</span>
+                                    </td>
+                                    <td>
+                                        <span>LIMIT</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>-2.000000</span>
+                                    </td>
+
+                                    <td>
+                                        <span>14.570</span>
+                                    </td>
+                                    <td class="sc-blue">
+                                        <span>Active</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>21-11-17</span>
+                                        <span>10:45:32</span>
+                                    </td>
+                                    <td class="delete-td">
+                                        <span></span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="circle"></span>
+                                        <span>ETC/USD</span>
+                                    </td>
+                                    <td>
+                                        <span>EXCHANGE</span>
+                                    </td>
+                                    <td>
+                                        <span>LIMIT</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>-2.000000</span>
+                                    </td>
+
+                                    <td>
+                                        <span>14.570</span>
+                                    </td>
+                                    <td class="sc-blue">
+                                        <span>Active</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>21-11-17</span>
+                                        <span>10:45:32</span>
+                                    </td>
+                                    <td class="delete-td">
+                                        <span></span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="circle"></span>
+                                        <span>ETC/USD</span>
+                                    </td>
+                                    <td>
+                                        <span>EXCHANGE</span>
+                                    </td>
+                                    <td>
+                                        <span>LIMIT</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>-2.000000</span>
+                                    </td>
+
+                                    <td>
+                                        <span>14.570</span>
+                                    </td>
+                                    <td class="sc-blue">
+                                        <span>Active</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>21-11-17</span>
+                                        <span>10:45:32</span>
+                                    </td>
+                                    <td class="delete-td">
+                                        <span></span>
+                                    </td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <p class="no-act">
+                                <span>No acticity orders</span>
+                                <span class="sc-blue remove-a">Remove applied filters</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row unit-pan">
+                    <div class="tickers-table">
+                        <div class="top-name" @click.stop.prevent="slider($event)">
+                            <span class="arrow down-arrow"></span>
+                            <span>ORDER HISTORY</span>
+                            <div class="select_column" @click.stop.prevent="selectType($event)">
+                                <em class="sel_text">BTC</em>
+                                <i class="down_gray_arrow"></i>
+                                <ul @click.stop.prevent="chooseLi($event)">
+                                    <li v-for='item in busiTypeInfos'>{{item.commodityCode|uppercase}}</li>
+                                </ul>
+                            </div>
+
+                            <!--右侧tab start-->
+                            <div class="fr right_col_tab">
+                                <a href="javascript:;" @click="orderSate='Canceled'" :class="{active:orderSate=='Canceled'}">Canceled<i></i></a>
+                                <a href="javascript:;" @click="orderSate='Executed'" :class="{active:orderSate=='Executed'}">Executed<i></i></a>
+                                <a href="javascript:;"  @click="orderSate='Partially'" :class="{active:orderSate=='Partially'}">Partially Executed<i></i></a>
+                                <a href="javascript:;" @click="orderSate='All'" :class="{active:orderSate=='All'}">All<i></i></a>
+                            </div>
+                            <!--右侧tab end-->
+                        </div>
+                        <div class="tickers-content history-table">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <td><span class="clear-arrow">PAIR</span></td>
+                                    <td><span>CONTEXT</span><span class="arrow-t"></span></td>
+                                    <td><span>TYPE</span><span class="arrow-t choose-up"></span></td>
+                                    <td class="tr"><span>AMOUNT</span><span class="arrow-t"></span></td>
+                                    <td><span>PRICE</span><span class="arrow-t"></span></td>
+                                    <td><span>STATUS</span><span class="arrow-t"></span></td>
+                                    <td><span>PLACES</span><span class="arrow-t"></span></td>
+                                    <td class="delete-td">
+                                        <span class="close"></span>
+                                    </td>
+                                </tr>
+
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <p class="no-act">
+                                <span>No acticity orders</span>
+                                <span class="sc-blue remove-a">Remove applied filters</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row unit-pan book-trader">
+                    <div class="col-sm-12 col-xs-12 order-book-p">
+                        <div class="tickers-table">
+                            <div class="top-name" @click.stop.prevent="slider($event)">
+                                <span class="arrow down-arrow"></span>
+                                <span>ORDER BOOK</span>
+                                <span class="fc">BTC/USD</span>
+                                <div class="change-tag">
+                                    <span class="minus"></span>
+                                    <span class="plus"></span>
+                                </div>
+                            </div>
+                            <div class="tickers-content order-book">
+                                <div class="hill_wrap">
+                                    <div class="hill_tit">
+                                        <span class="clear-arrow">COUNT</span>
+                                        <span class="clear-arrow">AMOUNT</span>
+                                        <span class="clear-arrow">TOTAL</span>
+                                        <span class="clear-arrow">PRICE</span>
+                                        <span class="clear-arrow">PRICE</span>
+                                        <span class="clear-arrow">TOTAL</span>
+                                        <span class="clear-arrow">AMOUNT</span>
+                                        <span class="clear-arrow">COUNT</span>
+                                    </div>
+                                    <div class="hill_body">
+
+                                        <div class="hill_list">
+                                            <div class="hill_left_bg"><em style="width: 20%;"></em></div>
+                                            <div class="hill_right_bg"><em style="width: 20%;"></em></div>
+                                            <div class="hill_item">
+                                                <span>3</span>
+                                                <span>123</span>
+                                                <span>234.9</span>
+                                                <span>444</span>
+                                                <span>444.22</span>
+                                                <span>444.34</span>
+                                                <span>114.28</span>
+                                                <span>666.88</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="hill_list">
+                                            <div class="hill_left_bg"><em style="width: 40%;"></em></div>
+                                            <div class="hill_right_bg"><em style="width: 40%;"></em></div>
+                                            <div class="hill_item">
+                                                <span>3</span>
+                                                <span>123</span>
+                                                <span>234.9</span>
+                                                <span>444</span>
+                                                <span>444.22</span>
+                                                <span>444.34</span>
+                                                <span>114.28</span>
+                                                <span>666.88</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="hill_list">
+                                            <div class="hill_left_bg"><em style="width: 60%;"></em></div>
+                                            <div class="hill_right_bg"><em style="width: 60%;"></em></div>
+                                            <div class="hill_item">
+                                                <span>3</span>
+                                                <span>123</span>
+                                                <span>234.9</span>
+                                                <span>444</span>
+                                                <span>444.22</span>
+                                                <span>444.34</span>
+                                                <span>114.28</span>
+                                                <span>666.88</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 trades-p">
+                        <div class="tickers-table">
+                            <div class="top-name" @click.stop.prevent="slider($event)">
+                                <span class="arrow down-arrow"></span>
+                                <span>TRADES</span>
+                                <span class="fc">BTC/USD</span>
+                            </div>
+                            <div class="tickers-content trade">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td><span class="clear-arrow">TIME</span></td>
+                                        <td><span class="clear-arrow">PRICE</span></td>
+                                        <td><span class="clear-arrow">AMOUNT</span></td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="up_green_bg">
+                                        <td><span class="up_green_tip"></span><span>02:34:55</span></td>
+                                        <td><span>4.789</span></td>
+                                        <td><span>0.1689.9</span></td>
+                                    </tr>
+                                    <tr class="down_red_bg">
+                                        <td><span class="down_red_tip"></span><span>02:34:55</span></td>
+                                        <td><span>4.789</span></td>
+                                        <td><span>0.1689.9</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>02:34:55</span></td>
+                                        <td><span>4.789</span></td>
+                                        <td><span>0.1689.9</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>02:34:55</span></td>
+                                        <td><span>4.789</span></td>
+                                        <td><span>0.1689.9</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>02:34:55</span></td>
+                                        <td><span>4.789</span></td>
+                                        <td><span>0.1689.9</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>02:34:55</span></td>
+                                        <td><span>4.789</span></td>
+                                        <td><span>0.1689.9</span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

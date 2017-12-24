@@ -1,6 +1,9 @@
+@import "../base.less";
+
 .head-wrap{
    background: @blue1;
    .row{
+     position: relative;
      .logo-word{
        float: left;
        margin-left: 15px;
@@ -11,6 +14,52 @@
        letter-spacing: 0;
        vertical-align: middle;
      }
+
+
+     .trade{
+       position: absolute;
+       left:180px;
+       top:28px;
+       width: 120px;
+       text-align: center;
+       font-size: 16px;
+       color: @white;
+       .bot_cross_tip{
+         width:4px;
+         height:4px;
+         border-radius: 2px;
+         display: block;
+         background-color: @white;
+         margin:10px 0 0 50%;
+         opacity: .5;
+       }
+       >ul{
+         position: absolute;
+         left: 0;
+         top:44px;
+         display: none;
+         z-index: 5;
+         li{
+           width: 100%;
+           height: 50px;
+           line-height: 50px;
+           background: @blue1;
+           padding: 0;
+           >a{
+             color: #fff;
+           }
+           &:hover{
+             background: @blue2;
+           }
+         }
+       }
+       &:hover{
+         >ul{
+           display: block;
+         }
+       }
+     }
+
     .mobile-menu{
       position: absolute;
       top:17px;
@@ -89,36 +138,7 @@
        &.icon-li-b{
          padding: 27px 39px 27px 19.5px;
        }
-       &.trade{
-         position: relative;
-         width: 120px;
-         text-align: center;
-         >ul{
-           position: absolute;
-           left: 0;
-           top:44px;
-           display: none;
-           z-index: 5;
-           li{
-             width: 100%;
-             height: 50px;
-             line-height: 50px;
-             background: @blue1;
-             padding: 0;
-             >a{
-               color: #fff;
-             }
-             &:hover{
-               background: @blue2;
-             }
-           }
-         }
-         &:hover{
-           >ul{
-             display: block;
-           }
-         }
-       }
+
 
        >.sub-menu{
          display: none;
