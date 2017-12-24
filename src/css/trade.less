@@ -471,6 +471,7 @@ html, body {
               vertical-align: middle;
               margin-left: 15px;
               position: relative;
+              font-size: 12px;
               .sel_text {
                 background-color: #f0f0f0;
                 width: 100%;
@@ -481,7 +482,6 @@ html, body {
                 color: #333;
                 line-height: 24px;
                 padding-left: 20px;
-                font-size: 12px;
                 cursor: pointer;
               }
               i.down_gray_arrow {
@@ -493,6 +493,53 @@ html, body {
                 position: absolute;
                 right: 8px;
                 top: 10px;
+              }
+
+              ul {
+                position: absolute;
+                left: 0;
+                top: 24px;
+                width: 100%;
+                background-color: @white;
+                border: 1px solid #efefef;
+                display: none;
+                li {
+                  line-height: 20px;
+                  padding-left: 20px;
+                  &:hover{
+                    background-color: #ccc;
+                  }
+                }
+              }
+            }
+
+            //选项卡
+            .right_col_tab{
+              a{
+                padding: 0 10px;
+                color: #000;
+                opacity: .3;
+                font-size: 12px;
+                position: relative;
+                height:50px;
+                line-height: 50px;
+                display: inline-block;
+                &.active{
+                  color: #1F4764;
+                  opacity: 1;
+                  i{
+                    display: block;
+                  }
+                }
+                i{
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  width:100%;
+                  height:1px;
+                  background-color: #1F4764;
+                  display: none;
+                }
               }
             }
           }
