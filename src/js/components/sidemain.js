@@ -5,7 +5,6 @@ import vlm from '../lib/vlm.js';
 import Vue from '../lib/vue.js';
 import chartview from '../components/chartview.js';
 let template= require('./sidemain.html');
-
 let sidemain = {
     template: template,
     data: function() {
@@ -31,7 +30,6 @@ let sidemain = {
         selectType(e){
             $(e.currentTarget).find('ul').slideDown(100);
         },
-
         //选中
         chooseLi(e){
             $(e.target).parents('.select_column').find('.sel_text').html($(e.target).html());
