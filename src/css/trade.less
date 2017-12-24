@@ -843,10 +843,44 @@ html, body {
             padding-right: 0;
             .tickers-content {
               padding-bottom: 14px;
+              table{
+                border-collapse: collapse;
+              }
               tbody {
                 tr {
                   &:hover {
                     background-color: #e2f4e5;
+                  }
+
+                  &.up_green_bg{
+                    background-color: #e2f4e5;
+                  }
+
+                  &.down_red_bg{
+                    background-color: #f7d9d9;
+                  }
+
+                  td{
+                    &:first-of-type{
+                      position: relative;
+                    }
+                    .up_green_tip{
+                      border-left: 4px solid transparent;
+                      border-right: 4px solid transparent;
+                      border-bottom: 6px solid #2dbb63;
+                      position: absolute;
+                      left: 8px;
+                      top: 10px;
+                    }
+
+                    .down_red_tip{
+                      border-left: 4px solid transparent;
+                      border-right: 4px solid transparent;
+                      border-top: 6px solid #d94242;
+                      position: absolute;
+                      left: 8px;
+                      top: 10px;
+                    }
                   }
                 }
               }
