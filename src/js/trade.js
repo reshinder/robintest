@@ -16,14 +16,15 @@ var app = new Vue({
 
     },
     components: {
-        chartview:chartview,
-        modaltip:modaltip,
-        footerview:footerview,
-        headerview:headerview,
-        sidebarview:sidebarview
+        chartview: chartview,
+        modaltip: modaltip,
+        footerview: footerview,
+        headerview: headerview,
+        sidebarview: sidebarview
     },
-    created:function(){},
-    mounted:function () {
+    created: function () {
+    },
+    mounted: function () {
         this.init();
     },
     methods: {
@@ -31,12 +32,22 @@ var app = new Vue({
             let self = this;
 
         },
-        eve:function(){
-            pageBus.$emit('change','accounttip');
+        eve: function () {
+            pageBus.$emit('change', 'accounttip');
         },
         sliderPart(index){
             $(".slider-part").slideToggle(800);
         },
+
+        //下拉框
+        selectType(e){
+            $(e.currentTarget).find('ul').slideDown(100);
+        },
+
+        //选中
+        chooseLi(e){
+            $(e.target).parent().slideUp(100);
+        }
 
     }
 });
