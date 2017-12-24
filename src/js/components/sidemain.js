@@ -10,15 +10,32 @@ let sidemain = {
     template: template,
     data: function() {
         return {
+         "bidsAndAsks":"All",
+         "orderSate":"All",
          "busiTypeInfos":[]
         }
     },
     components: {
         chartview: chartview
     },
+    filters:{      //数据过滤器
+        uppercase:function(value){
+          return value.toUpperCase();
+      }
+    },
     methods: {
         init:function(){
            this.getBusiTypeInfosCmd();
+        },
+        //下拉框
+        selectType(e){
+            $(e.currentTarget).find('ul').slideDown(100);
+        },
+
+        //选中
+        chooseLi(e){
+            $(e.target).parents('.select_column').find('.sel_text').html($(e.target).html());
+            $(e.target).parent().slideUp(100);
         },
         //获取交易对基础信息
         getBusiTypeInfosCmd(){

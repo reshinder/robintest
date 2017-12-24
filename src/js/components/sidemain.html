@@ -12,10 +12,6 @@
                         <div class="charts-view-out">
                             <chartview></chartview>
                         </div>
-
-                        <div id="charts-table" class="tickers-content charts-table">
-
-                        </div>
                     </div>
                 </div>
                 <div class="row unit-pan">
@@ -27,17 +23,15 @@
                                 <em class="sel_text">BTC</em>
                                 <i class="down_gray_arrow"></i>
                                 <ul @click.stop.prevent="chooseLi($event)">
-                                    <li>BTC</li>
-                                    <li>BTC2</li>
-                                    <li>BTC3</li>
+                                    <li v-for='item in busiTypeInfos'>{{item.commodityCode|uppercase}}</li>
                                 </ul>
                             </div>
 
                             <!--右侧tab start-->
                             <div class="fr right_col_tab">
-                                <a href="javascript:;">Bids<i></i></a>
-                                <a href="javascript:;">Asks<i></i></a>
-                                <a href="javascript:;" class="active">All<i></i></a>
+                                <a href="javascript:;" @click="bidsAndAsks='Bids'" :class="{active:bidsAndAsks=='Bids'}">Bids<i></i></a>
+                                <a href="javascript:;" @click="bidsAndAsks='Asks'" :class="{active:bidsAndAsks=='Asks'}">Asks<i></i></a>
+                                <a href="javascript:;"  @click="bidsAndAsks='All'"  :class="{active:bidsAndAsks=='All'}">All<i></i></a>
                             </div>
                             <!--右侧tab end-->
                         </div>
@@ -289,18 +283,16 @@
                                 <em class="sel_text">BTC</em>
                                 <i class="down_gray_arrow"></i>
                                 <ul @click.stop.prevent="chooseLi($event)">
-                                    <li>BTC</li>
-                                    <li>BTC2</li>
-                                    <li>BTC3</li>
+                                    <li v-for='item in busiTypeInfos'>{{item.commodityCode|uppercase}}</li>
                                 </ul>
                             </div>
 
                             <!--右侧tab start-->
                             <div class="fr right_col_tab">
-                                <a href="javascript:;">Canceled<i></i></a>
-                                <a href="javascript:;">Executed<i></i></a>
-                                <a href="javascript:;">Partially Executed<i></i></a>
-                                <a href="javascript:;" class="active">All<i></i></a>
+                                <a href="javascript:;" @click="orderSate='Canceled'" :class="{active:orderSate=='Canceled'}">Canceled<i></i></a>
+                                <a href="javascript:;" @click="orderSate='Executed'" :class="{active:orderSate=='Executed'}">Executed<i></i></a>
+                                <a href="javascript:;"  @click="orderSate='Partially'" :class="{active:orderSate=='Partially'}">Partially Executed<i></i></a>
+                                <a href="javascript:;" @click="orderSate='All'" :class="{active:orderSate=='All'}">All<i></i></a>
                             </div>
                             <!--右侧tab end-->
                         </div>
@@ -343,33 +335,6 @@
                                 </div>
                             </div>
                             <div class="tickers-content order-book">
-                                <!--<table>-->
-                                <!--<thead>-->
-                                <!--<tr>-->
-                                <!--<td><span class="clear-arrow">COUNT</span></td>-->
-                                <!--<td><span class="clear-arrow">AMOUNT</span></td>-->
-                                <!--<td><span class="clear-arrow">TOTAL</span></td>-->
-                                <!--<td><span class="clear-arrow">PRICE</span></td>-->
-                                <!--<td><span class="clear-arrow">PRICE</span></td>-->
-                                <!--<td><span class="clear-arrow">TOTAL</span></td>-->
-                                <!--<td><span class="clear-arrow">AMOUNT</span></td>-->
-                                <!--<td><span class="clear-arrow">COUNT</span></td>-->
-                                <!--</tr>-->
-                                <!--</thead>-->
-                                <!--<tbody>-->
-                                <!--<tr>-->
-                                <!--<td><span>3</span></td>-->
-                                <!--<td><span>123</span></td>-->
-                                <!--<td><span>234.9</span></td>-->
-                                <!--<td><span>4444</span></td>-->
-                                <!--<td><span>434</span></td>-->
-                                <!--<td><span>34343</span></td>-->
-                                <!--<td><span>3</span></td>-->
-                                <!--<td><span>3</span></td>-->
-                                <!--</tr>-->
-
-                                <!--</tbody>-->
-                                <!--</table>-->
                                 <div class="hill_wrap">
                                     <div class="hill_tit">
                                         <span class="clear-arrow">COUNT</span>

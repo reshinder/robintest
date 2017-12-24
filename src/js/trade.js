@@ -41,16 +41,7 @@ var app = new Vue({
             $(".slider-part").slideToggle(800);
         },
 
-        //下拉框
-        selectType(e){
-            $(e.currentTarget).find('ul').slideDown(100);
-        },
 
-        //选中
-        chooseLi(e){
-            $(e.target).parents('.select_column').find('.sel_text').html($(e.target).html());
-            $(e.target).parent().slideUp(100);
-        }
 
     }
 });
