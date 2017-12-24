@@ -21,28 +21,52 @@ var sidebar = {
     methods: {
 
         init:function(){
-          var that=this;
-          axios.all([
-              axios.get('user.act?cmd=login&accountType=1&account=test1@test.com&password=abc12345'),
-              axios.get('cointrade.act?cmd=getUnCompleteOrders&busitype=coin-usd-btc'), //获取委托订单
-              axios.get('cointrade.act?cmd=getCompleteOrders&busitype=coin-usd-btc'), //获取历史订单
-              //axios.get('cointrade.act?cmd=getDefaultDeepenDatas&busitype=coin-usd-btc') //获取交易
-              //axios.get('cointrade.act?cmd=getRecentTradeRecords&busitype=coin-usd-btc') //获取最新成交
-            ])
-          .then(axios.spread(function (response1,response2){
-            that.unCompleteOrders=response1.data.data;
-            that.recentTradeRecords=response2.data.data;
-
-            console.log(that.tickerArary);
-          }))
-          .catch(function (error) {
-             console.log(error);
-          })
-
-          that.getTickerAll();
-          that.getRecentTradeRecords();
+          this.loginCmd();
+          this.getTickerAll();
+          this.getUnCompleteOrdersCmd();
+          this. getRecentTradeRecordsCmd();
+          this.getRecentTradeRecords();
 
         },
+
+       getUnCompleteOrdersCmd(){
+         var that=this;
+         axios.get('cointrade.act?cmd=getUnCompleteOrders&busitype=coin-usd-btc')
+           .then(function (response) {
+               if(response.data.sucess){
+                   that.unCompleteOrders=response.data.data;
+                   console.log("that.unCompleteOrders:"+that.unCompleteOrders)
+               }else{
+                  alert(response.data.message)
+               }
+           })
+       },
+       getRecentTradeRecordsCmd(){
+         var that=this;
+         axios.get('cointrade.act?cmd=getCompleteOrders&busitype=coin-usd-btc')
+           .then(function (response) {
+               if(response.data.sucess){
+                 that.recentTradeRecords=response.data.data;
+                 console.log("that.recentTradeRecords:"+that.recentTradeRecords)
+               }else{
+                  alert(response.data.message)
+               }
+           })
+       },
+
+       loginCmd(){
+         var that=this;
+         axios.get('user.act?cmd=login&accountType=1&account=test1@test.com&password=abc12345')
+           .then(function (response) {
+               if(response.data.sucess){
+
+               }else{
+                  alert(response.data.message)
+               }
+           })
+       },
+
+
         getTickerAll(){
           var that=this;
           axios.get('cointrade.act?cmd=getAllTicker')
@@ -53,9 +77,9 @@ var sidebar = {
                    alert(response.data.message)
                 }
             })
-        }
+        },
 
-        ,getRecentTradeRecords(){
+        getRecentTradeRecords(){
           var that=this;
           axios.get('cointrade.act?cmd=getRecentTradeRecords&busitype=coin-usd-btc')
             .then(function (response) {

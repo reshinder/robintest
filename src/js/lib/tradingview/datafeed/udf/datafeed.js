@@ -36,26 +36,13 @@ Datafeeds.UDFCompatibleDatafeed = function(datafeedURL, updateFrequency) {
 Datafeeds.UDFCompatibleDatafeed.prototype.defaultConfiguration = function() {
 	return {
 		supports_search: false,
-		supports_group_request: true,
-		supported_resolutions: ['1', '5', '15', '30', '60', '1D', '1W', '1M'],
+		supports_group_request: false,
+		supported_resolutions: ['1', '5', '15'],
 		supports_marks: false,
 		supports_timescale_marks: false
 	};
 };
 
-Datafeeds.UDFCompatibleDatafeed.prototype.getServerTime = function(callback) {
-	if (this._configuration.supports_time) {
-		this._send(this._datafeedURL + '/time', {})
-			.done(function(response) {
-				var time = +response;
-				if (!isNaN(time)) {
-					callback(time);
-				}
-			})
-			.fail(function() {
-			});
-	}
-};
 
 Datafeeds.UDFCompatibleDatafeed.prototype.on = function(event, callback) {
 	if (!this._callbacks.hasOwnProperty(event)) {
@@ -172,39 +159,6 @@ Datafeeds.UDFCompatibleDatafeed.prototype._setupWithConfiguration = function(con
 //	===============================================================================================================================
 //	The functions set below is the implementation of JavaScript API.
 
-Datafeeds.UDFCompatibleDatafeed.prototype.getMarks = function(symbolInfo, rangeStart, rangeEnd, onDataCallback, resolution) {
-	if (this._configuration.supports_marks) {
-		this._send(this._datafeedURL + '/marks', {
-			symbol: symbolInfo.ticker.toUpperCase(),
-			from: rangeStart,
-			to: rangeEnd,
-			resolution: resolution
-		})
-			.done(function(response) {
-				onDataCallback(parseJSONorNot(response));
-			})
-			.fail(function() {
-				onDataCallback([]);
-			});
-	}
-};
-
-Datafeeds.UDFCompatibleDatafeed.prototype.getTimescaleMarks = function(symbolInfo, rangeStart, rangeEnd, onDataCallback, resolution) {
-	if (this._configuration.supports_timescale_marks) {
-		this._send(this._datafeedURL + '/timescale_marks', {
-			symbol: symbolInfo.ticker.toUpperCase(),
-			from: rangeStart,
-			to: rangeEnd,
-			resolution: resolution
-		})
-			.done(function(response) {
-				onDataCallback(parseJSONorNot(response));
-			})
-			.fail(function() {
-				onDataCallback([]);
-			});
-	}
-};
 
 Datafeeds.UDFCompatibleDatafeed.prototype.searchSymbols = function(searchString, exchange, type, onResultReadyCallback) {
 	var MAX_SEARCH_RESULTS = 30;
@@ -294,22 +248,26 @@ Datafeeds.UDFCompatibleDatafeed.prototype.resolveSymbol = function(symbolName, o
 	}
 
 	if (!this._configuration.supports_group_request) {
-		this._send(this._datafeedURL + this._symbolResolveURL, {
-			symbol: symbolName ? symbolName.toUpperCase() : ''
-		})
-			.done(function(response) {
-				var data = parseJSONorNot(response);
 
-				if (data.s && data.s !== 'ok') {
-					onResolveErrorCallback('unknown_symbol');
-				} else {
-					onResultReady(data);
-				}
-			})
-			.fail(function(reason) {
-				that._logMessage('Error resolving symbol: ' + JSON.stringify([reason]));
-				onResolveErrorCallback('unknown_symbol');
-			});
+    var data={"name":"BTC_USD","exchange-traded":"NasdaqNM","exchange-listed":"","timezone":"America/New_York","minmov":1,"minmov2":0,"pointvalue":1,"session":"0930-1630","has_intraday":false,"has_no_volume":false,"description":"BTC_USD.","type":"stock","supported_resolutions":["D","2D","3D"],"pricescale":100,"ticker":"AAPL"}
+		onResultReady(data);
+		// this._send(this._datafeedURL + this._symbolResolveURL, {
+		// 	symbol: symbolName ? symbolName.toUpperCase() : ''
+		// })
+		// 	.done(function(response) {
+		// 		debugger;
+		// 		var data = parseJSONorNot(response);
+    //
+		// 		if (data.s && data.s !== 'ok') {
+		// 			onResolveErrorCallback('unknown_symbol');
+		// 		} else {
+		// 			onResultReady(data);
+		// 		}
+		// 	})
+		// 	.fail(function(reason) {
+		// 		that._logMessage('Error resolving symbol: ' + JSON.stringify([reason]));
+		// 		onResolveErrorCallback('unknown_symbol');
+		// 	});
 	} else {
 		if (this._initializationFinished) {
 			this._symbolsStorage.resolveSymbol(symbolName, onResultReady, onResolveErrorCallback);
@@ -323,22 +281,37 @@ Datafeeds.UDFCompatibleDatafeed.prototype.resolveSymbol = function(symbolName, o
 
 Datafeeds.UDFCompatibleDatafeed.prototype._historyURL = '/history';
 
-Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolution, rangeStartDate, rangeEndDate, onDataCallback, onErrorCallback) {
-	//	timestamp sample: 1399939200
 
-	if (rangeStartDate > 0 && (rangeStartDate + '').length > 10) {
-		throw new Error(['Got a JS time instead of Unix one.', rangeStartDate, rangeEndDate]);
-	}
-
-	this._send(this._datafeedURL + this._historyURL, {
-		symbol: symbolInfo.ticker.toUpperCase(),
-		resolution: resolution,
-		from: rangeStartDate,
-		to: rangeEndDate
-	})
-	.done(function(response) {
-		var data = parseJSONorNot(response);
-
+Datafeeds.UDFCompatibleDatafeed.prototype.mysocket = function(target,onDataCallback) {
+	var that=this;
+	if(that._websocket==null){
+	that._websocket = new WebSocket("ws://106.14.210.142:90/mkapi/ws");
+	that._websocket.onopen = function(){
+			console.log("websocket open");
+		  that._websocket.send('[{"type":"subHq","event":"kline","param":{"businessType":"coin-usd-btc", "kType":"1min", "size":10}}]');
+ }
+ that._websocket.inclose = function(){
+			console.log('websocket close');
+ }
+ that._websocket.onmessage = function(e){
+		var data = parseJSONorNot(e.data).data;
+		var array={},tArray=[],oArray=[],hArray=[],lArray=[],cArray=[],vArray=[],s="ok";
+		for(var i=0; i<data.length;i++){
+        tArray.push(data[i].time/1000);
+				hArray.push(data[i].high);
+				lArray.push(data[i].low);
+				vArray.push(data[i].vol);
+				cArray.push(data[i].close);
+				oArray.push(data[i].open);
+		}
+			array.t=tArray;
+			array.h=hArray;
+			array.l=lArray;
+			array.o=oArray;
+			array.c=cArray;
+			array.v=vArray;
+			array.s=s
+    data=array;
 		var nodata = data.s === 'no_data';
 
 		if (data.s !== 'ok' && !nodata) {
@@ -352,7 +325,7 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 		var bars = [];
 
 		//	data is JSON having format {s: "status" (ok, no_data, error),
-		//  v: [volumes], t: [times], o: [opens], h: [highs], l: [lows], c:[closes], nb: "optional_unixtime_if_no_data"}
+		//  v: [volumes], t: [times], o: [opens], h: [highs], l: [lows], c:[closes], nb:"optional_unixtime_if_no_data"}
 		var barsCount = nodata ? 0 : data.t.length;
 
 		var volumePresent = typeof data.v != 'undefined';
@@ -379,15 +352,20 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 			bars.push(barValue);
 		}
 
+		that.flag=false;
 		onDataCallback(bars, { noData: nodata, nextTime: data.nb || data.nextTime });
-	})
-	.fail(function(arg) {
-		console.warn(['getBars(): HTTP error', arg]);
+ }
+}
 
-		if (!!onErrorCallback) {
-			onErrorCallback('network error: ' + JSON.stringify(arg));
-		}
-	});
+};
+
+
+Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolution, rangeStartDate, rangeEndDate, onDataCallback, onErrorCallback) {
+	//	timestamp sample: 1399939200
+	if (rangeStartDate > 0 && (rangeStartDate + '').length > 10) {
+		throw new Error(['Got a JS time instead of Unix one.', rangeStartDate, rangeEndDate]);
+	}
+	this.mysocket(this,onDataCallback)
 };
 
 Datafeeds.UDFCompatibleDatafeed.prototype.subscribeBars = function(symbolInfo, resolution, onRealtimeCallback, listenerGUID, onResetCacheNeededCallback) {

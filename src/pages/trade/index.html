@@ -3,7 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
@@ -11,8 +12,8 @@
 </head>
 <body>
 <div class="pageHome" id="pageHome">
-     <headerview></headerview>
-     <div class="content-wrap">
+    <headerview></headerview>
+    <div class="content-wrap">
         <div class="container">
             <div class="row">
                 <sidebarview></sidebarview>
@@ -27,9 +28,9 @@
                                 <chartview></chartview>
                             </div>
 
-                           <div id="charts-table" class="tickers-content charts-table">
+                            <div id="charts-table" class="tickers-content charts-table">
 
-                           </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row unit-pan">
@@ -37,6 +38,14 @@
                             <div class="top-name" @click.stop.prevent="slider($event)">
                                 <span class="arrow down-arrow"></span>
                                 <span>ORDERS</span>
+                                <div class="select_column">
+                                    <em class="sel_text">BTC</em>
+                                    <i class="down_gray_arrow"></i>
+                                </div>
+
+                                <!--右侧tab start-->
+                                <div class="fr"></div>
+                                <!--右侧tab end-->
                             </div>
                             <div class="tickers-content order-table">
                                 <table>
@@ -271,8 +280,8 @@
                                     </tbody>
                                 </table>
                                 <p class="no-act">
-                                  <span>No acticity orders</span>
-                                  <span class="sc-blue remove-a">Remove applied filters</span>
+                                    <span>No acticity orders</span>
+                                    <span class="sc-blue remove-a">Remove applied filters</span>
                                 </p>
                             </div>
                         </div>
@@ -282,6 +291,10 @@
                             <div class="top-name" @click.stop.prevent="slider($event)">
                                 <span class="arrow down-arrow"></span>
                                 <span>ORDER HISTORY</span>
+                                <div class="select_column">
+                                    <em class="sel_text">BTC</em>
+                                    <i class="down_gray_arrow"></i>
+                                </div>
                             </div>
                             <div class="tickers-content history-table">
                                 <table>
@@ -316,10 +329,10 @@
                                     <span class="arrow down-arrow"></span>
                                     <span>ORDER BOOK</span>
                                     <span class="fc">BTC/USD</span>
-                                     <div class="change-tag">
-                                         <span class="minus"></span>
-                                         <span class="plus"></span>
-                                     </div>
+                                    <div class="change-tag">
+                                        <span class="minus"></span>
+                                        <span class="plus"></span>
+                                    </div>
                                 </div>
                                 <div class="tickers-content order-book">
                                     <table>
@@ -458,8 +471,8 @@
             </div>
         </div>
     </div>
-     <footerview></footerview>
-     <modaltip></modaltip>
+    <footerview></footerview>
+    <modaltip></modaltip>
 </div>
 </body>
 </html>

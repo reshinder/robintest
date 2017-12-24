@@ -17,17 +17,13 @@ var chartview = {
       			{
               var widget = window.tvWidget = new TradingView.widget({
         					fullscreen: true,
-        					symbol: 'AAPL',
-        					interval: 'D',
+
         					container_id: "chartview",
         					//	BEWARE: no trailing slash is expected in feed URL
         					datafeed: new Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com"),
         					library_path: "",
         					locale:  "en",
-        					//	Regression Trend-related functionality is not implemented yet, so it's hidden for a while
-        					drawings_access: { type: 'black', tools: [ { name: "Regression Trend" } ] },
-        					disabled_features: ["use_localstorage_for_settings"],
-        					enabled_features: ["study_templates"]
+
         				});
       			});
             console.log("组件开始")
