@@ -6,6 +6,7 @@ import headerview from './components/header.js';
 import footerview from './components/footer.js';
 import modaltip from './components/modaltip.js';
 import sidebarview from './components/sidebar.js';
+import sidemainview from './components/sidemain.js';
 import chartview from './components/chartview.js';
 
 var app = new Vue({
@@ -20,7 +21,8 @@ var app = new Vue({
         modaltip: modaltip,
         footerview: footerview,
         headerview: headerview,
-        sidebarview: sidebarview
+        sidebarview: sidebarview,
+        sidemainview:sidemainview
     },
     created: function () {
     },
