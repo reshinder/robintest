@@ -1,5 +1,7 @@
-import Axios from './common/axios_default';
-import $ from './lib/jquery-3.2.1.min.js';
+import axiosInstance from './common/axios_default';
+import helper from './common/chelper'
+import pageBus from './common/bus';
+import $ from './lib/jquery-3.2.1.min';
 import Vue from './lib/vue.js';
 
 
@@ -9,15 +11,15 @@ import footer_empty from './components/footer_empty.js';
 import logindefault from './components/logindefault.js';
 import logincheck from './components/logincheck.js';
 
-/*axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8;';
-axios.defaults.baseURL = domain.testDomain;*/
+
 
 var app = new Vue({
     el: '#pageHome',
     data: {
-        currentView: 'logindefault',
+        currentView: 'logindefault', //0,logindefault, 1 logincheck
         footercurrentView: 'footer_empty',
-        msg:''
+        subInfo:2, // 1手机验证,2,GL2FA验证，
+        resettag:0 //是否来自重置，默认不是
     },
     components: {
         footerview:footerview,
@@ -27,9 +29,20 @@ var app = new Vue({
         logincheck:logincheck,
 
     },
-    created:function(){},
+    created:function(){
+        if(helper.getQueryString("reset")){
+            this.resettag = helper.getQueryString("reset");
+        }
+        if(helper.getQueryString("main")==1){
+            this.headercurrentView = headerview;
+            this.footercurrentView = footerview;
+            this.currentView = 'logincheck';
+            this.subInfo = helper.getQueryString("sub")
+        }
+
+    },
     mounted:function () {
-        this.init();
+       this.init();
     },
     methods: {
         init(){
@@ -41,14 +54,18 @@ var app = new Vue({
             this.pageView();
 
         },
-        viewHandler(arg){
-            console.log(arg.main)
-            if(arg.main=="logincheck"){
-                this.headercurrentView = headerview
-                this.footercurrentView = footerview
-                this.currentView = arg.main
-                this.msg = arg.sub;
-            }
+        viewHandler(arg){ //触发即打开验证页
+           if(arg.main==1){
+               this.footercurrentView = footer_empty;
+               this.currentView = 'logincheck';
+               this.subInfo = arg.sub //对应打开验证页
+           }else{
+               this.headercurrentView = headerview;
+               this.footercurrentView = footerview;
+               this.currentView = 'logindefault';
+               this.subInfo = arg.sub //对应打开验证页
+           }
+
         },
         pageView(){
 
