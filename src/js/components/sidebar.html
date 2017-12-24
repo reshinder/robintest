@@ -40,7 +40,7 @@
                             <span class="fc">USD</span>
                         </td>
                         <td class="fc-red">
-                            <span>{{item.float*100}}%</span>
+                            <span> {{item.float*100 | dataformat(2)}}%</span>
                         </td>
                         <td>
                             <span>{{item.vol | dataformat(4)}}</span>
