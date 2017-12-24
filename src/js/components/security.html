@@ -1,9 +1,184 @@
 <div class="security">
-    <div class="security-sub tfa" v-if="currentView=='tfa'">
+    <div class="security-sub sms-choose" v-if="securityAuthentication==0">
+        <div class="unit authenmethod">
+            <h2>Authentication Method</h2>
+            <p class="choose-tip">Only need to choose one method:</p>
+            <div class="input-out single-choose">
+                <span class="radio" :class="{clicked:smsclicked}" @click="smsclicked=!smsclicked;tfaclicked=false;"></span><span>SMS</span> <span>(Phone Authentication)</span>
+            </div>
+            <transition name="slide" v-if="smsclicked==true&&tfaclicked==false">
+                <div class="authenticatenow">
+                    <h5>Authenticate Now</h5>
+                    <div class="input-box">
+                        <label>Location</label>
+                        <div class="input-inner">
+                            <input type="text" id="location" value="china" placeholder="China" readonly="readonly" /><span class="choose">choose</span>
+                            <div class="bottom-line" :class="this.locationerror==1?'to-red':''"></div>
+                            <transition name="error-tip" v-if="locationerror==1">
+                                <p class="tip-p" v-if="locationempty==1">Please choose a country</p>
+                            </transition>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label>Phone Number</label>
+                        <div class="input-inner">
+                            <span class="phone-num">+86</span><input type="text" id="tel" type="tel" placeholder="phone number" />
+                            <div class="bottom-line" :class="this.telerror==1?'to-red':''"></div>
+                            <transition name="error-tip" v-if="telerror==1">
+                                <p class="tip-p" v-if="telempty==1">Please enter your phone number.</p>
+                                <p class="tip-p" v-if="telverror==1">Please enter a valid number.</p>
+                            </transition>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label>SMS Code</label>
+                        <div class="input-inner">
+                            <input type="text" placeholder="code" id="code" /><span class="choose getc" @click="getCode($event)">Get Code</span>
+                            <div class="bottom-line" :class="this.telerror==1?'to-red':''"></div>
+                            <transition name="error-tip" v-if="smserror==1">
+                                <p class="tip-p" v-if="smsempty==1">Please enter your sms code.</p>
+                                <p class="tip-p" v-if="smserror==1">Wrong sms code.</p>
+                            </transition>
+                        </div>
+                    </div>
+                    <div class="button-out">
+                        <button type="button" @click="smsBindRemote">submit</button>
+                    </div>
+                </div>
+            </transition>
+
+            <div class="input-out single-choose">
+                <span class="radio" :class="{clicked:tfaclicked}" @click="tfaclicked=!tfaclicked;smsclicked=false;"></span><span>2FA</span> <span class="">(Google Authentication)</span>
+            </div>
+            <transition name="slide" v-if="tfaclicked==true&&smsclicked==false">
+                <div class="tfacontent">
+                    <p>Using Two-factor authentication is highly recommended.Please consider our avalable options for increasing the secrity of your account.
+                        We want to give you every opportunity to be confident that your account is secure.</p>
+                    <p class="table-p">If you enable mutiple 2FA methods,the below operation will be protected By 2FA instead of email confirmation</p>
+                    <table class="method-table">
+                        <tr>
+                            <td>Logins</td>
+                            <td>Withdrawal Confirmations</td>
+                        </tr>
+                        <tr>
+                            <td>Find your Password</td>
+                            <td>API Key Creation</td>
+                        </tr>
+                        <tr>
+                            <td>Security Settings</td>
+                            <td>Sensitive Account Setting Changes</td>
+                        </tr>
+                    </table>
+                    <div class="qr-code-out clear">
+                        <div class="qr">
+                            <h4>Authenticate Now</h4>
+                            <div class="qr-code"></div>
+                        </div>
+                        <div class="scan">
+                            <ul>
+                                <li>1.Scan the QR Code</li>
+                                <li>2.Enter the 2FA token below</li>
+                            </ul>
+                            <div class="input-out">
+                                <div class="input-inner">
+                                    <input type="text" value="" id="tokencode" v-model="tokencode" placeholder="Enter your Token">
+                                    <div class="bottom-line" :class="this.tokenerror==1?'to-red':''"></div>
+                                    <transition name="error-tip" v-if="tokenerror==1&&tokenempty==1">
+                                        <p class="tip-p">Please enter the 2FA token.</p>
+                                    </transition>
+                                    <transition name="error-tip" v-if="tokenerror==1&&tokenverror==1">
+                                        <p class="tip-p">Please enter a valid 2FA token</p>
+                                    </transition>
+                                </div>
+                                <button type="submit" @click="unBindGLAction">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="click-tip" @click.prevent.stop="eve(3)">How to Enable Google Authentication? click me~</p>
+                    <div class="input-out single-choose">
+                        <span class="radio"></span><span>SMS</span> <span class="">(Phone Authentication)</span>
+                    </div>
+                </div>
+            </transition>
+        </div>
+        <div class="unit password">
+            <h2>Password</h2>
+            <table>
+                <tr>
+                    <td>password</td>
+                    <td>********</td>
+                    <td class="bc pl50 cup" @click.prevent.stop="changePassword">change</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="security-sub tfasuccess"  v-if="securityAuthentication==1">
+        <div class="unit authenmethod">
+            <h2>SMS Authentication</h2>
+            <table class="tfa-table">
+                <tr>
+                    <td>Phone number</td>
+                    <td>86133****6789</td>
+                    <td class="bc pl50 cup" @click.prevent.stop="eve(1)">Modify</td>
+                    <td class="bc pl50 cup" @click.prevent.stop="eve(1)">Unbind</td>
+                </tr>
+            </table>
+        </div>
+        <div class="unit setting-items">
+            <h2>2FA Application Setting</h2>
+            <ul class="choose-ul">
+                <li class="choose-out"><label :class="{chosen:slc}" @click="slc=!slc"></label><span>Login in</span></li>
+                <li class="choose-out"><label :class="{chosen:spc}" @click="slc=!spc"></label><span>Find your password</span></li>
+                <li class="choose-out"><label :class="{chosen:ssc}" @click="ssc=!ssc"></label><span>Senstive setting changes</span></li>
+            </ul>
+        </div>
+        <div class="unit password">
+            <h2>Password</h2>
+            <table>
+                <tr>
+                    <td>password</td>
+                    <td>********</td>
+                    <td class="bc pl50 cup" @click.prevent.stop="changePassword">change</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="security-sub tfasuccess"  v-if="securityAuthentication==2">
+        <div class="unit authenmethod">
+            <h2>Two-factor Authentication Method</h2>
+            <table class="tfa-table">
+                <tr>
+                    <td>2FA <span class="grey">Goole Authentication</span></td>
+                    <td>Enabled</td>
+                    <td class="bc pl50 cup" @click.prevent.stop="eve(1)">Disable</td>
+                </tr>
+            </table>
+        </div>
+        <div class="unit setting-items">
+            <h2>2FA Application Setting</h2>
+            <ul class="choose-ul">
+                <li class="choose-out"><label :class="{chosen:tlc}" @click="tlc=!tlc"></label><span>Login in</span></li>
+                <li class="choose-out"><label :class="{chosen:tpc}" @click="tpc=!tpc"></label><span>Find your password</span></li>
+                <li class="choose-out"><label :class="{chosen:tsc}" @click="tsc=!tsc"></label><span>Senstive setting changes</span></li>
+            </ul>
+
+        </div>
+        <div class="unit password">
+            <h2>Password</h2>
+            <table>
+                <tr>
+                    <td>password</td>
+                    <td>********</td>
+                    <td class="bc pl50 cup" @click.prevent.stop="changePassword">change</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="security-sub tfa" v-if="securityAuthentication==8">
         <div class="unit authenmethod">
             <h2>Authentication Method</h2>
             <div class="input-out single-choose">
-                <span class="radio"></span><span>2FA</span><span class="phone-t">(Google Authentication)</span>
+                <span class="radio"></span><span>2FA</span> <span class="">(Google Authentication)</span>
             </div>
             <p>Using Two-factor authentication is highly recommended.Please consider our avalable options for increasing the secrity of your account.
                 We want to give you every opportunity to be confident that your account is secure.</p>
@@ -37,9 +212,9 @@
                     </div>
                 </div>
             </div>
-            <p class="click-tip" @click.prevent.stop="eve('enabletfa')">How to Enable Google Authentication? click me~</p>
+            <p class="click-tip" @click.prevent.stop="eve(3)">How to Enable Google Authentication? click me~</p>
             <div class="input-out single-choose">
-                <span class="radio"></span><span>SMS</span><span class="phone-t">(Phone Authentication)</span>
+                <span class="radio"></span><span>SMS</span> <span class="">(Phone Authentication)</span>
             </div>
         </div>
         <div class="unit password">
@@ -53,74 +228,5 @@
             </table>
         </div>
     </div>
-    <div class="security-sub sms-choose" v-if="currentView=='smsChoose'">
-        <div class="unit authenmethod">
-            <h2>Authentication Method</h2>
-            <div class="input-out single-choose">
-                <span class="radio"></span><span>SMS</span><span class="phone-t">(Phone Authentication)</span>
-            </div>
-            <div class="authenticatenow" v-if="showSms==true">
-                <h5>Authenticate Now</h5>
-                <div class="input-box">
-                    <label>Location</label>
-                    <div class="input-inner"><input type="text" placeholder="China" /><span class="choose">choose</span></div>
-                </div>
-                <div class="input-box">
-                    <label>Phone Number</label>
-                    <div class="input-inner"><span class="phone-num">+86</span><input type="text" placeholder="China" /></div>
-                </div>
-                <div class="input-box">
-                    <label>SMS Code</label>
-                    <div class="input-inner"><input type="text" placeholder="Code" /><span class="choose getc">Get Code</span></div>
-                </div>
-                <div class="button-out">
-                    <button type="button">submit</button>
-                </div>
-            </div>
-            <div class="input-out single-choose">
-                <span class="radio"></span><span>2FA</span><span class="phone-t">(Google Authentication)</span>
-            </div>
-        </div>
-        <div class="unit password">
-            <h2>Password</h2>
-            <table>
-                <tr>
-                    <td>password</td>
-                    <td>********</td>
-                    <td class="blue" @click.prevent.stop="eve()">change</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="security-sub tfasuccess" v-if="currentView=='tfasuccess'">
-        <div class="unit authenmethod">
-            <h2>Two-factor Authentication Method</h2>
-            <table class="tfa-table">
-                <tr>
-                    <td>2FA <span class="grey">Goole Authentication</span></td>
-                    <td>Enabled</td>
-                    <td class="blue" @click.prevent.stop="eve()">Disable</td>
-                </tr>
-            </table>
-        </div>
-        <div class="unit setting-items">
-            <h2>2FA Application Setting</h2>
-            <ul class="choose-ul">
-               <li class="choose-out"><label class="chosen"></label><span>Login in</span></li>
-               <li class="choose-out"><label></label><span>Find your password</span></li>
-               <li class="choose-out"><label></label><span>Senstive setting changes</span></li>
-            </ul>
 
-        </div>
-        <div class="unit password">
-            <h2>Password</h2>
-            <table>
-                <tr>
-                    <td>password</td>
-                    <td>********</td>
-                    <td class="blue" @click.prevent.stop="eve()">change</td>
-                </tr>
-            </table>
-        </div>
-    </div>
 </div>

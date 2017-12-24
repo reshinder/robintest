@@ -27,17 +27,17 @@ let account = {
             <tr>
                 <td>password</td>
                 <td>********</td>
-                <td class="bc pl50 cup" @click.prevent.stop="eve()">change</td>
+                <td class="bc pl50 cup" @click.prevent.stop="changePassword()">change</td>
             </tr>
             <tr>
                 <td>2FA<span class="fc">(Google Authentication)</span></td>
                 <td>Disabled</td>
-                <td class="bc pl50 cup" @click.prevent.stop="eve()">Enabled</td>
+                <td class="bc pl50 cup" @click.prevent.stop="toSecurityOpen(2)">Enabled</td>
             </tr>
            <tr>
                 <td>SMA<span class="fc">(Phone Authentication)</span></td>
                 <td>Unbind</td>
-                <td class="bc pl50 cup" @click.prevent.stop="eve()">Bind</td>
+                <td class="bc pl50 cup" @click.prevent.stop="toSecurityOpen(1)">Bind</td>
             </tr>
         </table>
         <p class="small swallow-green"><span class="why"></span>2FA and SMS only need to complete a certification</p>
@@ -94,7 +94,6 @@ let account = {
     props : ['sub'],
     data: function() {
         return {
-           //  status:1,//1:基本信息，未认证 2：已经认证，
             email:"",
             name:"",
             nationality:"",
@@ -113,6 +112,9 @@ let account = {
         },
         eve:function(index){
             pageBus.$emit('change',index);
+        },
+        toSecurityOpen(index){
+            this.$emit("totherconpnents",{main:1,st:index}); //组件大类， st:传到security的标识值1,phone 2;2fa
         },
         changePassword(){
              location.href= "register.html?main=2&sub=0"
@@ -235,7 +237,7 @@ let account = {
                         "data": {
                             "areaCode": "区号",
                             "phone": "手机号（前后两位为数字，其它为*号）",
-                            "securityAuthentication": 2//  安全认证:0未设置，1手机，2谷歌
+                            "securityAuthentication": 0//  安全认证:0未设置，1手机，2谷歌
                         }
                     }
                 };
@@ -270,7 +272,8 @@ let account = {
     },
     mounted: function() {
         this.init()
-    }
+    },
+    watcher:{},
 };
 
 export default account

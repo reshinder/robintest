@@ -84,43 +84,15 @@ let registerdefault = {
                     email:arg['email'],
                     password:arg['password'],
                 };
-            //拦截设置,模拟请求在error完成交互
-            Axios.interceptors.response.use(function (response){
-                return response;
-            }, function (error){
-                //已经设置，进入验证页面
-                let testSuccess1 = {
-                    "data":{
-                        "data":{
-                            "success":true,
-                            "data":null
-                        }
-                    }
-                };
-                //未设置，直接进入交易界面
-                let testSuccess2 = {
-                    "data":{
-                        "data": {
-                            "success": true,
-                            "data": null
-                        }
-                    }
-                };
-
-                return Promise.reject(testSuccess1);
-            });
 
             Axios.get('/user_account.act?cmd=registerByEmail&',{params:paraObj})
                 .then(function (response) {
                     var cuData =  response.data;
-
+                    self.$emit("registertip",{main:2,sub:6,email:self.email})
 
                 })
                 .catch(function (response) {
-                    console.log(response)
-                     if(response.data.data.success){
-                           self.$emit("registertip",{main:2,sub:6,email:self.email})
-                     }
+                    console.error(response)
                 });
         },
         createAction(){

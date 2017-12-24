@@ -26,8 +26,8 @@
 
             <div class="col-md-10 r-tab">
                 <transition name="usersystem">
-                    <account v-if="main==0" :sub-msg="sub" ></account>
-                    <security v-if="main==1"></security>
+                    <account v-if="main==0" :sub-msg="sub" @totherconpnents="resetcon"></account>
+                    <security v-if="main==1" :sub-msg="st"></security>
                     <notification v-if="main==2"></notification>
                     <verification v-if="main==3"></verification>
                     <addressbook v-if="main==4"></addressbook>

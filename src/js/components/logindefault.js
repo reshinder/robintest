@@ -59,10 +59,7 @@ let logindefault = {
         }
     },
     methods: {
-        init:function(){
-            this.binEvent();
-
-        },
+        init:function(){},
         toggleTabs(){
             location.href='register.html?main=2&sub=0'
         },
@@ -91,7 +88,7 @@ let logindefault = {
                                         "mode":"",
                                         "securityAuthentication":2,//1短信，2谷歌
                                         "identifier":"aaa"
-            }
+                                    }
                                 }
                             }
                 };
@@ -104,51 +101,21 @@ let logindefault = {
                         }
                     }
                 };
-
-                return Promise.reject(testSuccess1);
+                //return Promise.reject(testSuccess1);
+                return Promise.reject(error);
             });
             Axios.get('/user_account.act?cmd=login&',{params:paraObj})
                 .then(function (response) {
-                    let cuData =  response.data;
-
-                })
-                .catch(function (response) {
                     let cuData = response.data;
-                    console.log(cuData)
                     if(cuData.success&&!cuData.data.execute){ //已经设置，进入验证页面
                         self.$emit('logincheck',{main:cuData.data.data.securityAuthentication})
                     }else{ //未设置，进入交易页
                         location.href = 'trade.html'
                     }
-
+                })
+                .catch(function (response) {
+                     console.log(response)
                 });
-        },
-        checkForm(ele){
-            var $_this = $(ele),
-                id = $_this.attr('id'),
-                $_label = $('#' + id + '-tip'),
-                val = $.trim($_this.val()).replace('\n', '').replace('\t', '').replace('\\n', '').replace('\\t', ''),
-                tip = $_this.attr('data-emptytip'),
-                tipError = $_this.attr('data-errortip'),
-                check = true;
-            $_this.val(val);
-            if (!!$_this.attr('data-required') && $_this.attr('data-required') === 'required' && val === '') {
-                $_label.html(tip);
-                check = false;
-            }else if((!$_this.attr('data-required') || $_this.attr('data-required') === '')){
-                if(val === ''){
-                    check = true;
-                }else if($_this.attr('pattern')&& !(new RegExp($_this.attr('pattern')).test(val))){
-                    check = false;
-                }
-            }else if (!!$_this.attr('data-required') && $_this.attr('data-required') === 'required'&&$_this.attr('pattern') && !(new RegExp($_this.attr('pattern')).test(val))){
-                $_label.html(tipError);
-                check = false;
-            }
-            if (check) {
-                $_label.html('');
-            }
-            return check;
         },
         loginAction(){
             var self=this,email = $('#email'),password = $('#password'),tem = {}, check1 = true, check2= true, check = false;
@@ -185,13 +152,7 @@ let logindefault = {
                 tem['password'] = password.val().trim();
                 self.remoteAction(tem)
             }
-        },
-        binEvent(){
-            var self =this;
-            $('#loginForm input').blur(function() {
-                self.checkForm(this);
-            });
-        },
+        }
     },
     created: function() {
 
