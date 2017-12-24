@@ -62,11 +62,11 @@
                     <div class="row">
                         <div class="price-w">
                             <label><span>PRICE</span><span>USD</span></label>
-                            <input type="text" id="price"  v-bind:value="price"/>
+                            <input type="text" id="price"  v-model="price"/>
                         </div>
                         <div class="price-w">
                             <label><span>AMOUNT</span><span>BTC</span></label>
-                            <input type="text" id="amount" v-bind:value="amount"/>
+                            <input type="text" id="amount"  v-model="amount"/>
                         </div>
                     </div>
                     <div class="row btns">
@@ -92,21 +92,7 @@
                        <span>155776.23</span>
                        <span>155776.23</span
                    </li>
-                    <li @click.stop.prevent="sliderPart($event,2)">
-                       <span>BTC</span>
-                       <span>155776.23</span>
-                       <span>155776.23</span
-                   </li>
-                    <li @click.stop.prevent="sliderPart($event,3)">
-                       <span>LTC</span>
-                       <span>155776.23</span>
-                       <span>155776.23</span
-                   </li>
-                    <li @click.stop.prevent="sliderPart($event,4)">
-                       <span>ETH</span>
-                       <span>155776.23</span>
-                       <span>155776.23</span
-                   </li>
+
                </ul>
                <ul>
                  <li @click.stop.prevent="sliderPart($event,4)">
