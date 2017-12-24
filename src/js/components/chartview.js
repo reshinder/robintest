@@ -16,18 +16,25 @@ var chartview = {
           TradingView.onready(function()
       			{
               var widget = window.tvWidget = new TradingView.widget({
-        					fullscreen: true,
-
+        					fullscreen: false,
+                  datafeed: new Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com"),
         					container_id: "chartview",
-        					//	BEWARE: no trailing slash is expected in feed URL
-        					datafeed: new Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com"),
-        					library_path: "",
-        					locale:  "en",
+                  "height": 290,
+                  "symbol": "NASDAQ:AAPL",
+                  "interval": "D",
+                  "timezone": "Etc/UTC",
+                  "theme": "Light",
+                  "style": "1",
+                  "locale": "zh_CN",
+                  "toolbar_bg": "#f1f3f6",
+                  "enable_publishing": false,
+                  "allow_symbol_change": true,
+                  "hideideas": true
 
         				});
       			});
             console.log("组件开始")
-            
+
         }
 
     },
