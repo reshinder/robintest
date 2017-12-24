@@ -4,9 +4,6 @@ import axios  from './lib/axios.min.js';
 import pageBus from './common/bus';
 import headerview from './components/header.js';
 import footerview from './components/footer.js';
-import modaltip from './components/modaltip.js';
-import sidebarview from './components/sidebar.js';
-import chartview from './components/chartview.js';
 
 var app = new Vue({
     el: '#pageHome',
@@ -16,27 +13,14 @@ var app = new Vue({
 
     },
     components: {
-        chartview:chartview,
-        modaltip:modaltip,
         footerview:footerview,
-        headerview:headerview,
-        sidebarview:sidebarview
+        headerview:headerview
     },
     created:function(){},
     mounted:function () {
-        this.init();
+
     },
     methods: {
-        init(){
-            let self = this;
-
-        },
-        eve:function(){
-            pageBus.$emit('change','accounttip');
-        },
-        sliderPart(index){
-            $(".slider-part").slideToggle(800);
-        },
 
     }
 });
