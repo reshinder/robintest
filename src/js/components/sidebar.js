@@ -10,23 +10,51 @@ var sidebar = {
     template: template,
     data: function() {
         return {
+           "busitype":"coin-usd-btc",
            "price":1001,
            "amount":0.001,
            "tickerArary":[],
            "unCompleteOrders":[],
            "completeOrders":[],
-           "recentTradeRecords":[]
+           "recentTradeRecords":[],
+           "balances":[],
+           "ticker":{}
         }
     },
     methods: {
 
         init:function(){
           this.loginCmd();
-          this.getTickerAll();
+          this.getTickerAllCmd();
+          this.getTickerCmd();
           this.getUnCompleteOrdersCmd();
-          this. getRecentTradeRecordsCmd();
+          this.getRecentTradeRecordsCmd();
           this.getRecentTradeRecords();
+          this.getBalances();
 
+        },
+        getBalances(){
+          var that=this;
+          axios.get('userFund.act?cmd=getUserAllAsset')
+            .then(function (response) {
+                if(response.data.sucess){
+                    that.balances=response.data.data;
+                }else{
+                   alert(response.data.message)
+                }
+            })
+
+        },
+        getTickerCmd(){
+          var that=this;
+          axios.get('cointrade.act?cmd=getTicker&busitype=coin-usd-btc')
+            .then(function (response) {
+                if(response.data.sucess){
+                    that.ticker=response.data.data;
+                }else{
+                   alert(response.data.message)
+                }
+            })
         },
 
        getUnCompleteOrdersCmd(){
@@ -35,7 +63,6 @@ var sidebar = {
            .then(function (response) {
                if(response.data.sucess){
                    that.unCompleteOrders=response.data.data;
-                   console.log("that.unCompleteOrders:"+that.unCompleteOrders)
                }else{
                   alert(response.data.message)
                }
@@ -43,11 +70,10 @@ var sidebar = {
        },
        getRecentTradeRecordsCmd(){
          var that=this;
-         axios.get('cointrade.act?cmd=getCompleteOrders&busitype=coin-usd-btc')
+         axios.get('cointrade.act?cmd=getCompleteOrders&busitype='+that.busitype)
            .then(function (response) {
                if(response.data.sucess){
                  that.recentTradeRecords=response.data.data;
-                 console.log("that.recentTradeRecords:"+that.recentTradeRecords)
                }else{
                   alert(response.data.message)
                }
@@ -65,9 +91,7 @@ var sidebar = {
                }
            })
        },
-
-
-        getTickerAll(){
+        getTickerAllCmd(){
           var that=this;
           axios.get('cointrade.act?cmd=getAllTicker')
             .then(function (response) {
@@ -81,7 +105,7 @@ var sidebar = {
 
         getRecentTradeRecords(){
           var that=this;
-          axios.get('cointrade.act?cmd=getRecentTradeRecords&busitype=coin-usd-btc')
+          axios.get('cointrade.act?cmd=getRecentTradeRecords&busitype='+that.busitype)
             .then(function (response) {
               if(response.data.sucess){
                    that.recentTradeRecords=response.data.data;
@@ -101,21 +125,30 @@ var sidebar = {
             }
         },
         buyEvent:function(event){
-          axios.get('cointrade.act?cmd=placeBuyOrder&busitype=coin-usd-btc&price='+this.price+"&amount="+this.amount)
+          var that=this;
+          axios.get('cointrade.act?cmd=placeBuyOrder&busitype=coin-usd-btc&price='+that.price+"&amount="+that.amount)
            .then(function (response) {
               if(response.data.sucess){
+                that.getBalances();
                 alert("买单下单成功！")
               }else{
                  alert(response.data.message)
               }
             })
         },
+        eve: function () {
+            pageBus.$emit('change', 'accounttip');
+        },
+        sliderPart(index){
+            $(".slider-part").slideToggle(800);
+        },
         sellEvent:function(event){
-
+          var that=this;
           //获取Coin账户信息
           axios.get('cointrade.act?cmd=placeSellOrder&busitype=coin-usd-btc&price='+this.price+"&amount="+this.amount)
           .then(function (response) {
             if(response.data.sucess){
+              that.getBalances();
               alert("卖单下单成功！")
             }else{
                alert(response.data.message)
@@ -134,14 +167,12 @@ var sidebar = {
     filters:{      //数据过滤器
         dataformat:function(value,num){
             value=Number(value)
-            return value.toFixed(num)
+            return parseFloat(value.toFixed(num));
       },
        getCoinType:function(value,index){
             return vlm.coinType[value][index];
        }
-
     },
-
     mounted: function() {
 
         console.info('mounted');

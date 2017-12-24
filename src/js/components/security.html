@@ -4,9 +4,9 @@
             <h2>Authentication Method</h2>
             <p class="choose-tip">Only need to choose one method:</p>
             <div class="input-out single-choose">
-                <span class="radio" :class="{clicked:smsclicked}" @click="smsclicked=!smsclicked;tfaclicked=false;"></span><span>SMS</span> <span>(Phone Authentication)</span>
+                <span class="radio" :class="{clicked:smsclicked}" @click.prevent.stop="smsclicked=!smsclicked;tfaclicked=false;"></span><span>SMS</span> <span>(Phone Authentication)</span>
             </div>
-            <transition name="slide" v-if="smsclicked==true&&tfaclicked==false">
+            <transition name="slide-fade" v-if="smsclicked==true">
                 <div class="authenticatenow">
                     <h5>Authenticate Now</h5>
                     <div class="input-box">
@@ -33,7 +33,7 @@
                     <div class="input-box">
                         <label>SMS Code</label>
                         <div class="input-inner">
-                            <input type="text" placeholder="code" id="code" /><span class="choose getc" @click="getCode($event)">Get Code</span>
+                            <input type="text" placeholder="code" id="code" /><span class="choose getc" @click.prevent.stop="getCode($event)">Get Code</span>
                             <div class="bottom-line" :class="this.telerror==1?'to-red':''"></div>
                             <transition name="error-tip" v-if="smserror==1">
                                 <p class="tip-p" v-if="smsempty==1">Please enter your sms code.</p>
@@ -48,9 +48,9 @@
             </transition>
 
             <div class="input-out single-choose">
-                <span class="radio" :class="{clicked:tfaclicked}" @click="tfaclicked=!tfaclicked;smsclicked=false;"></span><span>2FA</span> <span class="">(Google Authentication)</span>
+                <span class="radio" :class="{clicked:tfaclicked}" @click.prevent.stop="tfaclicked=!tfaclicked;smsclicked=false;"></span><span>2FA</span> <span class="">(Google Authentication)</span>
             </div>
-            <transition name="slide" v-if="tfaclicked==true&&smsclicked==false">
+            <transition name="slide-fade" v-if="tfaclicked==true">
                 <div class="tfacontent">
                     <p>Using Two-factor authentication is highly recommended.Please consider our avalable options for increasing the secrity of your account.
                         We want to give you every opportunity to be confident that your account is secure.</p>
