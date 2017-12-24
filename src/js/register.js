@@ -36,7 +36,6 @@ var app = new Vue({
         registerprogress:registerprogress, //2
     },
     created:function(){
-        var self=this;
 
     },
     mounted:function () {
@@ -63,9 +62,6 @@ var app = new Vue({
                 email = arg.email
             }
 
-            console.log(main)
-            console.log(sub)
-            console.log(email)
             if(main==2){
                 this.headercurrentView = headerview
                 this.footercurrentView = footerview

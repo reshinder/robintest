@@ -2,14 +2,14 @@
     <div class="modal-backdrop" @webkitTransitionEnd="ame()"></div>
     <div id="modal" class="modal">
         <span class="close" @click.prevent.stop="closeTip()"></span>
-        <div class="modal-content sms-check" v-if="showpart=='accounttip'">
+        <div class="modal-content sms-check" v-if="showpart==0">
             <div class="modal-header">
                 <h3>SMS CHECK</h3>
                 <p class="">This action requires an additional security check.Pleasure confirm using SMS code.</p>
             </div>
             <div class="modal-body">
                 <div class="input-out">
-                    <input type="text" placeholder="Enter SMS Code" /><button type="button" class="resend" v-if="status==1">Resend</button><button type="button" class="resend" v-if="status==2">Get Code</button>
+                    <input type="text" v-model="smsCode" placeholder="Enter SMS Code" /><button type="button" class="resend" :class="{disabled:smsTab==1}" id="getcode" @click="unBindAction()">Get Code</button>
                 </div>
             </div>
             <div class="modal-footer">
@@ -17,14 +17,21 @@
                 Please consider to keep one of the authentication enabled</p>
             </div>
         </div>
-        <div class="modal-content sms-check" v-if="showpart=='2facheck'">
+        <div class="modal-content sms-check" v-if="showpart==1">
             <div class="modal-header">
                 <h3>2FA CHECK</h3>
                 <p class="">This action requires an additional security check.Pleasure confirm 2FA token.</p>
             </div>
             <div class="modal-body">
                 <div class="input-out">
-                    <input type="text" placeholder="Enter SMS Code" /><button type="button" class="resend">Submit</button>
+                    <input type="text" id="gltoken" v-model="gltoken" placeholder="Enter Google 2Fa token" /><button type="button" class="resend" @click="unBindGLAction()">Submit</button>
+                    <div class="bottom-line" :class="this.passworderror==1?'to-red':''"></div>
+                    <transition name="error-tip" v-if="glerror==1&&glempty==1">
+                        <p class="tip-p">Please enter yGoogle 2Fa token.</p>
+                    </transition>
+                    <transition name="error-tip" v-if="glerror==1&&glverror==1">
+                        <p class="tip-p more-p">Wrong token</p>
+                    </transition>
                 </div>
             </div>
             <div class="modal-footer">
@@ -32,7 +39,7 @@
                     Please consider to keep one of the authentication enabled</p>
             </div>
         </div>
-        <div class="modal-content change-method" v-if="showpart=='changemethod'">
+        <div class="modal-content change-method" v-if="showpart=='2'">
             <div class="modal-header">
                 <h3>change method</h3>
             </div>
@@ -45,7 +52,7 @@
                  <button type="button" class="okbtn">ok</button>
             </div>
         </div>
-        <div class="modal-content enabletfa" v-if="showpart=='enabletfa'">
+        <div class="modal-content enabletfa" v-if="showpart==3">
             <div class="modal-header">
                 <h3>Enable 2FA</h3>
             </div>
@@ -58,7 +65,7 @@
                 <button type="button" class="okbtn" @click.prevent.stop="closeTip()">ok</button>
             </div>
         </div>
-        <div class="modal-content deltip" v-if="showpart=='deltip'">
+        <div class="modal-content deltip" v-if="showpart==5">
             <div class="modal-header">
                 <h3>Delete Address</h3>
             </div>
@@ -83,3 +90,5 @@
         </div>
     </div>
 </div>
+
+

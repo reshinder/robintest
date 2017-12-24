@@ -12,7 +12,29 @@
 <body>
 <div class="pageHome" id="pageHome">
     <headerview></headerview>
-    <pannel></pannel>
+    <div class="container content-wrap">
+        <div class="row">
+            <div class="col-md-2 l-panel">
+                <ul>
+                    <li @click.prevnt.stop="toggleTabs(0)" :class="{active:main==0}">Account</li>
+                    <li @click.prevnt.stop="toggleTabs(1) " :class="{active:main==1}">Security</li>
+                    <li @click.prevnt.stop="toggleTabs(2)" :class="{active:main==2}">Notification</li>
+                    <li @click.prevnt.stop="toggleTabs(3)" :class="{active:main==3}">Verification</li>
+                    <li @click.prevnt.stop="toggleTabs(4)" :class="{active:main==4}">Address Book</li>
+                </ul>
+            </div>
+
+            <div class="col-md-10 r-tab">
+                <transition name="usersystem">
+                    <account v-if="main==0" :sub-msg="sub" ></account>
+                    <security v-if="main==1"></security>
+                    <notification v-if="main==2"></notification>
+                    <verification v-if="main==3"></verification>
+                    <addressbook v-if="main==4"></addressbook>
+                </transition>
+            </div>
+        </div>
+    </div>
     <footerview></footerview>
     <usermotal></usermotal>
 </div>

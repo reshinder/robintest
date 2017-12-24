@@ -1,45 +1,51 @@
-import $ from './lib/jquery-3.2.1.min.js';
 import Vue from './lib/vue.js';
-import axios  from './lib/axios.min.js';
+import axiosInstance from './common/axios_default';
+import helper from './common/chelper'
+import pageBus from './common/bus';
+import $ from './lib/jquery-3.2.1.min.js';
 
 import headerview from './components/header.js';
 import footerview from './components/footer.js';
-import pannel from './components/pannel.js';
-import usermotal from './components/usermotal';
+import usermotal from './components/usermotal'; //弹窗
 
+import account from './components/account.js';
+import security from './components/security.js';
+import notification from './components/notification.js';
+import verification from './components/verification.js';
+import addressbook from './components/addressbook.js';
 
 var app = new Vue({
     el: '#pageHome',
     data: {
-        tab:1,
-        resend:0,
-        countTime:0,
-        codeTip:1
+        main: 0, //0:account; 1:security; 2:notification; 3:verification 4:addressbook;
+        sub:0,
 
     },
     components: {
         footerview:footerview,
         headerview:headerview,
         usermotal:usermotal,
-        pannel:pannel
+        account: account,
+        security: security,
+        notification: notification,
+        addressbook: addressbook,
+        verification: verification
     },
-    created:function(){},
+    created:function(){
+
+    },
     mounted:function () {
         this.init();
     },
     methods: {
-        init(){
-            let self = this;
-            self.fixHeight();
-            $(window).resize(function() {
-                self.fixHeight()
-            });
+        componentsHandler(){
 
         },
-        fixHeight(){
-            let self = this, winHeight =$(window).height() ;
-            let tarHeight = $('.head-wrap').outerHeight()+$('.footer').outerHeight();
-            $('.content-wrap').css('minHeight',(winHeight-tarHeight)+'px');
+        init(){
+            let self = this;
+        },
+        toggleTabs (index) {
+            this.main = index;
         }
     }
 });

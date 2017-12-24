@@ -18,9 +18,7 @@
     left: 50%;
     top: 50%;
     z-index: 58;
-    width: 30%;
-    max-width: 600px;
-    min-width: 300px;
+    width: 600px;
     background-color:@white;
     color: @black;
     transform: translate(-50%,-500%);
@@ -51,6 +49,7 @@
 
       .modal-body{
         .input-out{
+          position: relative;
           height: 42px;
           line-height: 42px;
           .clear;
@@ -60,10 +59,39 @@
             padding: 0 12px;
             height: 42px;
             border: 0;
-            border-bottom: 1px solid #5e5e5e;
             line-height: 42px;
           }
-          button{
+          .bottom-line{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            height: 1px;
+            background: #5e5e5e;
+            width: 100%;
+            transform: translateX(-50%);
+            &.to-red{
+              background: #D94242;
+              animation:linec 700ms 1;
+              -webkit-animation:linec 700ms 1;
+              animation-fill-mode:forwards;
+              -webkit-animation-fill-mode:forwards;
+            }
+          }
+          .tip-p{
+            position: absolute;
+            bottom: -28px;
+            padding: 6px 14px;
+            opacity: 0.7;
+            font-family: HelveticaNeue;
+            font-size: 12px;
+            color: #D94242;;
+            letter-spacing: 0;
+            line-height: 14px;
+            &.more-p{
+              bottom:-44px;
+            }
+          }
+           button{
             float: right;
             width: 120px;
             height: 42px;
@@ -76,6 +104,9 @@
             font-size: 16px;
             letter-spacing: 0;
             cursor: pointer;
+            &.disabled{
+              background-color: #d1d1d1;
+            }
           }
         }
         .only-p{
@@ -227,19 +258,197 @@
 
 }
 
-/*
-@media screen and (max-width:1200px){
-
-}
-@media screen and (max-width:992px){
-
-
-}
-@media screen and (max-width:768px){
-
-
-}
 @media screen and (max-width:750px){
+  .modal-out{
+    position: relative;
+    z-index: -1;
+    .modal-backdrop{
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 56;
+      background-color:rgba(0,0,0,0.8);
+      opacity: 0;
 
+    }
+    .modal{
+      padding: 16px;
+      width:80%;
+      .close{
+        right: 12px;
+        top:12px;
+      }
+      .modal-content{
+        .modal-header{
+          margin:0 auto 30px;
+          color: #fff;
+          h3{
+            opacity: 0.9;
+            font-family: HelveticaNeue-Bold;
+            font-size: 28px;
+            color: #000000;
+          }
+          p{
+            margin-top: 21px;
+            opacity: 0.3;
+            font-family: HelveticaNeue;
+            font-size: 12px;
+            color: #000000;
+            letter-spacing: 0;
+            line-height: 18px;
+          }
+        }
+        .modal-body{
+          max-height: 280px;
+          overflow-y: scroll;
+          .input-out{
+            input{
+              float: none;
+              width: 100%;
+              padding: 0 12px;
+            }
+            button{
+              float: right;
+              margin-top: 8px;
+              width: 100px;
+              height: 36px;
+              line-height: 36px;
+              background-color: @blue1;
+              border: 0;
+              color: @white;
+              text-align: center;
+              font-family: HelveticaNeue-Bold;
+              font-size: 14px;
+              letter-spacing: 0;
+              cursor: pointer;
+            }
+          }
+          .only-p{
+            margin-bottom: 24px;
+            opacity: 0.7;
+            font-family: HelveticaNeue;
+            font-size: 14px;
+            color: #000000;
+            letter-spacing: 0;
+            line-height: 24px;
+          }
+        }
+        .modal-footer{
+          margin-top: 72px;
+          p{
+            opacity: 0.7;
+            font-family: HelveticaNeue;
+            font-size: 12px;
+            color: #000000;
+            letter-spacing: 0;
+            line-height: 20px;
+            .light{
+              margin: 0 14px 0 10px;
+              float: left;
+              position: relative;
+              width: 26px;
+              height: 26px;
+              top: 6px;
+              border: 1px solid black;
+            }
 
-}*/
+          }
+        }
+        &.change-method{
+          .modal-header{
+            h3{
+              margin-bottom: 48px;
+            }
+          }
+          .modal-footer{
+            margin-top: 64px;
+            text-align: right;
+            button.okbtn{
+              background-color: @white;
+              border: 0;
+              font-family: HelveticaNeue;
+              font-size: 16px;
+              color: #1F4764;
+              letter-spacing: 0.57px;
+              line-height: 18px;
+              cursor: pointer;
+            }
+          }
+        }
+        &.deltip{
+          .modal-header{
+            h3{
+              margin-bottom: 48px;
+            }
+          }
+          .modal-body{
+            table{
+              tr{
+                td{
+                  text-align: left;
+                  padding: 21px 40px 21px 0;
+                  &:first-child{
+                    color: #b2b2b2;
+                  }
+
+                }
+              }
+            }
+          }
+          .modal-footer{
+            margin-top: 64px;
+            text-align: right;
+            .btn-out{
+              button{
+                margin-left: 20px;
+                width: 120px;
+                height: 42px;
+                line-height: 42px;
+                text-align: center;
+                color: #fff;
+                border: 1px solid #1F4764;
+                background: #1F4764;
+                font-family: HelveticaNeue-Bold;
+                font-size: 16px;
+                border-radius: 4px;
+                &.active{
+                  color: #1F4764;
+                  border: 1px solid #1F4764;
+                  background: #fff;
+                }
+
+              }
+            }
+          }
+        }
+        &.enabletfa{
+          .modal-body{
+            .only-p{
+              margin-bottom: 24px;
+              opacity: 0.7;
+              font-family: HelveticaNeue;
+              font-size: 14px;
+              color: #000000;
+              letter-spacing: 0;
+              line-height: 24px;
+            }
+          }
+          .modal-footer{
+            margin-top: 2px;
+            text-align: right;
+            button{
+              font-family: HelveticaNeue;
+              font-size: 16px;
+              color: #1F4764;
+              letter-spacing: 0.57px;
+              background: @white;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
