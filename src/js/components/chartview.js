@@ -27,6 +27,7 @@ var chartview = {
         				});
       			});
             console.log("组件开始")
+            
         }
 
     },
