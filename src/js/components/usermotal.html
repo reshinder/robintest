@@ -9,7 +9,17 @@
             </div>
             <div class="modal-body">
                 <div class="input-out">
-                    <input type="text" v-model="smsCode" placeholder="Enter SMS Code" /><button type="button" class="resend" :class="{disabled:smsTab==1}" id="getcode" @click="unBindAction()">Get Code</button>
+                    <div class="input-inner">
+                        <input type="text" v-model="smscode" id="smscdode" placeholder="Enter SMS Code" />
+                        <div class="bottom-line" :class="this.smserror==1?'to-red':''"></div>
+                        <transition name="error-tip" v-if="smserror==1&&smsempty==1">
+                            <p class="tip-p">Please enter sms code.</p>
+                        </transition>
+                        <transition name="error-tip" v-if="smserror==1&&smsverror==1">
+                            <p class="tip-p more-p">Wrong code</p>
+                        </transition>
+                    </div>
+                    <button type="button" class="resend" :class="{disabled:smsTab==1}" id="getcode" @click="unBindAction()">Get Code</button>
                 </div>
             </div>
             <div class="modal-footer">
@@ -24,7 +34,8 @@
             </div>
             <div class="modal-body">
                 <div class="input-out">
-                    <input type="text" id="gltoken" v-model="gltoken" placeholder="Enter Google 2Fa token" /><button type="button" class="resend" @click="unBindGLAction()">Submit</button>
+                    <div class="input-inner">
+                    <input type="text" id="gltoken" v-model="gltoken" placeholder="Enter Google 2Fa token" />
                     <div class="bottom-line" :class="this.passworderror==1?'to-red':''"></div>
                     <transition name="error-tip" v-if="glerror==1&&glempty==1">
                         <p class="tip-p">Please enter yGoogle 2Fa token.</p>
@@ -32,6 +43,8 @@
                     <transition name="error-tip" v-if="glerror==1&&glverror==1">
                         <p class="tip-p more-p">Wrong token</p>
                     </transition>
+                    </div>
+                    <button type="button" class="resend" @click="unBindGLAction()">Submit</button>
                 </div>
             </div>
             <div class="modal-footer">
@@ -83,8 +96,8 @@
             </div>
             <div class="modal-footer">
                 <div class="btn-out">
-                    <button type="button" class="active">Cancel</button>
-                    <button type="button">Confirm</button>
+                    <button type="button" class="active" @click.prevent.stop="closeTip()">Cancel</button>
+                    <button type="button" @click.prevent.stop="closeTip()">Confirm</button>
                 </div>
             </div>
         </div>

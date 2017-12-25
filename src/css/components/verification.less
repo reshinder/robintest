@@ -91,17 +91,6 @@
             height: 22px;
             border-radius: 11px;
             border:1px solid #b6b63f;
-            &:before{
-              content: "";
-              position: absolute;
-              width: 12px;
-              height: 12px;
-              border-radius: 6px;
-              background:#b6b63f ;
-              left: 50%;
-              top:50%;
-              transform: translate(-50%,-50%);
-            }
           }
         }
         &:first-child{
@@ -125,6 +114,20 @@
           color: #fff;
           border-radius: 2px;
           background: #6c94b0;
+          cursor: pointer;
+          &.u-out{
+            cursor: pointer;
+            position: relative;
+            input{
+              left: 0;
+              top:0;
+              position: absolute;
+              z-index: 66;
+              width: 100%;
+              height: 100%;
+              opacity: 0;
+            }
+          }
         }
         input{
           width: 260px;

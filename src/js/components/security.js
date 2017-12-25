@@ -13,7 +13,7 @@ let security = {
             needRemote:true,
             securityAuthentication:0,//安全认证:0未设置，1手机，2谷歌2fa,
             smsTab:0,
-            smsclicked:true, //选择sms
+            smsclicked:false, //选择sms
             tfaclicked:false, //选择2fa
             //验证用途
             tlc:false, //2fa login
@@ -32,14 +32,13 @@ let security = {
             locationerror:0,
             locationempty:0,
             locationverror:0,
-
+            smserror:0,
+            smsempty:0,
+            smsverror:0,
             telerror:0,
             telempty:0,
             telverror:0,
 
-            smserror:0,
-            smsempty:0,
-            smsverror:0,
 
         }
     },
@@ -70,7 +69,7 @@ let security = {
                         "data": {
                             "areaCode": "区号",
                             "phone": "手机号（前后两位为数字，其它为*号）",
-                            "securityAuthentication":0//  安全认证:0未设置，1手机，2谷歌
+                            "securityAuthentication":1//  安全认证:0未设置，1手机，2谷歌
                         }
                     }
                 };

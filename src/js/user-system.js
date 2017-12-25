@@ -17,7 +17,7 @@ import addressbook from './components/addressbook.js';
 var app = new Vue({
     el: '#pageHome',
     data: {
-        main: 1, //0:account; 1:security; 2:notification; 3:verification 4:addressbook;
+        main: 3, //0:account; 1:security; 2:notification; 3:verification 4:addressbook;
         sub:0,
         st:0,//安全组件默认认证类型 0 无1，phone 2.TFA
 

@@ -37,7 +37,7 @@
                             <div class="bottom-line" :class="this.telerror==1?'to-red':''"></div>
                             <transition name="error-tip" v-if="smserror==1">
                                 <p class="tip-p" v-if="smsempty==1">Please enter your sms code.</p>
-                                <p class="tip-p" v-if="smserror==1">Wrong sms code.</p>
+                                <p class="tip-p" v-if="smsverror==1">Wrong sms code.</p>
                             </transition>
                         </div>
                     </div>
@@ -119,8 +119,8 @@
                 <tr>
                     <td>Phone number</td>
                     <td>86133****6789</td>
-                    <td class="bc pl50 cup" @click.prevent.stop="eve(1)">Modify</td>
-                    <td class="bc pl50 cup" @click.prevent.stop="eve(1)">Unbind</td>
+                    <td class="bc pl50 cup" @click.prevent.stop="eve(0)">Modify</td>
+                    <td class="bc pl50 cup" @click.prevent.stop="eve(0)">Unbind</td>
                 </tr>
             </table>
         </div>

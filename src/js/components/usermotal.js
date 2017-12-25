@@ -7,16 +7,21 @@ let usermotal = {
     template: template,
     data: function() {
         return {
-            smsCode:"",
+            smscode:"",
             gltoken:"",
             tip:0,
             showpart:0, // 1:accounttip 2.2facheck 3:changemethod 4:enabletfa, 5:deltip
             smsTab:0,
             timer:null,
 
+            smserror:0,
+            smsempty:0,
+            smsverror:0,
             glerror:0,
             glempty:0,
             glverror:0,
+
+
         }
     },
     methods: {

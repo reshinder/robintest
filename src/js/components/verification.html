@@ -25,17 +25,15 @@
                 <label>Nationality</label><input type="text" value="Lisa" />
             </div>
         </div>
-
-
     </div>
     <div class="unit identity">
         <h2>Identity</h2>
         <div class="input-out radio-wrap">
             <div class="radio-row">
-                <span class="radio"></span><span>National ID card</span>
+                <span class="radio" :class="{clicked:idcliked}" @click.prevent.stop="idcliked=!idcliked;psclicked=false;"></span><span>National ID card</span>
             </div>
             <div class="radio-row">
-                <span class="radio"></span><span>Passport</span>
+                <span class="radio" :class="{clicked:psclicked}" @click.prevent.stop="psclicked=!psclicked;idcliked=false;"></span><span>Passport</span>
             </div>
         </div>
         <div class="input-row">
@@ -53,19 +51,22 @@
         </div>
         <p>Pleasure make sure the photo is complate and clearly visible,photo size cannot exceed 4M,and the passport or Id
         card is in the valid period</p>
-
-        <div class="upload-out">
+        <div class="upload-out" v-if="idcliked">
             <div class="upload">
-                 <span>Upload</span>
-                 <input type="text" placeholder="National Id card front" />
+                 <span class="u-out cup">Upload<input type="file" onchange="document.querySelector('#nf').value=this.value" /></span>
+                 <input type="text" id="nf"  placeholder="National Id card front" readonly="readonly" />
             </div>
             <div class="upload">
-                <span>Upload</span>
-                <input type="text" placeholder="National Id card back" />
+                <span class="u-out cup">Upload<input type="file" onchange="document.querySelector('#ng').value=this.value" /></span>
+                <input type="text" id="ng" placeholder="National Id card back" readonly="readonly" />
             </div>
         </div>
-
-
+        <div class="upload-out" v-if="psclicked">
+            <div class="upload">
+                <span class="u-out cup">Upload<input type="file" onchange="document.querySelector('#pg').value=this.value" /></span>
+                <input type="text" id="pg" placeholder="Passport BIO page" readonly="readonly" />
+            </div>
+        </div>
     </div>
     <div class="unit selfie">
         <h2>Selfie with identity and Note</h2>
@@ -89,14 +90,12 @@
         </div>
         <div class="upload-out">
             <div class="upload">
-                <span>Upload</span>
-                <input type="text" placeholder="National Id card front" />
-                <p class="red-tip">photo size exceed 4M,please upload again</p>
+                <span class="u-out cup">Upload<input type="file" onchange="document.querySelector('#pg2').value=this.value" /></span>
+                <input type="text" id="pg2" placeholder="Passport BIO page" readonly="readonly" />
             </div>
         </div>
         <div class="sub-mit">
             <button type="submit">Submit</button>
         </div>
     </div>
-
 </div>

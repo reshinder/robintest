@@ -18,25 +18,25 @@ let addressbook = {
                <td>BTC</td>
                <td>My BTC address</td>
                <td>ABCDEFRHILKLMN</td>
-               <td class="blue point" @click.prevent.stop="eve()">Delete</td>
+               <td class="bc pl50 cup" @click.prevent.stop="eve(5)">Delete</td>
            </tr>
            <tr>
                <td>BTC</td>
                <td>My BTC address</td>
                <td>ABCDEFRHILKLMN</td>
-               <td class="blue point" @click.prevent.stop="eve()">Delete</td>
+               <td class="bc pl50 cup" @click.prevent.stop="eve(5)">Delete</td>
            </tr>
            <tr>
                <td>BTC</td>
                <td>My BTC address</td>
                <td>ABCDEFRHILKLMN</td>
-               <td class="blue point" @click.prevent.stop="eve()">Delete</td>
+               <td class="bc pl50 cup" @click.prevent.stop="eve(5)">Delete</td>
            </tr>
            <tr>
                <td>BTC</td>
                <td>My BTC address</td>
                <td>ABCDEFRHILKLMN</td>
-               <td class="blue point" @click.prevent.stop="eve()">Delete</td>
+               <td class="bc pl50 cup" @click.prevent.stop="eve(5)">Delete</td>
            </tr>
         </tbody>
     </table>
@@ -54,8 +54,8 @@ let addressbook = {
         init:function(){
 
         },
-        eve:function(){
-            pageBus.$emit('change','deltip'); //Hub触发事件
+        eve:function(index){
+            pageBus.$emit('change',index);
         },
 
     },

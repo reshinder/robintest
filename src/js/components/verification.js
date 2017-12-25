@@ -8,7 +8,8 @@ let verification = {
     template: template,
     data: function() {
         return {
-
+            idcliked:true,
+            psclicked:false,
         }
     },
     methods: {

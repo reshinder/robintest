@@ -14,7 +14,7 @@ let account = {
         <p class="small">Verification is required for USD deposit withdrawal.</p>
         <p class="small swallow-grey">Trading, deposit, and withdrawal functionalities are banned for U.s individual customers</p>
         <p class="href-p">
-            <a href="">Verify now</a>
+            <a href="" @click.prevent.stop="toVerifyOpen(1)">Verify now</a>
         </p>
     </div>
     <div class="tab-unit" v-if="securityAuthentication==0">
@@ -115,6 +115,9 @@ let account = {
         },
         toSecurityOpen(index){
             this.$emit("totherconpnents",{main:1,st:index}); //组件大类， st:传到security的标识值1,phone 2;2fa
+        },
+        toVerifyOpen(index){
+            this.$emit("totherconpnents",{main:3,st:index}); //组件大类， st:传到security的标识值1,phone 2;2fa
         },
         changePassword(){
              location.href= "register.html?main=2&sub=0"
