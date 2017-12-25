@@ -1,0 +1,159 @@
+
+@import './help.less';
+
+@grid-columns:              12;
+@grid-gutter-width:         30px;
+@container-padding: 0;
+@row-margin: 0;
+@unit: 1px;
+@screen-lg: 1200px;
+@screen-md: 992px;
+@screen-sm: 768px;
+@screen-xs: 750px;
+
+.container-fluid {
+  padding-left:  @grid-gutter-width/2;
+  padding-right: @grid-gutter-width/2;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container {
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left:  @grid-gutter-width/2;
+  padding-right: @grid-gutter-width/2;
+}
+
+.make-grid(@class) {
+  .float-grid-columns(@class);
+}
+
+@media screen and (max-width: @screen-lg){
+  .container {
+    width: 970px;
+  }
+}
+@media screen and (max-width: @screen-md) {
+  .container {
+    width: 750px;
+  }
+}
+@media screen and (max-width: @screen-sm) {
+  .container {
+    width:750px;
+  }
+}
+@media screen and (max-width: @screen-xs) {
+  .container {
+    width:100%;
+  }
+}
+
+
+
+.clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+.clear{
+  .clearfix();
+}
+
+.none {
+  display: none;
+  overflow: hidden;
+}
+.row {
+  margin-right: -@grid-gutter-width/2;
+  margin-left: -@grid-gutter-width/2;;
+  *zoom: 1;
+  &:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+  }
+  &:before {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+  }
+}
+
+.visible-xs,
+.visible-sm,
+.visible-md,
+.visible-lg {
+  display: none !important;
+}
+.hiden-xs,
+.hiden-sm,
+.hiden-md,
+.hiden-lg {
+  display: block !important;
+}
+
+
+.make-grid-columns();
+
+.make-grid(lg);
+
+
+// Large grid
+// Columns, offsets for the device range.
+
+@media (max-width: @screen-lg) {
+  .visible-lg{
+    display: block!important;
+  }
+  .hidden-lg{
+    display: none!important;
+  }
+  .make-grid(lg);
+}
+
+
+@media (max-width: @screen-md) {
+   .visible-md{
+    display: block!important;
+   }
+  .hidden-md{
+    display: none!important;
+  }
+   .make-grid(md);
+}
+@media (max-width: @screen-sm) {
+  .visible-sm{
+    display: block!important;
+  }
+  .hidden-sm{
+    display: none!important;
+  }
+  .make-grid(sm);
+}
+@media (max-width: @screen-xs) {
+  .visible-xs{
+    display: block!important;
+  }
+  .hidden-xs{
+    display: none!important;
+  }
+  .make-grid(sx);
+}
+
+/*
+@media (max-width:@mobile) {
+
+}
+*/
+

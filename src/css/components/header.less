@@ -1,0 +1,201 @@
+@import "../base.less";
+
+.head-wrap{
+   background: @blue1;
+   .row{
+     position: relative;
+     .logo-word{
+       float: left;
+       margin-left: 15px;
+       padding: 24px 0;
+       font-family: PingFangSC-Regular;
+       font-size: 24px;
+       color: #FFFFFF;
+       letter-spacing: 0;
+       vertical-align: middle;
+     }
+
+
+     .trade{
+       position: absolute;
+       left:180px;
+       top:28px;
+       width: 120px;
+       text-align: center;
+       font-size: 16px;
+       color: @white;
+       .bot_cross_tip{
+         width:4px;
+         height:4px;
+         border-radius: 2px;
+         display: block;
+         background-color: @white;
+         margin:10px 0 0 50%;
+         opacity: .5;
+       }
+       >ul{
+         position: absolute;
+         left: 0;
+         top:44px;
+         display: none;
+         z-index: 5;
+         li{
+           width: 100%;
+           height: 50px;
+           line-height: 50px;
+           background: @blue1;
+           padding: 0;
+           >a{
+             color: #fff;
+           }
+           &:hover{
+             background: @blue2;
+           }
+         }
+       }
+       &:hover{
+         >ul{
+           display: block;
+         }
+       }
+     }
+
+    .mobile-menu{
+      position: absolute;
+      top:17px;
+      right:15px;
+      display: none;
+      float: right;
+      padding: 9px 10px;
+     /* margin-top: 17px;
+      margin-right: 15px;*/
+      background-color: transparent;
+      background-image: none;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      .icon-bar {
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 1px;
+        background-color: #888;
+        &+.icon-bar {
+          margin-top: 4px;
+        }
+      }
+    }
+     li{
+       float: left;
+       position: relative;
+       padding: 27px 19.5px;
+       font-family: HelveticaNeue;
+       font-size: 14px;
+       line-height: 16px;
+       color: #FFFFFF;
+       cursor: pointer;
+       >a.link {
+         padding: 5px 0;
+         font-family: HelveticaNeue;
+         font-size: 14px;
+         color: #FFFFFF;
+         transition: all 250ms;
+       }
+       &.icon-li{
+         padding: 0;
+         >a{
+           display: inline-block;
+           margin: 24px 9px;
+           width: 24px;
+           height: 24px;
+           &.a{
+             background: url("../../images/1.png") center center no-repeat;
+             background-size:contain;
+           }
+           &.b{
+             background: url("../../images/2.png") center center no-repeat;
+             background-size:contain;
+           }
+           &.c{
+             width: 20px;
+             height: 24px;
+             background: url("../../images/3.png") center center no-repeat;
+             background-size:contain;
+           }
+           &.d{
+             width: 20px;
+             height: 24px;
+             background: url("../../images/4.png") center center no-repeat;
+             background-size:contain;
+           }
+           &.e{
+             width: 20px;
+             height: 24px;
+             background: url("../../images/5.png") center center no-repeat;
+             background-size:contain;
+           }
+         }
+       }
+       &.icon-li-b{
+         padding: 27px 39px 27px 19.5px;
+       }
+
+
+       >.sub-menu{
+         display: none;
+       }
+     }
+     .main-nav{
+       .clearfix();
+        float: right;
+    }
+     .mobile-nav{
+       display: none;
+      .clearfix();
+       background: @blue1;
+       position: fixed;
+       z-index: 66;
+       width: 280px;
+       max-height:100%;
+       overflow-x: hidden;
+       overflow-y: scroll;
+       right:0;
+       top:0;//70px;
+       li{
+         width: 100%;
+         text-align: center;
+         text-transform: uppercase;
+         float: none;
+       }
+
+    }
+  }
+
+}
+
+@media (max-width: 750px) {
+  .head-wrap{
+    background: @white;
+    .container{
+       .row{
+         .logo-word{
+           color:@blue1;
+         }
+         .mobile-menu{
+           display: block;
+           .icon-bar {
+             display: block;
+             background-color:@blue1;
+           }
+         }
+         .main-nav{
+           display: none;
+         }
+         .mobile-nav{
+           display: block;
+         }
+       }
+    }
+
+  }
+
+}

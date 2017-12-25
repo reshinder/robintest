@@ -1,0 +1,19 @@
+<div class="modal-out">
+    <div class="modal-backdrop" @webkitTransitionEnd="ame()"></div>
+    <div id="modal" class="modal">
+        <span class="close" @click.prevent.stop="closeTip()"></span>
+
+        <div class="modal-header">
+            <h3>状态提示标题</h3>
+        </div>
+        <div class="modal-body">
+            <h4>Text in a modal</h4>
+            <p>You can add some text here.</p>
+            <p class="href-p"><a href="" class="href-a">跳转连接</a></p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" @click.prevent.stop="closeTip()">cancel</button>
+            <button type="button" class="btn" @click.prevent.stop="closeTip()">ok</button>
+        </div>
+    </div>
+</div>
