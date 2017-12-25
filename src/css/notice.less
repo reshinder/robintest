@@ -1,0 +1,124 @@
+@charset "utf-8";
+@import "../fonts/HelveticaNeue-Bold.less";
+@import "./reset.less";
+@import "./base.less";
+@import "./common/common.less";
+@import "./components/header.less";
+@import "./components/footer.less";
+
+html, body {
+  background-color: @bgcolor;
+}
+
+#pageHome {
+  position: relative;
+
+  //主体内容start
+
+  .about_banner {
+    height: 300px;
+    text-align: center;
+    background-color: #276283;
+    p {
+      height: 100px;
+      line-height: 100px;
+      color: #6C94B0;
+      opacity: .8;
+    }
+  }
+
+  .about_slide_wrap {
+    width: 1200px;
+    height: 1500px;
+    margin: -200px auto;
+    background-color: @white;
+    ul {
+      padding: 30px 200px 0;
+      li {
+        min-height: 166px;
+        padding-top: 50px;
+        text-align: center;
+        color: @grey;
+        border-bottom: 1px solid #f4f4f4;
+        .about_list_det {
+          display: none;
+        }
+        h4 {
+          margin-bottom: 50px;
+          font-size: 24px;
+          opacity: .7;
+          cursor: pointer;
+        }
+        span {
+          font-size: 14px;
+          opacity: .3;
+          display: inline-block;
+          margin-bottom: 40px;
+        }
+        p {
+          font-size: 16px;
+          line-height: 26px;
+          color: #4d4d4d;
+          text-align: left;
+          margin-bottom: 30px;
+        }
+
+      }
+    }
+  }
+
+  //主体内容end
+
+  .footer {
+    position: inherit;
+  }
+}
+
+@media (max-width: 1200px) {
+  #pageHome {
+    .about_banner {
+      height: 80px;
+      padding-top: 10px;
+      p {
+        height: 30px;
+        line-height: 30px;
+      }
+    }
+
+    .about_slide_wrap {
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      ul {
+        padding: 30px 15px;
+        li {
+          min-height: 120px;
+          padding-top: 20px;
+          h4 {
+            margin-bottom: 20px;
+          }
+          span{
+            margin-bottom: 10px;
+          }
+          p {
+            margin-bottom: 20px;
+            word-wrap:break-word;
+            word-break:break-all;
+          }
+
+        }
+      }
+    }
+  }
+
+}
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 750px) {
+}
