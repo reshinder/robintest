@@ -69,11 +69,11 @@
                     <div class="row">
                         <div class="price-w">
                             <label class="clearfix"><span>PRICE</span><span class="opa_3">USD</span><div class="fr"><em class="green_cross"></em><em class="red_cross"></em></div></label>
-                            <input type="text" id="price" v-bind:value="price"/>
+                            <input type="text" id="price" v-model="price"/>
                         </div>
                         <div class="price-w">
                             <label><span>AMOUNT</span><span class="opa_3">BTC</span><div class="fr"><em class="green_cross"></em><em class="red_cross"></em></div></label>
-                            <input type="text" id="amount" v-bind:value="amount"/>
+                            <input type="text" id="amount" v-model="amount"/>
                         </div>
                     </div>
                     <div class="row btns">
@@ -97,35 +97,43 @@
                 </div>
 
                 <ul>
-                    <li v-for="item in balances" @click.stop.prevent="sliderPart($event,1)">
+                    <li v-for="item in balances" @click.stop.prevent="sliderPart($event,1,item.coinCode)">
                         <span>{{item.coinName}}</span>
                         <span>{{item.userFixAmount}}</span>
                         <span>{{item.userActiveAmount}}</span>
                     </li>
-
+                    <li>
+                      <span>USD EQUIV<i class="market_color"> / MARKET</i></span>
+                      <span>{{smAssetToUsd}}</span>
+                   </li>
                 </ul>
             </div>
         </div>
         <div class="slider-part">
             <span class="close" @click.stop.prevent="sliderPart($event,0)"></span>
             <div class="title">
-                <span>US Dollar Sent</span>
+                <span>{{this.userAssetInfo.coinName}} Asset</span>
             </div>
             <div class="tab-nav">
-                <div class="tab">Deposit USD</div>
-                <div class="tab">Withdraw USD</div>
+                <div class="tab">Deposit {{this.userAssetInfo.coinName}}</div>
+                <div class="tab">Withdraw {{this.userAssetInfo.coinName}}</div>
             </div>
             <ul>
                 <li>
                     <span>Total</span>
                     <span>
-                          <span>8.1</span><span class="fc">00000</span><span class="tmt">BTC</span>
+
+                          <span>{{this.userAssetInfo.userFixAmount}}</span>
+                          <!-- <span class="fc">00000</span> -->
+                          <span class="tmt">{{this.userAssetInfo.coinName}}</span>
                     </span>
                 </li>
                 <li>
                     <span>Avaliabble</span>
                     <span>
-                          <span>8.1</span><span class="fc">00000</span><span class="tmt">BTC</span>
+                          <span>{{userAssetInfo.userActiveAmount}}</span>
+                          <!-- <span class="fc">00000</span> -->
+                          <span class="tmt">{{userAssetInfo.coinName}}</span>
                     </span>
                 </li>
             </ul>

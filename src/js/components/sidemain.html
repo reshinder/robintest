@@ -10,6 +10,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 委托订单 -->
                 <div class="row unit-pan">
                     <div class="tickers-table">
                         <div class="top-name" @click.stop.prevent="slider($event)">
@@ -18,16 +19,16 @@
                             <div class="select_column" @click.stop.prevent="selectType($event)">
                                 <em class="sel_text">BTC</em>
                                 <i class="down_gray_arrow"></i>
-                                <ul @click.stop.prevent="chooseLi($event)">
-                                    <li v-for='item in busiTypeInfos'>{{item.commodityCode|uppercase}}</li>
+                                <ul @click.stop.prevent="chooseLi($event,1)">
+                                    <li :data-type="item.busitype" v-for='item in busiTypeInfos'>{{item.commodityCode|uppercase}}</li>
                                 </ul>
                             </div>
 
                             <!--右侧tab start-->
                             <div class="fr right_col_tab">
-                                <a href="javascript:;" @click="bidsAndAsks='Bids'" :class="{active:bidsAndAsks=='Bids'}">Bids<i></i></a>
-                                <a href="javascript:;" @click="bidsAndAsks='Asks'" :class="{active:bidsAndAsks=='Asks'}">Asks<i></i></a>
-                                <a href="javascript:;"  @click="bidsAndAsks='All'"  :class="{active:bidsAndAsks=='All'}">All<i></i></a>
+                                <a href="javascript:;" @click.stop.prevent="orderDelegateBidsOrAsks($event,2)" @click="bidsAndAsks='Bids'" :class="{active:bidsAndAsks=='Bids'}">Bids<i></i></a>
+                                <a href="javascript:;" @click.stop.prevent="orderDelegateBidsOrAsks($event,1)" @click="bidsAndAsks='Asks'" :class="{active:bidsAndAsks=='Asks'}">Asks<i></i></a>
+                                <a href="javascript:;" @click.stop.prevent="orderDelegateBidsOrAsks($event,'')"  @click="bidsAndAsks='All'"  :class="{active:bidsAndAsks=='All'}">All<i></i></a>
                             </div>
                             <!--右侧tab end-->
                         </div>
@@ -39,7 +40,6 @@
                                     <td><span>CONTEXT</span><span class="arrow-t"></span></td>
                                     <td><span>TYPE</span><span class="arrow-t choose-up"></span></td>
                                     <td><span>AMOUNT</span><span class="arrow-t"></span></td>
-
                                     <td><span>PRICE</span><span class="arrow-t"></span></td>
                                     <td><span>STATUS</span><span class="arrow-t"></span></td>
                                     <td class="tl"><span>PLACES</span><span class="arrow-t"></span></td>
@@ -47,220 +47,36 @@
                                         <span></span>
                                     </td>
                                 </tr>
-
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>
+                                <tr v-for="item in unCompleteOrders">
+                                   <td>
                                         <span class="circle"></span>
-                                        <span>ETC/USD</span>
+                                        <span>{{item.busitype|getCoinType(0)}}/{{item.busitype|getCoinType(1)}}</span>
                                     </td>
                                     <td>
-                                        <span>EXCHANGE</span>
+                                        <span>{{item.type}}</span>
                                     </td>
                                     <td>
                                         <span>LIMIT</span>
                                     </td>
                                     <td class="tl">
-                                        <span>-2.000000</span>
+                                        <span>{{item.orderAmount}}</span>
                                     </td>
 
                                     <td>
-                                        <span>14.570</span>
+                                        <span>{{item.orderPrice}}</span>
                                     </td>
                                     <td class="sc-blue">
                                         <span>Active</span>
                                     </td>
                                     <td class="tl">
-                                        <span>21-11-17</span>
-                                        <span>10:45:32</span>
+                                        <span>{{item.createTime|dateTimeFormat('yyyy-MM-dd hh:mm:ss')}}</span>
                                     </td>
                                     <td class="delete-td">
                                         <span></span>
                                     </td>
-
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <span class="circle"></span>
-                                        <span>ETC/USD</span>
-                                    </td>
-                                    <td>
-                                        <span>EXCHANGE</span>
-                                    </td>
-                                    <td>
-                                        <span>LIMIT</span>
-                                    </td>
-                                    <td class="tl">
-                                        <span>-2.000000</span>
-                                    </td>
-
-                                    <td>
-                                        <span>14.570</span>
-                                    </td>
-                                    <td class="sc-blue">
-                                        <span>Active</span>
-                                    </td>
-                                    <td class="tl">
-                                        <span>21-11-17</span>
-                                        <span>10:45:32</span>
-                                    </td>
-                                    <td class="delete-td">
-                                        <span></span>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="circle"></span>
-                                        <span>ETC/USD</span>
-                                    </td>
-                                    <td>
-                                        <span>EXCHANGE</span>
-                                    </td>
-                                    <td>
-                                        <span>LIMIT</span>
-                                    </td>
-                                    <td class="tl">
-                                        <span>-2.000000</span>
-                                    </td>
-
-                                    <td>
-                                        <span>14.570</span>
-                                    </td>
-                                    <td class="sc-blue">
-                                        <span>Active</span>
-                                    </td>
-                                    <td class="tl">
-                                        <span>21-11-17</span>
-                                        <span>10:45:32</span>
-                                    </td>
-                                    <td class="delete-td">
-                                        <span></span>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="circle"></span>
-                                        <span>ETC/USD</span>
-                                    </td>
-                                    <td>
-                                        <span>EXCHANGE</span>
-                                    </td>
-                                    <td>
-                                        <span>LIMIT</span>
-                                    </td>
-                                    <td class="tl">
-                                        <span>-2.000000</span>
-                                    </td>
-
-                                    <td>
-                                        <span>14.570</span>
-                                    </td>
-                                    <td class="sc-blue">
-                                        <span>Active</span>
-                                    </td>
-                                    <td class="tl">
-                                        <span>21-11-17</span>
-                                        <span>10:45:32</span>
-                                    </td>
-                                    <td class="delete-td">
-                                        <span></span>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="circle"></span>
-                                        <span>ETC/USD</span>
-                                    </td>
-                                    <td>
-                                        <span>EXCHANGE</span>
-                                    </td>
-                                    <td>
-                                        <span>LIMIT</span>
-                                    </td>
-                                    <td class="tl">
-                                        <span>-2.000000</span>
-                                    </td>
-
-                                    <td>
-                                        <span>14.570</span>
-                                    </td>
-                                    <td class="sc-blue">
-                                        <span>Active</span>
-                                    </td>
-                                    <td class="tl">
-                                        <span>21-11-17</span>
-                                        <span>10:45:32</span>
-                                    </td>
-                                    <td class="delete-td">
-                                        <span></span>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="circle"></span>
-                                        <span>ETC/USD</span>
-                                    </td>
-                                    <td>
-                                        <span>EXCHANGE</span>
-                                    </td>
-                                    <td>
-                                        <span>LIMIT</span>
-                                    </td>
-                                    <td class="tl">
-                                        <span>-2.000000</span>
-                                    </td>
-
-                                    <td>
-                                        <span>14.570</span>
-                                    </td>
-                                    <td class="sc-blue">
-                                        <span>Active</span>
-                                    </td>
-                                    <td class="tl">
-                                        <span>21-11-17</span>
-                                        <span>10:45:32</span>
-                                    </td>
-                                    <td class="delete-td">
-                                        <span></span>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="circle"></span>
-                                        <span>ETC/USD</span>
-                                    </td>
-                                    <td>
-                                        <span>EXCHANGE</span>
-                                    </td>
-                                    <td>
-                                        <span>LIMIT</span>
-                                    </td>
-                                    <td class="tl">
-                                        <span>-2.000000</span>
-                                    </td>
-
-                                    <td>
-                                        <span>14.570</span>
-                                    </td>
-                                    <td class="sc-blue">
-                                        <span>Active</span>
-                                    </td>
-                                    <td class="tl">
-                                        <span>21-11-17</span>
-                                        <span>10:45:32</span>
-                                    </td>
-                                    <td class="delete-td">
-                                        <span></span>
-                                    </td>
-
-                                </tr>
-
                                 </tbody>
                             </table>
                             <p class="no-act">
@@ -270,6 +86,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 成交历史订单 -->
                 <div class="row unit-pan">
                     <div class="tickers-table">
                         <div class="top-name" @click.stop.prevent="slider($event)">
@@ -278,17 +95,17 @@
                             <div class="select_column" @click.stop.prevent="selectType($event)">
                                 <em class="sel_text">BTC</em>
                                 <i class="down_gray_arrow"></i>
-                                <ul @click.stop.prevent="chooseLi($event)">
-                                    <li v-for='item in busiTypeInfos'>{{item.commodityCode|uppercase}}</li>
+                                <ul @click.stop.prevent="chooseLi($event,2)">
+                                    <li :data-type="item.busitype" v-for='item in busiTypeInfos'>{{item.commodityCode|uppercase}}</li>
                                 </ul>
                             </div>
 
                             <!--右侧tab start-->
                             <div class="fr right_col_tab">
-                                <a href="javascript:;" @click="orderSate='Canceled'" :class="{active:orderSate=='Canceled'}">Canceled<i></i></a>
-                                <a href="javascript:;" @click="orderSate='Executed'" :class="{active:orderSate=='Executed'}">Executed<i></i></a>
-                                <a href="javascript:;"  @click="orderSate='Partially'" :class="{active:orderSate=='Partially'}">Partially Executed<i></i></a>
-                                <a href="javascript:;" @click="orderSate='All'" :class="{active:orderSate=='All'}">All<i></i></a>
+                                <a href="javascript:;" @click.stop.prevent="orderHistory($event,4)" @click="orderSate='Canceled'" :class="{active:orderSate=='Canceled'}">Canceled<i></i></a>
+                                <a href="javascript:;" @click.stop.prevent="orderHistory($event,2)" @click="orderSate='Executed'" :class="{active:orderSate=='Executed'}">Executed<i></i></a>
+                                <a href="javascript:;" @click.stop.prevent="orderHistory($event,3)"  @click="orderSate='Partially'" :class="{active:orderSate=='Partially'}">Partially Executed<i></i></a>
+                                <a href="javascript:;" @click.stop.prevent="orderHistory($event,'')" @click="orderSate='All'" :class="{active:orderSate=='All'}">All<i></i></a>
                             </div>
                             <!--右侧tab end-->
                         </div>
@@ -309,7 +126,36 @@
                                 </tr>
 
                                 </thead>
-                                <tbody></tbody>
+                                <tbody>
+                                <tr v-for="item in completeOrders">
+                                   <td>
+                                        <span class="circle"></span>
+                                        <span>{{item.busitype|getCoinType(0)}}/{{item.busitype|getCoinType(1)}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.type}}</span>
+                                    </td>
+                                    <td>
+                                        <span>LIMIT</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>{{item.orderAmount}}</span>
+                                    </td>
+
+                                    <td>
+                                        <span>{{item.orderPrice}}</span>
+                                    </td>
+                                    <td class="sc-blue">
+                                        <span>Active</span>
+                                    </td>
+                                    <td class="tl">
+                                        <span>{{item.createTime|dateTimeFormat('yyyy-MM-dd hh:mm:ss')}}</span>
+                                    </td>
+                                    <td class="delete-td">
+                                        <span></span>
+                                    </td>
+                                </tr>
+                                </tbody>
                             </table>
                             <p class="no-act">
                                 <span>No acticity orders</span>
@@ -333,61 +179,34 @@
                             <div class="tickers-content order-book">
                                 <div class="hill_wrap">
                                     <div class="hill_tit">
-                                        <span class="clear-arrow">COUNT</span>
+                                        <span class="clear-arrow"></span>
                                         <span class="clear-arrow">AMOUNT</span>
                                         <span class="clear-arrow">TOTAL</span>
                                         <span class="clear-arrow">PRICE</span>
                                         <span class="clear-arrow">PRICE</span>
                                         <span class="clear-arrow">TOTAL</span>
                                         <span class="clear-arrow">AMOUNT</span>
-                                        <span class="clear-arrow">COUNT</span>
+                                        <span class="clear-arrow"></span>
                                     </div>
                                     <div class="hill_body">
 
-                                        <div class="hill_list">
-                                            <div class="hill_left_bg"><em style="width: 20%;"></em></div>
-                                            <div class="hill_right_bg"><em style="width: 20%;"></em></div>
-                                            <div class="hill_item">
-                                                <span>3</span>
-                                                <span>123</span>
-                                                <span>234.9</span>
-                                                <span>444</span>
-                                                <span>444.22</span>
-                                                <span>444.34</span>
-                                                <span>114.28</span>
-                                                <span>666.88</span>
+                                        <div class="hill_list" v-for="(item,index) in asks">
+                                            <div class="hill_left_bg"><em v-bind:style="{width:(bids[index].totel*100/bids.allBidsAmount)+'%'}"></em></div>
+                                            <div class="hill_right_bg"><em v-bind:style="{width:(asks[index].totel*100/asks.allAsksAmount)+'%'}"></em></div>
+                                            <div class="hill_item" >
+                                                <span>bid{{index+1}}</span>
+                                                <span>{{bids[index].amount|dataformat(2)}}</span>
+                                                <span>{{bids[index].totel|dataformat(2)}}</span>
+                                                <span>{{bids[index].price|dataformat(2)}}</span>
+
+                                                <span>{{asks[index].price|dataformat(2)}}</span>
+                                                <span>{{asks[index].totel|dataformat(2)}}</span>
+                                                <span>{{asks[index].totel|dataformat(2)}}</span>
+                                                <span>ask{{index+1}}</span>
                                             </div>
                                         </div>
 
-                                        <div class="hill_list">
-                                            <div class="hill_left_bg"><em style="width: 40%;"></em></div>
-                                            <div class="hill_right_bg"><em style="width: 40%;"></em></div>
-                                            <div class="hill_item">
-                                                <span>3</span>
-                                                <span>123</span>
-                                                <span>234.9</span>
-                                                <span>444</span>
-                                                <span>444.22</span>
-                                                <span>444.34</span>
-                                                <span>114.28</span>
-                                                <span>666.88</span>
-                                            </div>
-                                        </div>
 
-                                        <div class="hill_list">
-                                            <div class="hill_left_bg"><em style="width: 60%;"></em></div>
-                                            <div class="hill_right_bg"><em style="width: 60%;"></em></div>
-                                            <div class="hill_item">
-                                                <span>3</span>
-                                                <span>123</span>
-                                                <span>234.9</span>
-                                                <span>444</span>
-                                                <span>444.22</span>
-                                                <span>444.34</span>
-                                                <span>114.28</span>
-                                                <span>666.88</span>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
 
@@ -411,35 +230,11 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td><span>02:34:55</span></td>
-                                        <td><span>4.789</span></td>
-                                        <td><span>0.1689.9</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span>02:34:55</span></td>
-                                        <td><span>4.789</span></td>
-                                        <td><span>0.1689.9</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span>02:34:55</span></td>
-                                        <td><span>4.789</span></td>
-                                        <td><span>0.1689.9</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span>02:34:55</span></td>
-                                        <td><span>4.789</span></td>
-                                        <td><span>0.1689.9</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span>02:34:55</span></td>
-                                        <td><span>4.789</span></td>
-                                        <td><span>0.1689.9</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span>02:34:55</span></td>
-                                        <td><span>4.789</span></td>
-                                        <td><span>0.1689.9</span></td>
+                                    <tr v-for="item in recentTradeRecords">
+                                        <span>{{item.time}}</span>
+
+                                        <td><span>{{item.price|dataformat(2)}}</span></td>
+                                        <td><span>{{item.amount|dataformat(4)}}</span></td>
                                     </tr>
                                     </tbody>
                                 </table>
