@@ -306,6 +306,7 @@ ul, li {
     }
   }
 }
+  /***安全认证型单选按钮***/
  .radio{
    display:inline-block;
    vertical-align: middle;
@@ -328,6 +329,41 @@ ul, li {
      }
    }
 }
+
+ /***表单点击下的提示文字样式***/
+ .is-danger{
+   position: absolute;
+   bottom: -28px;
+   padding: 6px 14px;
+   opacity: 0.7;
+   font-family: HelveticaNeue;
+   font-size: 12px;
+   color: #D94242;;
+   letter-spacing: 0;
+   line-height: 14px;
+   &.more-p{
+     bottom:-44px;
+   }
+ }
+
+.bottom-line{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 1px;
+  background: #5e5e5e;
+  width: 100%;
+  transform: translateX(-50%);
+  &.to-red{
+    background: #D94242;
+    animation:linec 700ms 1;
+    -webkit-animation:linec 700ms 1;
+    animation-fill-mode:forwards;
+    -webkit-animation-fill-mode:forwards;
+  }
+}
+
+
 @keyframes linec {
   0% {
     width: 0;

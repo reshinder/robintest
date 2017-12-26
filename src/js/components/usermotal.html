@@ -38,7 +38,7 @@
                     <input type="text" id="gltoken" v-model="gltoken" placeholder="Enter Google 2Fa token" />
                     <div class="bottom-line" :class="this.passworderror==1?'to-red':''"></div>
                     <transition name="error-tip" v-if="glerror==1&&glempty==1">
-                        <p class="tip-p">Please enter yGoogle 2Fa token.</p>
+                        <p class="tip-p">Please enter your Google 2Fa token.</p>
                     </transition>
                     <transition name="error-tip" v-if="glerror==1&&glverror==1">
                         <p class="tip-p more-p">Wrong token</p>

@@ -16,11 +16,11 @@
         <div class="row">
             <div class="col-md-2 l-panel">
                 <ul>
-                    <li @click.prevnt.stop="toggleTabs(0)" :class="{active:main==0}">Account</li>
-                    <li @click.prevnt.stop="toggleTabs(1) " :class="{active:main==1}">Security</li>
-                    <li @click.prevnt.stop="toggleTabs(2)" :class="{active:main==2}">Notification</li>
-                    <li @click.prevnt.stop="toggleTabs(3)" :class="{active:main==3}">Verification</li>
-                    <li @click.prevnt.stop="toggleTabs(4)" :class="{active:main==4}">Address Book</li>
+                    <li @click.prevnt.stop="toggleTabs(0)" :class="{active:main==0}">{{$t('lang.account')}}</li>
+                    <li @click.prevnt.stop="toggleTabs(1) " :class="{active:main==1}">{{$t('lang.security')}}</li>
+                    <li @click.prevnt.stop="toggleTabs(2)" :class="{active:main==2}">{{$t('lang.notification')}}</li>
+                    <li @click.prevnt.stop="toggleTabs(3)" :class="{active:main==3}">{{$t('lang.verification')}}</li>
+                    <li @click.prevnt.stop="toggleTabs(4)" :class="{active:main==4}">{{$t('lang.addressBook')}}</li>
                 </ul>
             </div>
 

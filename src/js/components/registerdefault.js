@@ -2,14 +2,7 @@ import Vue from '../lib/vue.js';
 import pageBus from '../common/bus'
 import helper from '../common/chelper'
 import Axios from '../common/axios_default'
-import Validator from '../lib/vue-validator.min'
 import $ from '../lib/jquery-3.2.1.min';
-Vue.use(Validator)
-
-Vue.validator('tel', function (val) {
-    return /^[0-9]{11}$/.test(val)
-});
-
 
 let registerdefault = {
     template: ` <div class="row  content-wrap">

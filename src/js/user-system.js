@@ -14,7 +14,9 @@ import notification from './components/notification.js';
 import verification from './components/verification.js';
 import addressbook from './components/addressbook.js';
 
+import i18n from '../i18n/i18n.js'; // 多语言
 var app = new Vue({
+    i18n,
     el: '#pageHome',
     data: {
         main: 3, //0:account; 1:security; 2:notification; 3:verification 4:addressbook;

@@ -1,4 +1,4 @@
-require('../../js/lib/jquery.js');
+require('../../js/lib/jquery-3.2.1.min.js');
 require('../../js/lib/tradingview/charting_library.min.js');
 require('../../js/lib/tradingview/datafeed/udf/datafeed.js');
 var Vue = require('../lib/vue.js');

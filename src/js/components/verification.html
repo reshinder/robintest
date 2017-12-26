@@ -1,4 +1,4 @@
-<div class="verification">
+<form class="verification" @submit.prevent="validateForm('form-1')"  data-vv-scope="form-1">
     <div class="unit ver">
         <h2>verification</h2>
        <p class="big-mb">Verification is required for USD deposit,and USD withdrawal.Please enter your personal information and update the material
@@ -14,15 +14,36 @@
         <h2>Name</h2>
         <div class="input-row">
             <div class="input-out">
-                <label>Family Name</label><input type="text" value="Lisa" />
+                <label>Family Name</label>
+                <div class="input-inner">
+                    <input type="text" name="familyname" id="familyname" v-validate="'required'" data-vv-delay="500" value="" />
+                    <i :class="{'bottom-line':true,'to-red':errors.has('form-1.familyname')}"></i>
+                    <transition name="error-tip" v-if="errors.has('form-1.familyname')">
+                        <span class="is-danger">{{ errors.first('form-1.familyname') }}</span>
+                    </transition>
+                </div>
             </div>
             <div class="input-out">
-                <label>Given Name</label><input type="text" value="Demon" />
+                <label>Given Name</label>
+                <div class="input-inner">
+                    <input type="text" name="givenname" id="givenname" v-validate="'required'" data-vv-delay="500" value="" />
+                    <i :class="{'bottom-line':true,'to-red':errors.has('form-1.givenname')}"></i>
+                    <transition name="error-tip" v-if="errors.has('form-1.givenname')">
+                        <span class="is-danger">{{ errors.first('form-1.givenname') }}</span>
+                    </transition>
+                </div>
             </div>
         </div>
         <div class="input-row">
             <div class="input-out">
-                <label>Nationality</label><input type="text" value="Lisa" />
+                <label>Nationality</label>
+                <div class="input-inner">
+                    <input type="text" name="nationality" id="nationality" v-validate="'required'" data-vv-delay="500" value="" />
+                    <i :class="{'bottom-line':true,'to-red':errors.has('form-1.nationality')}"></i>
+                    <transition name="error-tip" v-if="errors.has('form-1.nationality')">
+                        <span class="is-danger">{{ errors.first('form-1.nationality') }}</span>
+                    </transition>
+                </div>
             </div>
         </div>
     </div>
@@ -38,35 +59,62 @@
         </div>
         <div class="input-row">
             <div class="input-out">
-                <label>Card Number</label><input type="text" value="Lisa" />
+                <label>Card Number</label>
+                <div class="input-inner">
+                    <input type="text" name="cardnumber" id="cardnumber" v-validate="'required'" data-vv-delay="500" value="" />
+                    <i :class="{'bottom-line':true,'to-red':errors.has('form-1.cardnumber')}"></i>
+                    <transition name="error-tip" v-if="errors.has('form-1.cardnumber')">
+                        <span class="is-danger">{{ errors.first('form-1.cardnumber') }}</span>
+                    </transition>
+                </div>
             </div>
             <div class="input-out">
-                <label>Card Country</label><input type="text" value="Demon" />
+                <label>Card Country</label>
+                <div class="input-inner">
+                    <input type="text" name="cardcountry" id="cardcountry" v-validate="'required'" data-vv-delay="500" value="" />
+                    <i :class="{'bottom-line':true,'to-red':errors.has('form-1.cardcountry')}"></i>
+                    <transition name="error-tip" v-if="errors.has('form-1.cardcountry')">
+                        <span class="is-danger">{{ errors.first('form-1.cardcountry') }}</span>
+                    </transition>
+                </div>
             </div>
         </div>
         <div class="input-row">
             <div class="input-out">
-                <label>Expiration date</label><input type="text" value="Lisa" />
+                <label>Expiration date</label>
+                <div class="input-inner">
+                    <input type="text" name="expiradate" id="expiradate" v-validate="'required'" data-vv-delay="500" value="" />
+                    <i :class="{'bottom-line':true,'to-red':errors.has('form-1.expiradate')}"></i>
+                    <transition name="error-tip" v-if="errors.has('form-1.expiradate')">
+                        <span class="is-danger">{{ errors.first('form-1.expiradate') }}</span>
+                    </transition>
+                </div>
             </div>
         </div>
         <p>Pleasure make sure the photo is complate and clearly visible,photo size cannot exceed 4M,and the passport or Id
         card is in the valid period</p>
-        <div class="upload-out" v-if="idcliked">
-            <div class="upload">
-                 <span class="u-out cup">Upload<input type="file" onchange="document.querySelector('#nf').value=this.value" /></span>
-                 <input type="text" id="nf"  placeholder="National Id card front" readonly="readonly" />
+        <div class="upload-out">
+            <div class="upload" v-if="idcliked">
+                 <span class="u-out cup">Upload<input type="file" name="nfp" id="nfp" v-validate="'pngBig'" data-vv-delay="500"  @change="changeHandler($event,1,'nf')" /></span>
+                 <div class="png-input">
+                     <input type="text" class="fg" id="nf"  placeholder="National Id card front" readonly="readonly" />
+                     <i :class="{'bottom-line':true,'to-red':errors.has('nfp')}"></i>
+                     <transition name="error-tip" v-if="errors.has('nfp')">
+                         <span class="is-danger">{{ errors.first('nfp') }}</span>
+                     </transition>
+                 </div>
             </div>
-            <div class="upload">
-                <span class="u-out cup">Upload<input type="file" onchange="document.querySelector('#ng').value=this.value" /></span>
-                <input type="text" id="ng" placeholder="National Id card back" readonly="readonly" />
+            <div class="upload" v-if="idcliked">
+                <span class="u-out cup">Upload<input type="file" id="nbp" @change="changeHandler($event,1,'nb')" /></span>
+                <input type="text" class="fg" id="nb" placeholder="National Id card back" readonly="readonly" />
+            </div>
+
+            <div class="upload" v-if="psclicked">
+                <span class="u-out cup">Upload<input type="file" id="psp" @change="changeHandler($event,2,'ps')" /></span>
+                <input type="text" class="fg" id="ps" placeholder="National Id card back" readonly="readonly" />
             </div>
         </div>
-        <div class="upload-out" v-if="psclicked">
-            <div class="upload">
-                <span class="u-out cup">Upload<input type="file" onchange="document.querySelector('#pg').value=this.value" /></span>
-                <input type="text" id="pg" placeholder="Passport BIO page" readonly="readonly" />
-            </div>
-        </div>
+
     </div>
     <div class="unit selfie">
         <h2>Selfie with identity and Note</h2>
@@ -90,12 +138,12 @@
         </div>
         <div class="upload-out">
             <div class="upload">
-                <span class="u-out cup">Upload<input type="file" onchange="document.querySelector('#pg2').value=this.value" /></span>
-                <input type="text" id="pg2" placeholder="Passport BIO page" readonly="readonly" />
+                <span class="u-out cup">Upload<input type="file" id="self" @change="changeHandler($event,3,'nop')" /></span>
+                <input type="text" id="nop" class="fg" placeholder="Passport BIO page" readonly="readonly" />
             </div>
         </div>
         <div class="sub-mit">
             <button type="submit">Submit</button>
         </div>
     </div>
-</div>
+</form>

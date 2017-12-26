@@ -1,5 +1,5 @@
 import pageBus from '../common/bus'
-var jquery=require('../../js/lib/jquery.js');
+var jquery=require('../../js/lib/jquery-3.2.1.min.js');
 import axios from '../common/axios_default';
 import vlm from '../lib/vlm.js';
 import Vue from '../lib/vue.js';
