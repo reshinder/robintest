@@ -1,4 +1,4 @@
-import domain from './domain';
+import domain from '../../../config/domain';
 import axios from '../lib/axios.min'
 
 let axiosInstance = axios.create({

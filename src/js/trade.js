@@ -14,7 +14,6 @@ var app = new Vue({
     data: {
         headerview: 'headerview',
         footerview: 'footerview'
-
     },
     components: {
         chartview: chartview,
@@ -33,15 +32,7 @@ var app = new Vue({
         init(){
             let self = this;
 
-        },
-        eve: function () {
-            pageBus.$emit('change', 'accounttip');
-        },
-        sliderPart(index){
-            $(".slider-part").slideToggle(800);
-        },
-
-
+        }
 
     }
 });

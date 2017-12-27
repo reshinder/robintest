@@ -6,6 +6,7 @@ import headerview from './components/header.js';
 import footerview from './components/footer.js';
 import modaltip from './components/modaltip.js';
 import sidebarview from './components/sidebar.js';
+import sidemainview from './components/sidemain.js';
 import chartview from './components/chartview.js';
 
 var app = new Vue({
@@ -13,30 +14,25 @@ var app = new Vue({
     data: {
         headerview: 'headerview',
         footerview: 'footerview'
-
     },
     components: {
-        chartview:chartview,
-        modaltip:modaltip,
-        footerview:footerview,
-        headerview:headerview,
-        sidebarview:sidebarview
+        chartview: chartview,
+        modaltip: modaltip,
+        footerview: footerview,
+        headerview: headerview,
+        sidebarview: sidebarview,
+        sidemainview:sidemainview
     },
-    created:function(){},
-    mounted:function () {
+    created: function () {
+    },
+    mounted: function () {
         this.init();
     },
     methods: {
         init(){
             let self = this;
 
-        },
-        eve:function(){
-            pageBus.$emit('change','accounttip');
-        },
-        sliderPart(index){
-            $(".slider-part").slideToggle(800);
-        },
+        }
 
     }
 });
