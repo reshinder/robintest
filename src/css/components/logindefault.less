@@ -2,13 +2,14 @@
       position: relative;
       .content-wrap{
          width: 100%;
+         background: url("../../images/login_backgrond.png") no-repeat center center ;
+         background-size: 100% 100%;
          div{
            float: left;
          }
          .left-wrap{
              position: relative;
-             background-image: url("../../images/login_backgrond.png");
-             min-height: 700px;
+             height: 100%;
              p{
                width: 100%;
                position: absolute;
@@ -20,10 +21,11 @@
                letter-spacing: 0;
                line-height: 86px;
              }
-
          }
          .right-wrap{
-                .content-wrap{
+                 height: 100%;
+                 background: #fff;
+                .content-out{
                    min-width: 400px;
                    padding-top:141px;
                    padding-left: 136px;
@@ -110,7 +112,6 @@
                   }
                 }
          }
-
       }
 }
 @media (max-width: 1200px) {
@@ -127,7 +128,7 @@
 
       }
       .right-wrap{
-        .content-wrap{
+        .content-out{
           padding-left: 106px;
         }
       }
@@ -149,7 +150,7 @@
 
       }
       .right-wrap{
-        .content-wrap{
+        .content-out{
           padding-left: 40px;
           div {
             width: 340px;
@@ -170,7 +171,7 @@
       .right-wrap{
         float: none;
         width: 100%;
-        .content-wrap{
+        .content-out{
           width: 60%;
           float: none;
           padding-left: 0;

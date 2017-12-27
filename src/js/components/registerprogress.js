@@ -10,6 +10,7 @@ let logincheck = {
     props : ['childMsg','registerEmail'],
     data: function() {
         return {
+            remail:"",
             haschosen:false,
             nowTab:3,//0:发邮件表单 1:重置提示  2:重置成功: 3:注册成功 4:失效提示 5:邮件发送提示, 6.注册成功邮箱确认提示页
             emailerror:0,
@@ -29,7 +30,7 @@ let logincheck = {
             pageBus.$emit('change','accounttip');
         },
         toSendEmail(){
-            var self=this,email = $('#email'),tem = {},check = true;
+            var self=this,email = $('#remail'),tem = {},check = true;
             var regEmail =/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/g,regPass=/(?![0-9A-Z]+$)(?![0-9a-z]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8}$/g;
             this.emailerror=0;
             this.emailempty=0;
@@ -84,7 +85,7 @@ let logincheck = {
             var paraObj = {
                 newPassword:arg['password']
             };
-            //拦截设置,模拟请求在error完成交互
+          /*  //拦截设置,模拟请求在error完成交互
             Axios.interceptors.response.use(function (response){
                 return response;
             }, function (error){
@@ -112,7 +113,7 @@ let logincheck = {
                     }
                 };
                 return Promise.reject(testSuccess1);
-            });
+            });*/
             Axios.get('/user_account.act?cmd=resetPassword&',{params:paraObj})
                 .then(function (response) {
                     let cuData =  response.data;
@@ -138,10 +139,14 @@ let logincheck = {
             Axios.get('/user_account.act?cmd=getBackPasswordSendEmail&',{params:paraObj})
                 .then(function (response) {
                     var cuData =  response.data;
+                    if(response.data.sucess){ //后台返回拼错单词success
+                        self.nowTab = 1
+                    }else{
+                        alert(response.data.message)
+                    }
                 })
                 .catch(function (error) {
                     console.info(error)
-                    self.nowTab = 1
                 });
         },
         toLogin(){

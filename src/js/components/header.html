@@ -36,7 +36,16 @@
                 <li class="icon-li"><a class="b"></a></li>
                 <li class="icon-li"><a class="c"></a></li>
                 <li class="icon-li"><a class="d"></a></li>
-                <li class="icon-li"><a class="e"></a></li>
+                <li class="icon-li user">
+                    <a class="e"></a>
+                    <ul class="sub-menu">
+                        <li><a href="usersystem.html?main=0">Account</a></li>
+                        <li><a href="usersystem.html?main=1">Security</a></li>
+                        <li><a href="usersystem.html?main=2">Notification</a></li>
+                        <li><a href="usersystem.html?main=3">Verification</a></li>
+                        <li><a href="usersystem.html?main=4">Address Book</a></li>
+                    </ul>
+                </li>
             </ul>
             <transition name="slide-fade">
                 <ul class="mobile-nav" v-if="open" @click="open=!open">

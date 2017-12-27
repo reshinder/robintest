@@ -1,7 +1,7 @@
 import $ from '../lib/jquery-3.2.1.min';
 import Axios from '../common/axios_default';
 import pageBus from '../common/bus'
-
+import helper from '../common/chelper'
 import Vue from '../lib/vue.js';
 
 let logindefault = {
@@ -10,7 +10,7 @@ let logindefault = {
         <p>SUPERBIT<br>SUPER LIFE</p>
     </div>
     <div class="right-wrap col-lg-6 col-md-6 col-sm-6">
-        <div class="row  content-wrap">
+        <div class="row  content-out">
             <h2>Log in</h2>
             <form id="loginForm">
                 <div class="input-wrap">
@@ -59,13 +59,20 @@ let logindefault = {
         }
     },
     methods: {
-        init:function(){},
+        init:function(){
+            this.fixView()
+        },
         toggleTabs(){
             location.href='register.html?main=2&sub=0'
         },
         ame:function(){},
         eve:function(){
             pageBus.$emit('change','accounttip');
+        },
+        fixView(){
+            var header = $('.head-wrap').outerHeight(true),footer = $('.footer-e').outerHeight(true);
+            $('.content-wrap').css('height',$(window).height()-(header+footer))
+
         },
 
         remoteAction: function (arg) {
@@ -74,41 +81,12 @@ let logindefault = {
                 loginName:arg['email'],
                 password:arg['password'],
             };
-            //拦截设置,模拟请求在error完成交互
-            Axios.interceptors.response.use(function (response){
-                return response;
-            }, function (error){
-                //已经设置，进入验证页面
-                let testSuccess1 = {
-                            "data":{
-                                "success":true,
-                                "data":{
-                                    "data":{
-                                        "execute":false,
-                                        "mode":"",
-                                        "securityAuthentication":2,//1短信，2谷歌
-                                        "identifier":"aaa"
-                                    }
-                                }
-                            }
-                };
-                //未设置，直接进入交易界面
-                let testSuccess2 = {
-                    "data":{
-                        "success":true,
-                        "data":{
-                            "execute":true
-                        }
-                    }
-                };
-                //return Promise.reject(testSuccess1);
-                return Promise.reject(error);
-            });
             Axios.get('/user_account.act?cmd=login&',{params:paraObj})
                 .then(function (response) {
                     let cuData = response.data;
                     if(cuData.success&&!cuData.data.execute){ //已经设置，进入验证页面
-                        self.$emit('logincheck',{main:cuData.data.data.securityAuthentication})
+                        helper.setItem('identifier',cuData.data.identifier);
+                        self.$emit('logincheck',{main:cuData.data.securityAuthentication})
                     }else{ //未设置，进入交易页
                         location.href = 'trade.html'
                     }

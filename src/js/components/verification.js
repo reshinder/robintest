@@ -31,18 +31,9 @@ const dictionary = {
         }
     }
 };
-
 Validator.updateDictionary(dictionary);
 
-
-
 let template= require('./verification.html');
-Axios.defaults.baseURL = 'http://live.ksmobile.net'
-
-
-
-
-
 let verification = {
     template: template,
     data: function() {

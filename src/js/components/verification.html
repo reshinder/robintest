@@ -82,8 +82,9 @@
         <div class="input-row">
             <div class="input-out">
                 <label>Expiration date</label>
-                <div class="input-inner">
-                    <input type="text" name="expiradate" id="expiradate" v-validate="'required'" data-vv-delay="500" value="" />
+                <div class="input-inner date-out">
+                    <span class="date-icon"></span>
+                    <input type="text" name="expiradate" id="expiradate" v-validate="'required'" placeholder="2017-12-20" data-vv-delay="500" value="" />
                     <i :class="{'bottom-line':true,'to-red':errors.has('form-1.expiradate')}"></i>
                     <transition name="error-tip" v-if="errors.has('form-1.expiradate')">
                         <span class="is-danger">{{ errors.first('form-1.expiradate') }}</span>
@@ -95,13 +96,14 @@
         card is in the valid period</p>
         <div class="upload-out">
             <div class="upload" v-if="idcliked">
-                 <span class="u-out cup">Upload<input type="file" name="nfp" id="nfp" v-validate="'pngBig'" data-vv-delay="500"  @change="changeHandler($event,1,'nf')" /></span>
+                 <span class="u-out cup">Upload<input type="file" name="nfp" id="nfp"  @change="changeHandler($event,1,'nf')" /></span>
                  <div class="png-input">
                      <input type="text" class="fg" id="nf"  placeholder="National Id card front" readonly="readonly" />
-                     <i :class="{'bottom-line':true,'to-red':errors.has('nfp')}"></i>
-                     <transition name="error-tip" v-if="errors.has('nfp')">
-                         <span class="is-danger">{{ errors.first('nfp') }}</span>
-                     </transition>
+                    <!-- <transition name="error-tip" v-if="nopic1||toobig1">
+                         <span class="is-danger" v-if="nopic1">非图片文件</span>
+                         <span class="is-danger" v-if="toobig1">图片不能大于4M</span>
+                     </transition>-->
+
                  </div>
             </div>
             <div class="upload" v-if="idcliked">

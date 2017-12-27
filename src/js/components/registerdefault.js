@@ -77,19 +77,18 @@ let registerdefault = {
                     email:arg['email'],
                     password:arg['password'],
                 };
-
             Axios.get('/user_account.act?cmd=registerByEmail&',{params:paraObj})
                 .then(function (response) {
                     var cuData =  response.data;
                     self.$emit("registertip",{main:2,sub:6,email:self.email})
-
                 })
                 .catch(function (response) {
                     console.error(response)
                 });
         },
         createAction(){
-            let email = $("#email").val().trim(),password = $("#password").val().trim(),confirmword = $("#confirmword").val().trim(),
+
+            let self=this, email = $("#email").val().trim(),password = $("#password").val().trim(),confirmword = $("#confirmword").val().trim(),
                 regEmail =/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/g,regPass=/(?![0-9A-Z]+$)(?![0-9a-z]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8}$/g,
                 check1 = true, check2 = true, check3 = true;
             this.emailerror=0;

@@ -40,7 +40,7 @@ let account = {
                 <td class="bc pl50 cup" @click.prevent.stop="toSecurityOpen(1)">Bind</td>
             </tr>
         </table>
-        <p class="small swallow-green"><span class="why"></span>2FA and SMS only need to complete a certification</p>
+        <p class="small swallow-green cup" @click.prevent.stop=toSecurityOpen(0)><span class="why"></span>2FA and SMS only need to complete a certification</p>
     </div>
     
     <div class="tab-unit" v-if="securityAuthentication!=0">
@@ -114,6 +114,7 @@ let account = {
             pageBus.$emit('change',index);
         },
         toSecurityOpen(index){
+            console.log(index)
             this.$emit("totherconpnents",{main:1,st:index}); //组件大类， st:传到security的标识值1,phone 2;2fa
         },
         toVerifyOpen(index){
@@ -124,11 +125,8 @@ let account = {
         },
         getBaseInfo() {
             var self = this;
-            var paraObj = {
-                identifier:"",
-            };
 
-            //拦截设置,模拟请求在error完成交互
+         /*   //拦截设置,模拟请求在error完成交互
             Axios.interceptors.response.use(function (response){
                 return response;
             }, function (error){
@@ -138,31 +136,30 @@ let account = {
                         "success":true,
                         "data":{
                             "userId":"5556",
-                            "email":"test@test.com",
+                            "email":"test1@test.com",
                         }
                     }
                 };
                 //失败
                 let testSuccess2 = {
-                    "data":{
+                    "data":{2FA and SMS only need to complete a certification
                         "success":false,
                         "code":"US707", //错误码
                         "message":"错误信息"
                     }
                 };
                 return Promise.reject(testSuccess1);
-            });
-            Axios.get('/user_account?cmd=getUserBaseInfo&',{params:paraObj})
+            });*/
+            Axios.get('/user_account?cmd=getUserBaseInfo')
                 .then(function (response) {
-                    let cuData =  response.data;
-                })
-                .catch(function (response) {
                     let cuData = response.data;
                     if(cuData.success){ //成功
-                         self.email = cuData.data.email;
+                        self.email = cuData.data.email;
                     }else{ //失败
 
                     }
+                })
+                .catch(function (response) {
 
                 });
         },

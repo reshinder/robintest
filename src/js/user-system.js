@@ -46,6 +46,10 @@ var app = new Vue({
         },
         init(){
             let self = this;
+            if(helper.getQueryString('main')!=""){
+                this.main = helper.getQueryString('main');
+            }
+
         },
         toggleTabs (index) {
             this.main = index;

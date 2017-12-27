@@ -42,7 +42,9 @@ var sidebar = {
                 }else{
                    alert(response.data.message)
                 }
-            })
+            }).catch(function (response) {
+              console.log(response)
+          });
 
         },
         getTickerCmd(){

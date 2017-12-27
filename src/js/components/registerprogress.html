@@ -2,7 +2,7 @@
     <div class="unit resetword" v-if="nowTab==0">
         <h1>Request Password Request</h1>
         <div class="input-out">
-            <input id="email" class="email"  type="email" name="email" value="" placeholder="Email address"  />
+            <input id="remail" type="email" v-model="remail" value="" placeholder="Email address"  />
             <div class="bottom-line" :class="this.emailerror==1?'to-red':''"></div>
             <transition name="error-tip" v-if="emailerror==1&&emailempty==1">
                 <p class="tip-p">Please enter your Email address.</p>
@@ -22,7 +22,7 @@
     <div class="unit resetwordtip" v-if="nowTab==1">
         <h1>Request Password Request</h1>
         <p>An email has been sent with a link to reset your password.</p>
-        <p>We hava sent a reset password email 13333@qq.com. Please check it to proceed with the password reset process</p>
+        <p>We hava sent a reset password email {{remail}}. Please check it to proceed with the password reset process</p>
         <p>If you have noe received your email within 5 minutes,please check the following:</p>
         <ul>
             <li>check if you hava the correct email</li>
