@@ -65,13 +65,31 @@ let sidemain = {
            this.getUnCompleteOrdersCmd();
            this.getRecentTradeRecordsCmd();
            this.registDepth();
+
+           // setInterval(function(){
+           //   this.getCompleteOrdersCmd();
+           //   this.getUnCompleteOrdersCmd();
+           // }, 1000*1);
+
+           $(".arrow").toggle(
+             function(){
+              $(this).removeClass("down-arrow")
+              $(this).addClass("up-arrow")
+              $(this).parent().siblings().hide()
+           },
+           function(){
+              $(this).removeClass("up-arrow")
+              $(this).addClass("down-arrow")
+              $(this).parent().siblings().show();
+           }
+         )
         },
         registDepth(){
             var that=this;
             that.websocket = new WebSocket("ws://106.14.210.142:90/mkapi/ws");
             that.websocket.onopen = function(){
                 console.log("websocket open");
-                that.websocket.send('[{"type":"subHq","event":"depth","param":{"businessType":"swap-btc-cny","size":15, "dType":0}}]');
+                that.websocket.send('[{"type":"subHq","event":"depth","param":{"businessType":"coin-usd-btc","size":15, "dType":0}}]');
             }
             that.websocket.inclose = function(){
                 console.log('websocket close');
@@ -148,7 +166,7 @@ let sidemain = {
                 if(response.data.sucess){
                     that.recentTradeRecords=response.data.data;
                 }else{
-                   alert(response.data.message)
+                   //alert(response.data.message)
                 }
             })
         },
@@ -160,7 +178,7 @@ let sidemain = {
                 if(response.data.sucess){
                     that.unCompleteOrders=response.data.data;
                 }else{
-                   alert(response.data.message)
+                   //alert(response.data.message)
                 }
             })
         },
@@ -171,7 +189,7 @@ let sidemain = {
                 if(response.data.sucess){
                     that.completeOrders=response.data.data;
                 }else{
-                   alert(response.data.message)
+                    alert(response.data.message)
                 }
             })
         },
@@ -192,12 +210,23 @@ let sidemain = {
         eve:function(arg){
             pageBus.$emit('change',arg);
         },
-    },
-    created: function() {
 
     },
+    created: function() {
+       var that=this;
+       pageBus.$on('changeCoin', target => {
+            that.busitype=target
+
+        });
+        pageBus.$on('changeDelegleOrder', target => {
+              console.log(target);
+              that.getUnCompleteOrdersCmd();
+              that.getCompleteOrdersCmd();
+         });
+    },
     mounted: function() {
-        this.init()
+        this.init();
+
     }
 };
 
