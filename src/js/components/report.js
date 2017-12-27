@@ -10,19 +10,19 @@ let report = {
     template: template,
     data: function() {
         return{
-            subReport:0
+
         }
     },
     methods: {
-        init:function(){}
+        init:function(){
+
+        }
     },
     created: function() {
 
     },
     mounted: function() {
-        console.log("^^^^")
-        console.log(this.subMsg)
-        this.subReport = this.subMsg
+      this.init();
     }
 };
 
