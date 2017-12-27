@@ -23,7 +23,7 @@ let account = {
             <span class="fc">security level:</span>
             <span></span>
         </div>
-        <table>
+        <table class="table-set">
             <tr>
                 <td>password</td>
                 <td>********</td>
@@ -49,7 +49,7 @@ let account = {
             <span class="fc">verification passed</span>
             <span></span>
         </div>
-        <table>
+          <table class="table-set">
             <tr>
                 <td>Name: {{name}}</td>
                 <td>Nationality: {{nationality}}</td>
@@ -67,7 +67,7 @@ let account = {
             <span class="fc">security level:</span>
             <span></span>
         </div>
-        <table>
+          <table class="table-set">
             <tr>
                 <td>password</td>
                 <td>********</td>

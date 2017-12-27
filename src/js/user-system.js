@@ -13,15 +13,18 @@ import security from './components/security.js';
 import notification from './components/notification.js';
 import verification from './components/verification.js';
 import addressbook from './components/addressbook.js';
+import report from './components/report.js';
 
 import i18n from '../i18n/i18n.js'; // 多语言
 var app = new Vue({
     i18n,
     el: '#pageHome',
     data: {
-        main: 3, //0:account; 1:security; 2:notification; 3:verification 4:addressbook;
+        main: 5, //0:account; 1:security; 2:notification; 3:verification 4:addressbook,5:report;
         sub:0,
         st:0,//安全组件默认认证类型 0 无1，phone 2.TFA
+        reportsTransform :false,
+        subReport:0,
 
     },
     components: {
@@ -32,7 +35,8 @@ var app = new Vue({
         security: security,
         notification: notification,
         addressbook: addressbook,
-        verification: verification
+        verification: verification,
+        report: report
     },
     created:function(){
 
@@ -53,6 +57,10 @@ var app = new Vue({
         },
         toggleTabs (index) {
             this.main = index;
+        },
+        subtoggleTabs(arg){
+            console.log(arg)
+            this.subReport = arg;
         },
         resetcon(arg){
             this.main = arg.main;

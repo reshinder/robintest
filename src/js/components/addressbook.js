@@ -4,7 +4,7 @@ import Vue from '../lib/vue.js';
 let addressbook = {
     template: `<div class="address-book">
     <h2>Currency Addresses</h2>
-    <table>
+    <table class="table-set">
         <thead>
          <tr>
             <th>Currency</th>

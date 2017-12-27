@@ -12,7 +12,7 @@
 <body>
 <div class="pageHome" id="pageHome">
     <headerview></headerview>
-    <div class="container content-wrap">
+    <div class="container content-wrap user-content">
         <div class="row">
             <div class="col-md-2 l-panel">
                 <ul>
@@ -21,6 +21,19 @@
                     <li @click.prevnt.stop="toggleTabs(2)" :class="{active:main==2}">{{$t('lang.notification')}}</li>
                     <li @click.prevnt.stop="toggleTabs(3)" :class="{active:main==3}">{{$t('lang.verification')}}</li>
                     <li @click.prevnt.stop="toggleTabs(4)" :class="{active:main==4}">{{$t('lang.address_book')}}</li>
+                    <li @click.prevnt.stop="toggleTabs(5);reportsTransform=!reportsTransform" :class="{report:1,active:main==5}">
+                        <span>Report</span><span class="arrow down-arrow"></span>
+                        <transtion name="slider-show" v-if="reportsTransform==true">
+                            <ul class="report-list">
+                                <li @click.prevnt.stop="subtoggleTabs(0)" :class="{active:subReport==0}">Balance</li>
+                                <li @click.prevnt.stop="subtoggleTabs(1)" :class="{active:subReport==1}">Order Histrory</li>
+                                <li @click.prevnt.stop="subtoggleTabs(2)" :class="{active:subReport==2}">Deposit</li>
+                                <li @click.prevnt.stop="subtoggleTabs(3)" :class="{active:subReport==3}">Withdraw</li>
+                            </ul>
+                        </transtion>
+
+
+                    </li>
                 </ul>
             </div>
 
@@ -31,6 +44,7 @@
                     <notification v-if="main==2"></notification>
                     <verification v-if="main==3"></verification>
                     <addressbook v-if="main==4"></addressbook>
+                    <report v-if="main==5" :sub-msg="subReport"></report>
                 </transition>
             </div>
         </div>
