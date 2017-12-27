@@ -3,13 +3,13 @@
         <div class="top-title clearfix">
             <span class="c-logo"></span>
             <div class="fl side_zb_wrap">
-                <em class="bs">BTC/USD</em>
+                <em class="bs">{{this.busitype|getCoinType(0)}}/{{this.busitype|getCoinType(1)}}</em>
                 <em class="side_zb"><i>High：</i><i class="jt_num">{{ticker.high| dataformat(2)}}</i></em>
                 <em class="side_zb"><i>Low： </i><i class="jt_num">{{ticker.low| dataformat(2)}}</i></em>
             </div>
             <span class="pull-right">
                 <span class="coin-value">{{ticker.last|dataformat(2)}}</span><span class="s-arrow">{{ticker.float*100|dataformat(4)}}%</span>
-                <i><b>VOL</b> {{ticker.vol|dataformat(2)}} BTC</i>
+                <i><b>VOL</b> {{ticker.vol|dataformat(2)}} {{this.busitype|getCoinType(0)}}</i>
             </span>
         </div>
         <div class="tickers-table ">
@@ -30,7 +30,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for='item in tickerArary'>
+                    <tr v-for='item in tickerArary' @click.stop.prevent="changeCoinEvent($event,item.busitype)">
                         <td>
                             <span class="BTC-icon"></span>
                             <span>{{item.busitype | getCoinType(0)}}</span>

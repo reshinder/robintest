@@ -151,7 +151,7 @@
                                     <td class="tl">
                                         <span>{{item.createTime|dateTimeFormat('yyyy-MM-dd hh:mm:ss')}}</span>
                                     </td>
-                                    <td class="delete-td">
+                                    <td class="delete-td" @click.stop.prevent="deleteOrder($event)">
                                         <span></span>
                                     </td>
                                 </tr>

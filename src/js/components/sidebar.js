@@ -26,7 +26,6 @@ var sidebar = {
         }
     },
     methods: {
-
         init:function(){
           var that=this;
           that.loginCmd();
@@ -40,6 +39,7 @@ var sidebar = {
                that.getTickerAllCmd();
            }, 1000*60);
         },
+
         getBalancesCmd(){
           var that=this;
           axios.get('userFund.act?cmd=getUserAllAsset')
@@ -47,7 +47,7 @@ var sidebar = {
                 if(response.data.sucess){
                     that.balances=response.data.data;
                 }else{
-                   alert(response.data.message)
+                   //alert(response.data.message)
                 }
             }).catch(function (response) {
               console.log(response)
@@ -81,7 +81,7 @@ var sidebar = {
 
         getTickerCmd(){
           var that=this;
-          axios.get('cointrade.act?cmd=getTicker&busitype=coin-usd-btc')
+          axios.get('cointrade.act?cmd=getTicker&busitype='+this.busitype)
             .then(function (response) {
                 if(response.data.sucess){
                     that.ticker=response.data.data;
@@ -144,6 +144,7 @@ var sidebar = {
           axios.get('cointrade.act?cmd=placeBuyOrder&busitype=coin-usd-btc&price='+that.price+"&amount="+that.amount)
            .then(function (response) {
               if(response.data.sucess){
+                pageBus.$emit('changeDelegleOrder', "buy");
                 //更新资产
                 that.getBalancesCmd();
                 that.getSumAssetToUsdCmd();
@@ -155,7 +156,7 @@ var sidebar = {
         },
         sellEvent:function(event){
           var that=this;
-
+             pageBus.$emit('changeDelegleOrder', "sell");
           //获取Coin账户信息
           axios.get('cointrade.act?cmd=placeSellOrder&busitype=coin-usd-btc&price='+this.price+"&amount="+this.amount)
           .then(function (response) {
@@ -177,9 +178,16 @@ var sidebar = {
         eve: function () {
             pageBus.$emit('change', 'accounttip');
         },
+        changeCoinEvent:function(event,type){
+            this.busitype=type;
+            this.getTickerCmd();
+            pageBus.$emit('changeCoin', this.busitype);
+
+        }
     },
     created: function() {
-        this.init()
+        this.init();
+
     },
     filters:{      //数据过滤器
         dataformat:function(value,num){

@@ -65,6 +65,12 @@ let sidemain = {
            this.getUnCompleteOrdersCmd();
            this.getRecentTradeRecordsCmd();
            this.registDepth();
+
+           // setInterval(function(){
+           //   this.getCompleteOrdersCmd();
+           //   this.getUnCompleteOrdersCmd();
+           // }, 1000*1);
+
            $(".arrow").toggle(
              function(){
               $(this).removeClass("down-arrow")
@@ -160,7 +166,7 @@ let sidemain = {
                 if(response.data.sucess){
                     that.recentTradeRecords=response.data.data;
                 }else{
-                   alert(response.data.message)
+                   //alert(response.data.message)
                 }
             })
         },
@@ -172,7 +178,7 @@ let sidemain = {
                 if(response.data.sucess){
                     that.unCompleteOrders=response.data.data;
                 }else{
-                   alert(response.data.message)
+                   //alert(response.data.message)
                 }
             })
         },
@@ -183,7 +189,7 @@ let sidemain = {
                 if(response.data.sucess){
                     that.completeOrders=response.data.data;
                 }else{
-                   alert(response.data.message)
+                    alert(response.data.message)
                 }
             })
         },
@@ -204,12 +210,23 @@ let sidemain = {
         eve:function(arg){
             pageBus.$emit('change',arg);
         },
-    },
-    created: function() {
 
     },
+    created: function() {
+       var that=this;
+       pageBus.$on('changeCoin', target => {
+            that.busitype=target
+
+        });
+        pageBus.$on('changeDelegleOrder', target => {
+              console.log(target);
+              that.getUnCompleteOrdersCmd();
+              that.getCompleteOrdersCmd();
+         });
+    },
     mounted: function() {
-        this.init()
+        this.init();
+
     }
 };
 
