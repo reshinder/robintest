@@ -83,7 +83,7 @@ let security = {
                 };
                 return Promise.reject(testSuccess1);
             });
-            Axios.get('/user_account?cmd=getUserSafeInfo&',{params:paraObj})
+            Axios.get('/user_account.act?cmd=getUserSafeInfo&',{params:paraObj})
                 .then(function (response) {
                     let cuData = response.data;
                     if(cuData.success){ //成功

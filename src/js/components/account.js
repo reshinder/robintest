@@ -150,7 +150,7 @@ let account = {
                 };
                 return Promise.reject(testSuccess1);
             });*/
-            Axios.get('/user_account?cmd=getUserBaseInfo')
+            Axios.get('/user_account.act?cmd=getUserBaseInfo')
                 .then(function (response) {
                     let cuData = response.data;
                     if(cuData.success){ //成功
@@ -169,7 +169,7 @@ let account = {
                 identifier:"",
             };
 
-            //拦截设置,模拟请求在error完成交互
+           /* //拦截设置,模拟请求在error完成交互
             Axios.interceptors.response.use(function (response){
                 return response;
             }, function (error){
@@ -202,12 +202,9 @@ let account = {
                     }
                 };
                 return Promise.reject(testSuccess1);
-            });
-            Axios.get('/user_account?cmd=getUserVerificationInfo&',{params:paraObj})
+            });*/
+            Axios.get('/user_account.act?cmd=getUserVerificationInfo&',{params:paraObj})
                 .then(function (response) {
-                    let cuData =  response.data;
-                })
-                .catch(function (response) {
                     let cuData = response.data;
                     if(cuData.success){ //成功
                         self.name = cuData.data.givenName+""+cuData.data.familyName;
@@ -217,6 +214,9 @@ let account = {
                     }else{ //失败
 
                     }
+                })
+                .catch(function (response) {
+
 
                 });
         },
@@ -226,7 +226,7 @@ let account = {
                 identifier:"",
             };
 
-            //拦截设置,模拟请求在error完成交互
+         /*   //拦截设置,模拟请求在error完成交互
             Axios.interceptors.response.use(function (response){
                 return response;
             }, function (error){
@@ -250,19 +250,19 @@ let account = {
                     }
                 };
                 return Promise.reject(testSuccess1);
-            });
-            Axios.get('/user_account?cmd=getUserSafeInfo&',{params:paraObj})
+            });*/
+            Axios.get('/user_account.act?cmd=getUserSafeInfo&',{params:paraObj})
                 .then(function (response) {
-                    let cuData =  response.data;
-                })
-                .catch(function (response) {
                     let cuData = response.data;
                     if(cuData.success){ //成功
-                       self.securityAuthentication = cuData.data.securityAuthentication;
+                        self.securityAuthentication = cuData.data.securityAuthentication;
 
                     }else{ //失败
 
                     }
+                })
+                .catch(function (response) {
+
 
                 });
         },

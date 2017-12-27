@@ -139,7 +139,7 @@ let notification = {
                 };
                 return Promise.reject(testSuccess1);
             });
-            Axios.get('/user_account?cmd=emailNotificationSet&',{params:paraObj})
+            Axios.get('/user_account.act?cmd=emailNotificationSet&',{params:paraObj})
                 .then(function (response) {
                     let cuData =  response.data;
                 })
