@@ -1,3 +1,2 @@
-/**
- * Created by DELL on 2017/12/28.
- */
+require('../../css/deposit.less');
+require('../../js/deposit.js');

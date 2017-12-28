@@ -1,0 +1,37 @@
+<div class="modal-out">
+    <div class="modal-backdrop" @webkitTransitionEnd="ame()"></div>
+    <div id="modal" class="modal">
+        <span class="close" @click.prevent.stop="closeTip()"></span>
+        <div class="modal-content deposit-tip" v-if="showpart == 0">
+            <div class="modal-header">
+                <h3>USD-in & Crypto-out is not allowed</h3>
+            </div>
+            <div class="modal-body">
+                <p class="only-p">Please be aware that for the security of every users.below 3ways are allowed</p>
+                <ul class="aware-items">
+                    <li>Cypto-in and Crypto-out</li>
+                    <li>Cypto-in andUSD-out</li>
+                    <li>USD-in and USD-out</li>
+                </ul>
+                <p class="only-p">Once you have deposit with USD,cryptocurrency withdraw is NOT Allowed.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="okbtn" @click.prevent.stop="closeTip()">ok</button>
+            </div>
+        </div>
+        <div class="modal-content qr-tip" v-if="showpart == 1">
+            <div class="modal-header">
+                <h3>Bitcoin Deposit Address</h3>
+            </div>
+            <div class="modal-body">
+                <div class="qr-out">
+                    <img src="" />
+                </div>
+                <p class="qr-letter">dedededededededed</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

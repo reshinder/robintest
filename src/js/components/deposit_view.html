@@ -1,0 +1,472 @@
+<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 slider-content">
+     <div class="slider-unit" v-if="current==0">
+         <div class="row-unit">
+             <p class="action-tip">
+                 USD Deposit needs you to complete Verification.USD Deposit needs you to complete Verification.USD Deposit needs you to complete Verification.USD Deposit needs you to complete Verification.USD Deposit needs you to complete Verification.USD Deposit needs you to complete Verification.USD Deposit needs you to complete Verification.USD Deposit needs you to complete Verification.USD Deposit needs you to complete Verification.USD Deposit needs you to complete Verification.USD Deposit needs you to complete Verification.USD Deposit needs you to complete Verification.USD Deposit needs you to complete Verification.USD Deposit needs you to complete Verification.
+             </p>
+          </div>
+         <div class="row-unit">
+             <div class="title">
+                 <div class="u-out">
+                 <span class="u-title"><span>New</span> <span>Deposit</span></span>
+             </div>
+             </div>
+             <p class="select-tip">Please select the legal tender or digital currency types to be refilled.We will jump to the corresponding page.</p>
+             <div class="reset-btns">
+                 <a class="r-btn" @click="showProgress(4)">US Dollar</a>
+                 <a class="r-btn" @click="showProgress(3)">Bitcoin</a>
+                 <a class="r-btn">Litecoin</a>
+                 <a class="r-btn">Etherenum</a>
+                 <a class="r-btn">Etherenum classic</a>
+             </div>
+         </div>
+         <div class="row-unit">
+             <div class="title">
+                 <div class="u-out">
+                     <span class="u-title"><span>Order</span> <span>History</span></span>
+                 </div>
+
+                 <div class="sub-right">
+                     <div class="right-unit view" @click.prvent.stop="showProgress(2)">View All</div>
+                     <div class="right-unit">
+                         <span class="title-c" v-if="isUSD==true">USD</span>
+                         <span class="title-c" v-else>BTC</span>
+                         <span class="box-arrow" @click.prevent.stop="isUSD=!isUSD"><i class="down_gray_arrow"></i></span>
+                     </div>
+                 </div>
+             </div>
+             <div class="table-out">
+                 <table>
+                     <tbody>
+                     <tr>
+                         <td>
+                             <span class="date">NOV 07</span>
+                             <span class="time">07-1-2017 25:33:20</span>
+                         </td>
+                         <td><span>Partially Confirmed</span></td>
+                         <td><span>0.0133</span><span>BTC</span></td>
+                     </tr>
+                     <tr>
+                         <td>
+                             <span class="date">NOV 07</span>
+                             <span class="time">07-1-2017 25:33:20</span>
+                         </td>
+                         <td><span>Partially Confirmed</span></td>
+                         <td><span>0.0133</span><span>BTC</span></td>
+                     </tr>
+                     <tr>
+                         <td>
+                             <span class="date">NOV 07</span>
+                             <span class="time">07-1-2017 25:33:20</span>
+                         </td>
+                         <td><span>Partially Confirmed</span></td>
+                         <td><span>0.0133</span><span>BTC</span></td>
+                     </tr>
+                     <tr>
+                         <td>
+                             <span class="date">NOV 07</span>
+                             <span class="time">07-1-2017 25:33:20</span>
+                         </td>
+                         <td><span>Partially Confirmed</span></td>
+                         <td><span>0.0133</span><span>BTC</span></td>
+                     </tr>
+                     <tr>
+                         <td>
+                             <span class="date">NOV 07</span>
+                             <span class="time">07-1-2017 25:33:20</span>
+                         </td>
+                         <td><span>Partially Confirmed</span></td>
+                         <td><span>0.0133</span><span>BTC</span></td>
+                     </tr>
+                     </tbody>
+                 </table>
+             </div>
+         </div>
+         <div class="row-unit">
+             <div class="title">
+                     <div class="u-out">
+                         <span class="u-title"><span>Help</span></span>
+                     </div>
+             </div>
+             <ul class="reasons">
+                 <li>Why is my deposit uncomfirmed?</li>
+                 <li>Why is my deposit uncomfirmed?</li>
+                 <li class="active">Why is my deposit uncomfirmed?</li>
+             </ul>
+         </div>
+     </div>
+    <div class="slider-unit deposit-btc" v-if="current==1">
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>Deposit USD</span> <span>_view All</span></span>
+                </div>
+            </div>
+            <div class="table-out">
+                <table>
+                    <thead>
+                    <tr>
+                        <td><span>Time</span></td>
+                        <td><span>Status</span></td>
+                        <td><span>Amount/BTC</span></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span class="f">07-11-2017 15:33:20</span>
+                        </td>
+                        <td>
+                            <span>Pending</span>
+                        </td>
+                        <td>
+                            <span>0.5213</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="f">07-11-2017 15:33:20</span>
+                        </td>
+                        <td>
+                            <span>Computed</span>
+                        </td>
+                        <td>
+                            <span>0.5213</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="f">07-11-2017 15:33:20</span>
+                        </td>
+                        <td>
+                            <span>Pending</span>
+                        </td>
+                        <td>
+                            <span>0.5213</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="f">07-11-2017 15:33:20</span>
+                        </td>
+                        <td>
+                            <span>Computed</span>
+                        </td>
+                        <td>
+                            <span>0.5213</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="f">07-11-2017 15:33:20</span>
+                        </td>
+                        <td>
+                            <span>Pending</span>
+                        </td>
+                        <td>
+                            <span>0.5213</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="f">07-11-2017 15:33:20</span>
+                        </td>
+                        <td>
+                            <span>Computed</span>
+                        </td>
+                        <td>
+                            <span>0.5213</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="slider-unit deposit-btc" v-if="current==2">
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>Deposit BTC</span> <span>_view All</span></span>
+                </div>
+            </div>
+            <div class="table-out">
+                <table>
+                    <thead>
+                    <tr>
+                        <td><span>Time</span></td>
+                        <td><span>Status</span></td>
+                        <td><span>Amount/BTC</span></td>
+                        <td><span>Address</span></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span class="f">07-11-2017 15:33:20</span>
+                        </td>
+                        <td>
+                            <span>Partially Confirmed</span>
+                        </td>
+                        <td>
+                            <span>0.5213</span>
+                        </td>
+                        <td>
+                            <span>ox4566....</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="f">07-11-2017 15:33:20</span>
+                        </td>
+                        <td>
+                            <span>Computed</span>
+                        </td>
+                        <td>
+                            <span>0.5213</span>
+                        </td>
+                        <td>
+                            <span>ox4566....</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="f">07-11-2017 15:33:20</span>
+                        </td>
+                        <td>
+                            <span>Partially Confirmed</span>
+                        </td>
+                        <td>
+                            <span>0.5213</span>
+                        </td>
+                        <td>
+                            <span>ox4566....</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="f">07-11-2017 15:33:20</span>
+                        </td>
+                        <td>
+                            <span>Computed</span>
+                        </td>
+                        <td>
+                            <span>0.5213</span>
+                        </td>
+                        <td>
+                            <span>ox4566....</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="f">07-11-2017 15:33:20</span>
+                        </td>
+                        <td>
+                            <span>Partially Confirmed</span>
+                        </td>
+                        <td>
+                            <span>0.5213</span>
+                        </td>
+                        <td>
+                            <span>ox4566....</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="f">07-11-2017 15:33:20</span>
+                        </td>
+                        <td>
+                            <span>Computed</span>
+                        </td>
+                        <td>
+                            <span>0.5213</span>
+                        </td>
+                        <td>
+                            <span>ox4566....</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="slider-unit despot-coin" v-if="current==3">
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>Deposit</span> <span>_Bitcoin</span></span>
+                </div>
+            </div>
+            <p class="select-tip send-tip">
+                Please send bitcoin to your deposit address displayed below.<br/>
+                To sensure your transaction is confirmed as soon as possible,a minuer transaction fee of at least 0.0003 BTC is recommended.
+            </p>
+            <div class="address-line">
+                <div class="address-info">
+                    <span class="address">Address</span>
+                    <span>ofdfdfdfdfd223Xsdsd</span>
+                </div>
+                <button class="file-btn"  @click="showProgress(7)"></button>
+                <button class="qr-btn" @click="openQRmodal"></button>
+
+            </div>
+            <p class="explain-more">Bitcoin deposits are created after a mininum of 3 confirmation (about 30 minutes,something longer.)</p>
+        </div>
+    </div>
+
+    <div class="slider-unit intro" v-if="current==4">
+        <div class="row-unit">
+            <p class="action-tip">USD-in &Crypto-out is not allowed!</p>
+            <p class="action-tip">Please make sure the name of your bank account is smame to your verified name on our platform!</p>
+        </div>
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>Deposit USD</span> <span>_superCode</span></span>
+                </div>
+            </div>
+            <div class="choose-out">
+                <div class="input-out single-choose"><span class="radio clicked" @click="showProgress(6)"></span><span>SuperCode</span></div>
+                <div class="input-out single-choose"><span class="radio"></span><span>Bank Account</span><span class="s-tip fc">(In development...)</span></div>
+            </div>
+
+        </div>
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>Introduction</span></span>
+                </div>
+            </div>
+            <div class="help-item">
+                <div class="item-out open">
+                    <p><span class="arrow down-arrow"></span><span>What's Supercode?</span></p>
+                    <p class="pc">SuperCode is a trading token on superbit,which is mostly used for USD deposit and transfer.
+                        Each SuperCode is backd 1-to-1 traditional currency held in superbit Limited reservers,which means the price of 1 SuperCode is always 1 USD</p>
+                </div>
+                <div class="item-out open">
+                    <p><span class="arrow down-arrow"></span><span>How to use Supercode?</span></p>
+                    <p class="pc">1.You can get Supercode from Acception dealers in QQ channel.</p>
+                    <p class="pc">2.Please place an order first before containing the dealers.</p>
+                    <p class="pc">3.If you have any quesstions or problems when trading with dealers,please contact our online support or eamil to ####@superbit.com.</p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="slider-unit" v-if="current==5">
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>Deposit _</span> <span>US Dollar</span></span>
+                </div>
+            </div>
+            <p class="select-tip">Your account is not verified.Only Verified accounts can request USD deposit.Please <a href="" class="bc">Verify your account</a></p>
+        </div>
+    </div>
+     <div class="slider-unit" v-if="current==6">
+        <div class="row-unit">
+            <p class="action-tip">USD-in &Crypto-out is not allowed!</p>
+            <p class="action-tip">Please make sure the name of your bank account is smame to your verified name on our platform!</p>
+        </div>
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>Deposit USD</span> <span>_superCode</span></span>
+                </div>
+            </div>
+            <p class="select-tip">choose the online dealer to continue. <span class="fc">(24 hours Supercode exchange)</span></p>
+            <div class="social-numbers">
+                <div class="social-unit">
+                     <i class="icon-line"></i>
+                    <p>Amanda</p>
+                    <p>QQ:33333333</p>
+                </div>
+                <div class="social-unit">
+                    <i class="icon-line"></i>
+                    <p>Amanda</p>
+                    <p>QQ:33333333</p>
+                </div>
+                <div class="social-unit">
+                    <i class="icon-line"></i>
+                    <p>Amanda</p>
+                    <p>QQ:33333333</p>
+                </div>
+                <div class="social-unit">
+                    <i class="icon-line"></i>
+                    <p>Amanda</p>
+                    <p>QQ:33333333</p>
+                </div>
+                <div class="social-unit">
+                    <i class="icon-line"></i>
+                    <p>Amanda</p>
+                    <p>QQ:33333333</p>
+                </div>
+                <div class="social-unit">
+                    <i class="icon-line"></i>
+                    <p>Amanda</p>
+                    <p>QQ:33333333</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>Help</span></span>
+                </div>
+            </div>
+           <div class="help-item">
+               <div class="item-out">
+                   <p><span class="arrow right-arrow"></span><span>meet questions?</span></p>
+                   <p class="pc">if you have any questions or problems when trading with dealers,please concat our online support or email to www@superbit.com</p>
+               </div>
+
+               </p>
+           </div>
+        </div>
+    </div>
+     <div class="slider-unit intro" v-if="current==7">
+        <div class="row-unit">
+            <p class="action-tip">USD-in &Crypto-out is not allowed!</p>
+            <p class="action-tip">Please make sure the name of your bank account is smame to your verified name on our platform!</p>
+        </div>
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>Deposit USD</span> <span>_US Dollar</span></span>
+                </div>
+            </div>
+            <div class="choose-out">
+                <div class="input-out single-choose"><span class="radio clicked"></span><span>X-Code</span></div>
+                <div class="input-out single-choose"><span class="radio"></span><span>Bank Account</span><span class="s-tip fc">(In development...)</span></div>
+            </div>
+
+        </div>
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>Introduction</span></span>
+                </div>
+            </div>
+            <div class="help-item">
+                <div class="item-out open">
+                    <p><span class="arrow down-arrow"></span><span>What's X-Code?</span></p>
+                    <p class="pc">SuperCode is a trading token on superbit,which is mostly used for USD deposit and transfer.
+                        Each SuperCode is backd 1-to-1 traditional currency held in superbit Limited reservers,which means the price of 1 SuperCode is always 1 USD</p>
+                </div>
+                <div class="item-out open">
+                    <p><span class="arrow down-arrow"></span><span>How to use X-Code?</span></p>
+                    <p class="pc">1.You can get Supercode from Acception dealers in QQ channel.</p>
+                    <p class="pc">2.Please place an order first before containing the dealers.</p>
+                    <p class="pc">3.If you have any quesstions or problems when trading with dealers,please contact our online support or eamil to ####@superbit.com.</p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>

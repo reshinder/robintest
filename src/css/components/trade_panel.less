@@ -1,0 +1,650 @@
+.trade-panel {
+  width: 30%;
+  margin-right: 20px;
+  .row.unit-pan {
+    margin-bottom: 10px;
+    background-color: @bgcolor;
+    .top-title {
+      padding-left: 8px;
+      height: 70px;
+      //line-height: 70px;
+      background-color: @blue2;
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        font-family: HelveticaNeue;
+        color: @white;
+        &.c-logo {
+          margin: 10px 10px 0 0;
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+          border: 1px solid @white;
+          float: left;
+          /* background: url("../images/1.png") center center no-repeat;
+           background-size:contain;*/
+        }
+        &.coin-value {
+          font-size: 28px;
+          font-weight: bold;
+          width: 60px;
+        }
+        .s-arrow {
+          margin: 0 10px 0 9.5px;
+          padding-top: 3px;
+          line-height: 28px;
+          height: 28px;
+          color: @green;
+          font-size: 12px;
+          position: relative;
+          &:before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            margin-left: -5px;
+            width: 0;
+            height: 0;
+            border: 4px solid transparent;
+            border-bottom-color: @green;
+          }
+        }
+      }
+
+      .side_zb_wrap {
+        width: 100px;
+        overflow: hidden;
+      }
+
+      em {
+        display: block;
+        color: @white;
+        &.bs {
+          font-size: 16px;
+          padding: 10px 0 3px;
+        }
+        &.side_zb {
+          font-size: 12px;
+          padding-top: 5px;
+          i {
+            opacity: .5;
+            &.jt_num {
+              opacity: .8;
+            }
+          }
+        }
+      }
+
+      .pull-right {
+        padding-top: 7px;
+        width: 150px;
+        text-align: right;
+        i {
+          display: inline-block;
+          vertical-align: middle;
+          padding-top: 15px;
+          font-size: 12px;
+          opacity: .8;
+          b {
+            opacity: .5;
+          }
+        }
+      }
+
+    }
+    &.first-pan {
+      .top-title {
+        padding: 0 10px 0 20px;
+      }
+    }
+    .tickers-table {
+      background-color: @white;
+      padding-bottom: 6px;
+      .top-name {
+        height: 50px;
+        line-height: 50px;
+        position: relative;
+        color: @black;
+        border-bottom: 1px solid #f2f2f2;
+        span {
+          display: inline-block;
+          vertical-align: middle;
+          opacity: 0.9;
+          font-family: HelveticaNeue;
+          font-size: 14px;
+          color: @black;
+        }
+      }
+      .tickers-content {
+        table {
+          width: 100%;
+          border: 0;
+          text-align: center;
+          font-family: HelveticaNeue;
+          font-size: 12px;
+          color: #000;
+          thead {
+            line-height: 32px;
+            tr > td {
+              height: 32px;
+              line-height: 32px;
+              text-align: center;
+              &:hover {
+                background: #e9eef2;
+                span {
+                  color: #294b68;
+                }
+              }
+              span {
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 12px;
+                color: #58728a;
+                &:first-child {
+                  margin-right: 6px
+                }
+              }
+            }
+          }
+          tbody {
+            > tr {
+              &:hover {
+                background-color: #e9eef2;
+                > td {
+                  &:first-child {
+                    background-color: #fff;
+                  }
+                }
+              }
+              > td {
+                padding: 5.5px 3px;
+                &:first-child {
+                  span {
+                    display: inline-block;
+                    vertical-align: middle;
+                    &:first-child {
+                      display: inline-block;
+                      margin-right: 10px;
+                      width: 7px;
+                      height: 14px;
+                    }
+                  }
+                }
+                &:nth-child(2) {
+                  span {
+                    &:last-child {
+                      color: @grey;
+                      opacity: .3;
+                    }
+                  }
+                }
+                &:nth-child(3) {
+                  span {
+                    color: @green;
+                  }
+                }
+                &.fc-green {
+                  span {
+                    color: @green;
+                  }
+                }
+                &.fc-gy {
+                  span {
+                    color: @grey;
+                  }
+                }
+                &.fc-red {
+                  span {
+                    color: @red !important;
+                  }
+
+                }
+              /*  &.BTC-icon {
+                  background-image: url("../images/BTC.png");
+                }
+                &.LTC-icon {
+                  background-image: url("../images/LTC.png");
+                }
+                &.BCH-icon {
+                  background-image: url("../images/BCH.png");
+                }
+                &.ETC-icon {
+                  background-image: url("../images/ETC.png");
+                }
+                &.ETH-icon {
+                  background-image: url("../images/ETH.png");
+
+                }*/
+
+              }
+            }
+          }
+        }
+        &.order-t {
+          padding: 8px 20px 14px 26px;
+        }
+
+        .input-w {
+          .row {
+            margin-bottom: 18px;
+            .price-w {
+              float: left;
+              width: 46%;
+              overflow: hidden;
+              &:first-child {
+                margin-right: 20px;
+              }
+              label {
+                width: 100%;
+                display: block;
+                line-height: 20px;
+                font-size: 12px;
+                span {
+                  color: @lightblue;
+                  display: inline-block;
+                  vertical-align: middle;
+                  &.opa_3 {
+                    margin-left: 4px;
+                    color: @grey;
+                    opacity: .3;
+                  }
+                }
+                .green_cross {
+                  width: 8px;
+                  height: 8px;
+                  border-radius: 50%;
+                  background-color: #2DBB63;
+                  display: inline-block;
+                  vertical-align: middle;
+                  margin-right: 8px;
+                }
+                .red_cross {
+                  width: 8px;
+                  height: 8px;
+                  border-radius: 50%;
+                  background-color: #D94242;
+                  display: inline-block;
+                  vertical-align: middle;
+                }
+              }
+              input {
+                display: block;
+                text-align: left;
+                width: 100%;
+                padding: 0 10px;
+                background: #F2F2F3;
+                opacity: 0.9;
+                font-size: 14px;
+                color: @black;
+                border: 0 solid #E8EAEC;
+                outline: none;
+                height: 32px;
+                line-height: 32px;
+
+              }
+              &.select-t {
+                position: relative;
+                &:after {
+                  content: "";
+                  position: absolute;
+                  right: 20px;
+                  top: 14px;
+                  width: 0;
+                  height: 0;
+                  border: 5px solid transparent;
+                  border-top-color: #616161;
+                }
+
+              }
+            }
+          }
+          .row {
+            &.btns {
+              margin-bottom: 0;
+              button {
+                float: left;
+                width: 46%;
+                height: 32px;
+                background: @red;
+                border: 0;
+                color: @white;
+                border-radius: 2px;
+                font-size: 16px;
+                &:first-child {
+                  margin-right: 20px;
+                  background: @green;
+                }
+              }
+            }
+
+          }
+        }
+        &.balances {
+          padding: 8px 20px 10px 10px;
+          position: relative;
+          .side_balance_tit {
+            text-align: right;
+          }
+          .b-tip {
+            margin: 11px 10px 4px;
+            text-align: right;
+            font-family: HelveticaNeue;
+            font-size: 12px;
+            color: #2E506C;
+            display: inline-block;
+            vertical-align: middle;
+            &.mr30 {
+              margin-right: 55px;
+            }
+          }
+          ul {
+            li {
+              height: 40px;
+              line-height: 40px;
+              padding-left: 12px;
+              padding-right: 8px;
+              span {
+                opacity: 0.7;
+                font-family: HelveticaNeue;
+                font-size: 14px;
+                color: #000000;
+                text-align: right;
+                &:first-child {
+                  float: left;
+                  margin-right: 50px;
+                }
+                &:nth-of-type(2) {
+                  color: #000;
+                  width: 90px;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  display: inline-block;
+                  vertical-align: middle;
+                }
+                &:last-child {
+                  float: right;
+                }
+              }
+              &:hover {
+                background: @hovercolor;
+              }
+              .market_color {
+                opacity: .3;
+              }
+            }
+          }
+
+        }
+      }
+
+    }
+    .slider-part {
+      margin-bottom: 20px;
+      display: none;
+      position: relative;
+      top: 20px;
+      padding: 16px 20px 20px 20px;
+      background-color: @white;
+      width: 100%;
+      .title {
+        line-height: 16px;
+        opacity: 0.9;
+        font-size: 14px;
+        color: #000000;
+
+      }
+      .tab-nav {
+        .clearfix();
+        margin-top: 28px;
+        .tab {
+          float: left;
+          line-height: 36px;
+          height: 36px;
+          width: 46%;
+          text-align: center;
+          background-color: #6c94b0;
+          color: @white;
+          font-size: 14px;
+          &:last-child {
+            float: right;
+          }
+        }
+
+      }
+      ul {
+        margin-top: 22px;
+        li {
+          .clearfix();
+          height: 30px;
+          line-height: 30px;
+          font-family: PingFangSC-Regular;
+          font-size: 14px;
+          color: #000000;
+          > span {
+            float: left;
+            &:last-child {
+              float: right;
+              span {
+                opacity: 1;
+                color: @black;
+                &.tmt {
+                  margin-left: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+    .trade-panel {
+        .row.unit-pan {
+          .top-title {
+            span {
+              display: inline-block;
+              vertical-align: middle;
+              font-family: HelveticaNeue;
+              color: @white;
+              &.c-logo {
+                margin-right: 8px;
+                height: 38px;
+                width: 38px;
+                border-radius: 19px;
+              }
+
+              &.bs {
+                font-size: 18px;
+              }
+              &.coin-value {
+                font-size: 32px;
+              }
+            }
+
+          }
+          .slider-part {
+            display: none;
+          }
+
+        }
+      }
+
+}
+
+@media (max-width: 992px) {
+     .sidebar {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+        .row.unit-pan {
+          margin-bottom: 10px;
+          .top-title {
+            padding-left: 8px;
+            height: 70px;
+            background-color: @blue2;
+            span {
+              &.c-logo {
+                margin-right: 10px;
+                height: 40px;
+                width: 40px;
+                border-radius: 20px;
+                border: 1px solid @white;
+              }
+              &.coin-value {
+                font-size: 24px;
+              }
+            }
+
+          }
+          &.first-pan {
+            .top-title {
+              padding: 0 10px 0 20px;
+            }
+          }
+          .tickers-table {
+            .top-name {
+              height: 50px;
+              line-height: 50px;
+
+            }
+            .tickers-content {
+              table {
+                width: 100%;
+                border: 0;
+                text-align: center;
+                font-family: HelveticaNeue;
+                font-size: 12px;
+                color: #000;
+                thead {
+                  line-height: 32px;
+                  tr > td {
+                    height: 32px;
+                    line-height: 32px;
+                    text-align: center;
+                    &:hover {
+                      background: #7F9EB6;
+                      span {
+                        color: #294b68;
+                      }
+                    }
+                    span {
+                      display: inline-block;
+                      vertical-align: middle;
+                      font-size: 12px;
+                      color: #58728a;
+                      &:first-child {
+                        margin-right: 6px
+                      }
+                      &:last-child {
+                        position: relative;
+                        width: 8px;
+                        height: 6px;
+                        &:before, &:after {
+                          content: "";
+                          position: absolute;
+                          left: 50%;
+                          top: -3px;
+                          margin-left: -6.5px;
+                          width: 0;
+                          height: 0;
+                          border: 3px solid transparent;
+                          border-bottom-color: gray;
+                        }
+                        &:after {
+                          top: 4px;
+                          margin-left: -6.5px;
+                          border: 3px solid transparent;
+                          border-top-color: gray;
+                        }
+                      }
+                    }
+                  }
+                }
+                tbody {
+                  > tr {
+
+                    > td {
+                      padding: 5.5px 3px;
+                      &:first-child {
+                        span {
+                          display: inline-block;
+                          vertical-align: middle;
+                          &:first-child {
+                            display: inline-block;
+                            margin-right: 10px;
+                            width: 7px;
+                            height: 14px;
+                          }
+                        }
+                      }
+                      &:nth-child(2) {
+                        span {
+                          &:last-child {
+                            color: @grey;
+                            opacity: .3;
+                          }
+                        }
+                      }
+                      &:nth-child(3) {
+                        span {
+                          color: @green;
+                        }
+                      }
+                      &.fc-green {
+                        span {
+                          color: @green;
+                        }
+                      }
+                      &.fc-gy {
+                        span {
+                          color: @grey;
+                        }
+                      }
+                      &.fc-red {
+                        span {
+                          color: @red !important;
+                        }
+
+                      }
+
+                    }
+                  }
+                }
+              }
+            }
+
+          }
+          .slider-part {
+            display: none;
+            position: relative;
+            top: 20px;
+            padding: 16px 20px 20px 20px;
+            background-color: @white;
+            width: 100%;
+
+            .tab-nav {
+              .clearfix();
+              margin-top: 28px;
+              .tab {
+                float: left;
+                line-height: 36px;
+                height: 36px;
+                width: 46%;
+                text-align: center;
+                background-color: #6c94b0;
+                color: @white;
+                font-size: 14px;
+                &:last-child {
+                  float: right;
+                }
+              }
+
+            }
+          }
+
+        }
+      }
+}
