@@ -1,2 +1,2 @@
-require('../../css/trade.less');
-require('../../js/trade.js');
+require('../../css/index.less');
+require('../../js/index.js');
