@@ -15,7 +15,7 @@
     line-height: 44px;
     margin-bottom: 20px;
     text-align: center;
-    &.met_slogan{
+    &.met_slogan {
       padding: 50px 0;
       font-size: 42px;
       color: #4c4c4c;
@@ -23,18 +23,25 @@
   }
   p {
     width: 580px;
-    margin: 0 auto 150px;
+    margin: 0 auto;
     font-size: 16px;
     line-height: 24px;
     color: #6f8ea5;
     text-align: center;
+
+    &.bit_pra {
+      margin-bottom: 80px;
+    }
+
     &.index_slogan_desc {
       color: #363636;
-      width:800px;
+      width: 800px;
+      margin-bottom: 150px;
     }
-    &.adv_desc{
-      width:950px;
+    &.adv_desc {
+      width: 950px;
       color: #767676;
+      margin-bottom: 150px;
     }
   }
   .index_top_wrap {
@@ -67,6 +74,18 @@
       .language_col {
         float: left;
         margin: 10px 20px;
+        i {
+          width: 10px;
+          height: 10px;
+          display: inline-block;
+          vertical-align: top;
+          margin-left: 5px;
+          border-left: 1px solid #fff;
+          border-bottom: 1px solid #fff;
+          -webkit-transform: rotate(-50deg);
+          transform: rotate(-50deg);
+          transition: .3s all ease;
+        }
         ul {
           display: none;
         }
@@ -110,20 +129,20 @@
       &:last-of-type {
         margin-right: 0;
       }
-      .per_tar_tit{
+      .per_tar_tit {
         position: absolute;
         left: 20px;
-        top:0;
-        border-top:4px solid #2cb8ac;
+        top: 0;
+        border-top: 4px solid #2cb8ac;
         padding-top: 20px;
       }
-      i{
+      i {
         font-size: 14px;
         display: inline-block;
         vertical-align: top;
         margin-top: 4px;
       }
-      em{
+      em {
         font-size: 30px;
       }
       .tar_arrow {
@@ -149,56 +168,158 @@
     }
   }
 
-  .index_video_wrap{
+  .index_video_wrap {
     text-align: center;
     margin-bottom: 120px;
-    .index_vid_col{
+    .index_vid_col {
       display: inline-block;
       vertical-align: middle;
-      width:474px;
-      height:295px;
+      width: 474px;
+      height: 295px;
       background-color: #6f8ea5;
-      &:first-of-type{
+      &:first-of-type {
         margin-right: 120px;
       }
     }
   }
 
-  .advantage_section{
+  .advantage_section {
     padding: 60px 0;
     overflow: hidden;
     background-color: #f4f4f4;
   }
 
-  .adv_bot_wrap{
+  .adv_bot_wrap {
     text-align: center;
     margin-bottom: 50px;
-    .adv_item{
+    .adv_item {
       float: left;
       margin-right: 15px;
-      width:210px;
-      height:380px;
+      width: 210px;
+      height: 380px;
       background-color: @white;
       padding-top: 60px;
       font-size: 20px;
-      &:last-of-type{
+      &:last-of-type {
         margin-right: 0;
-        width:300px;
+        width: 300px;
         background-color: #21506d;
       }
-      .adv_logo{
-        width:70px;
-        height:70px;
+      .adv_logo {
+        width: 70px;
+        height: 70px;
         background-color: #f3f3f3;
         margin: 0 auto 80px;
       }
     }
   }
 
-  .spread_img{
-    width:100%;
+
+
+  .mountain_wrap{
+    background-color: #2d3136;
+    .spread_img {
+      width: 100%;
+    }
   }
 
+  .slide {
+    height: 530px;
+  }
+
+  .imac_box {
+    background-color: #f4f4f4;
+    margin-bottom: 200px;
+    height:680px;
+    h3 {
+      padding: 60px 0 100px;
+    }
+
+    .mac_wrap{
+      position: relative;
+    }
+
+    ul {
+      li {
+        margin-bottom: 70px;
+        font-size: 16px;
+        color: #4c4c4c;
+        &.active {
+          font-size: 36px;
+          color: #1a1a1a;
+        }
+        span {
+          width: 21px;
+          height: 9px;
+          display: inline-block;
+          vertical-align: middle;
+          background-color: #1f4764;
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .imac_column{
+      position: absolute;
+      right:0;
+      top:270px;
+      width:650px;
+      height:515px;
+      background: url("../images/mac_icon.png") no-repeat;
+      p{
+        width:450px;
+        margin-top: 100px;
+        color: #363636;
+      }
+    }
+  }
+
+  .create_account {
+    background-color: #1f4764;
+    padding-bottom: 50px;
+    h3 {
+      color: @white;
+      padding: 50px 0;
+    }
+    .create_acc_wrap {
+      margin: 0 auto;
+      width: 367px;
+      height: 48px;
+      border-radius: 24px;
+      border: 1px solid #b6b472;
+      border-right: 0;
+      color: @white;
+      font-size: 18px;
+      input {
+        float: left;
+        margin-left: 15px;
+        height: 48px;
+        line-height: 48px;
+        color: #bcc8d0;
+        background-color: transparent;
+        border: none;
+        outline: none;
+      }
+      a {
+        color: @white;
+        width: 132px;
+        height: 48px;
+        line-height: 48px;
+        border-radius: 24px;
+        text-align: center;
+        float: right;
+        background-color: #b6b472;
+      }
+    }
+  }
+
+  .footer {
+    background-color: #2d3136;
+    .copy-right {
+      border-top: 1px solid #2d3136;
+      background-color: #2d3136;
+    }
+  }
 
 }
 
