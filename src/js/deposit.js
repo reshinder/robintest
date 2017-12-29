@@ -6,7 +6,6 @@ import headerview from './components/header.js';
 import footerview from './components/footer.js';
 import trade_panel from './components/trade_panel.js';
 import deposit_view from './components/deposit_view.js';
-import chartview from './components/chartview.js';
 import assetsmodal from './components/assetsmodal.js';
 
 var app = new Vue({
@@ -16,7 +15,6 @@ var app = new Vue({
         footerview: 'footerview'
     },
     components: {
-        chartview: chartview,
         assetsmodal: assetsmodal,
         footerview: footerview,
         headerview: headerview,

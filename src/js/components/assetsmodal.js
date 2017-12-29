@@ -7,7 +7,7 @@ let assetsmodal = {
     template: template,
     data: function() {
         return {
-            showpart:0, // 0 :超级码提示； 1.二维码
+            showpart:0, // 0 :超级码提示； 1.二维码 2:set up authentication
         }
     },
     methods: {
@@ -46,6 +46,7 @@ let assetsmodal = {
         this.init();
         pageBus.$on('change', function (type){
             self.showpart = type;
+            console.log(type)
             $('.modal-out').css('zIndex',1).removeClass('hide-box').addClass('show-box')
         });
 

@@ -31,6 +31,18 @@
             </div>
 
         </div>
+        <div class="modal-content set-up-authentication" v-if="showpart==2">
+            <div class="modal-header">
+                <h3>Set up authentication</h3>
+            </div>
+            <div class="modal-body">
+                <p class="only-p">For the sake of your account safety, Google Authentication or phone authentication is required for large amount withdrawal, and strongly recommended for all the trading and withdrawal process.</p>
+                <p class="only-p">Please set up your Two-factor Authentication for large amount withdrawal.Or you need to reduce your withdrawal amount</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="okbtn" @click.prevent.stop="closeTip()">ok</button>
+            </div>
+        </div>
     </div>
 </div>
 

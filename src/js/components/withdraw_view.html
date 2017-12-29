@@ -1,104 +1,107 @@
 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 slider-content">
-     <div class="slider-unit" v-if="current==0">
-         <div class="row-unit">
-             <p class="action-tip">
-                 USD deposit needs to complete Verification.if you have deposit USD once,cryptocurrency withdraw is not allowed. Diffenent cryptocurrencies have different confirmation times from blockchain to get credited,you need to wait for a minimum time(carious from 5mins-100mins).  </p>
-          </div>
-         <div class="row-unit">
-             <div class="title">
-                 <div class="u-out">
-                 <span class="u-title"><span>New</span> <span>Deposit</span></span>
-             </div>
-             </div>
-             <p class="select-tip">Please select the legal tender or digital currency types to be refilled.We will jump to the corresponding page.</p>
-             <div class="reset-btns">
-                 <a class="r-btn" @click="showProgress(4)">US Dollar</a>
-                 <a class="r-btn" @click="showProgress(3)">Bitcoin</a>
-                 <a class="r-btn">Litecoin</a>
-                 <a class="r-btn">Etherenum</a>
-                 <a class="r-btn">Etherenum classic</a>
-             </div>
-         </div>
-         <div class="row-unit">
-             <div class="title">
-                 <div class="u-out">
-                     <span class="u-title"><span>Order</span> <span>History</span></span>
-                 </div>
+    <div class="slider-unit" v-if="current==0">
+        <div class="row-unit">
+            <p class="action-tip">
+                USD Withdraw needs to complete Verification.if you have deposit USD once,cryptocurrency withdraw is not allowed.
+                Diffenent cryptocurrencies have different confirmation times from blockchain to get credited,you need to wait for a minimum time(carious from 5mins-100mins).
+              </p>
+        </div>
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>New</span> <span>Withdraw</span></span>
+                </div>
+            </div>
+            <p class="select-tip">Please select the legal tender or digital currency types to be refilled.We will jump to the corresponding page.</p>
+            <div class="reset-btns">
+                <a class="r-btn" @click="showProgress(4)">US Dollar</a>
+                <a class="r-btn" @click="showProgress(3)">Bitcoin</a>
+                <a class="r-btn">Litecoin</a>
+                <a class="r-btn">Etherenum</a>
+                <a class="r-btn">Etherenum classic</a>
+            </div>
+        </div>
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>Recent</span> <span>withdrawal</span></span>
+                </div>
 
-                 <div class="sub-right">
-                     <div class="right-unit view" @click.prvent.stop="showProgress(2)">View All</div>
-                     <div class="right-unit">
-                         <span class="title-c" v-if="isUSD==true">USD</span>
-                         <span class="title-c" v-else>BTC</span>
-                         <span class="box-arrow" @click.prevent.stop="isUSD=!isUSD"><i class="down_gray_arrow"></i></span>
-                     </div>
-                 </div>
-             </div>
-             <div class="table-out">
-                 <table>
-                     <tbody>
-                     <tr>
-                         <td>
-                             <span class="date">NOV 07</span>
-                             <span class="time">07-1-2017 25:33:20</span>
-                         </td>
-                         <td><span>Partially Confirmed</span></td>
-                         <td><span>0.0133</span><span>BTC</span></td>
-                     </tr>
-                     <tr>
-                         <td>
-                             <span class="date">NOV 07</span>
-                             <span class="time">07-1-2017 25:33:20</span>
-                         </td>
-                         <td><span>Partially Confirmed</span></td>
-                         <td><span>0.0133</span><span>BTC</span></td>
-                     </tr>
-                     <tr>
-                         <td>
-                             <span class="date">NOV 07</span>
-                             <span class="time">07-1-2017 25:33:20</span>
-                         </td>
-                         <td><span>Partially Confirmed</span></td>
-                         <td><span>0.0133</span><span>BTC</span></td>
-                     </tr>
-                     <tr>
-                         <td>
-                             <span class="date">NOV 07</span>
-                             <span class="time">07-1-2017 25:33:20</span>
-                         </td>
-                         <td><span>Partially Confirmed</span></td>
-                         <td><span>0.0133</span><span>BTC</span></td>
-                     </tr>
-                     <tr>
-                         <td>
-                             <span class="date">NOV 07</span>
-                             <span class="time">07-1-2017 25:33:20</span>
-                         </td>
-                         <td><span>Partially Confirmed</span></td>
-                         <td><span>0.0133</span><span>BTC</span></td>
-                     </tr>
-                     </tbody>
-                 </table>
-             </div>
-         </div>
-         <div class="row-unit">
-             <div class="title">
-                     <div class="u-out">
-                         <span class="u-title"><span>Help</span></span>
-                     </div>
-             </div>
-             <ul class="reasons">
-                 <li>Why is my deposit uncomfirmed?</li>
-                 <li>Why is my deposit uncomfirmed?</li>
-                 <li class="active">Why is my deposit uncomfirmed?</li>
-             </ul>
-         </div>
-     </div>
+                <div class="sub-right">
+                    <div class="right-unit view" @click.prvent.stop="showProgress(2)">View All</div>
+                    <div class="right-unit">
+                        <span class="title-c" v-if="isUSD==true">USD</span>
+                        <span class="title-c" v-else>BTC</span>
+                        <span class="box-arrow" @click.prevent.stop="isUSD=!isUSD"><i class="down_gray_arrow"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="table-out">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span class="date">NOV 07</span>
+                            <span class="time">07-1-2017 25:33:20</span>
+                        </td>
+                        <td><span>Pending</span><span class="pending-icon"></span></td>
+                        <td><span>0.0133</span><span>BTC</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="date">NOV 07</span>
+                            <span class="time">07-1-2017 25:33:20</span>
+                        </td>
+                        <td><span>Partially Confirmed</span><span class="stip">Cancel</span></td>
+                        <td><span>0.0133</span><span>BTC</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="date">NOV 07</span>
+                            <span class="time">07-1-2017 25:33:20</span>
+                        </td>
+                        <td><span>Completed</span></td>
+                        <td><span>0.0133</span><span>BTC</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="date">NOV 07</span>
+                            <span class="time">07-1-2017 25:33:20</span>
+                        </td>
+                        <td><span>Partially Confirmed</span><span class="stip">Cancel</span></td>
+                        <td><span>0.0133</span><span>BTC</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="date">NOV 07</span>
+                            <span class="time">07-1-2017 25:33:20</span>
+                        </td>
+                        <td><span>Completed</span></td>
+                        <td><span>0.0133</span><span>BTC</span></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>Help</span></span>
+                </div>
+            </div>
+            <ul class="reasons">
+                <li>Why is my withdraw uncomfirmed?</li>
+                <li>Why is my withdraw?</li>
+                <li class="active">Help with withdraw?</li>
+            </ul>
+        </div>
+    </div>
     <div class="slider-unit deposit-btc" v-if="current==1">
         <div class="row-unit">
             <div class="title">
                 <div class="u-out">
-                    <span class="u-title"><span>Deposit USD</span> <span>_view All</span></span>
+                    <span class="u-title"><span>Withdraw USD</span> <span>_view All</span></span>
                 </div>
             </div>
             <div class="table-out">
@@ -186,7 +189,7 @@
         <div class="row-unit">
             <div class="title">
                 <div class="u-out">
-                    <span class="u-title"><span>Deposit BTC</span> <span>_view All</span></span>
+                    <span class="u-title"><span>Withdraw BTC</span> <span>_view All</span></span>
                 </div>
             </div>
             <div class="table-out">
@@ -306,14 +309,95 @@
                     <span>ofdfdfdfdfd223Xsdsd</span>
                 </div>
                 <button class="file-btn"  @click="showProgress(7)"></button>
-                <button class="qr-btn" @click="openQRmodal"></button>
+                <button class="qr-btn" @click="openQRmodal(1)"></button>
 
             </div>
             <p class="explain-more">Bitcoin deposits are created after a mininum of 3 confirmation (about 30 minutes,something longer.)</p>
         </div>
     </div>
+    <div class="slider-unit" v-if="current==4">
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>Withdraw _</span> <span>US Dollar</span></span>
+                </div>
+            </div>
+            <p class="select-tip">Your account is not verified.Only Verified accounts can request USD Withdraw.Please <a href="javascript:void(0);" class="bc" @click="openQRmodal(2)">Verify your account</a></p>
+        </div>
+    </div>
 
-    <div class="slider-unit intro" v-if="current==4">
+    <div class="slider-unit withdraw_progress" v-if="current==5">
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>Withdraw USD</span> <span>_Supercode</span></span>
+                </div>
+            </div>
+            <div class="with-progress">
+                <div class="progress-unit">
+                    <span class="num">1</span>
+                    <span class="action">Submit withdraw amount</span>
+                </div>
+                <div class="space"></div>
+                <div class="progress-unit">
+                    <span class="num">2</span>
+                    <span class="action">Contact dealer</span>
+                </div>
+                <div class="space"></div>
+                <div class="progress-unit finished">
+                    <span class="num">3</span>
+                    <span class="action">Withdraw Status</span>
+                </div>
+            </div>
+            <div class="table-out progress-info">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span>Created</span>
+                        </td>
+                        <td><span>Nov10,2017 11:22</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Amount</span>
+                        </td>
+                        <td> <span>20.0000 USD</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Status</span>
+                        </td>
+                      <td>
+                          <span>Reviewing</span>
+                          <span><span class="tip-icon"></span>Your withdraw application is being rewiewed,cannot cancel!</span>
+                      </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Order ID</span>
+                        </td>
+                        <td> <span>201709874</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row-unit">
+            <div class="title">
+                <div class="u-out">
+                    <span class="u-title"><span>Help</span></span>
+                </div>
+            </div>
+            <ul class="reasons">
+                <li>How long does it take for a withdrawal to be processed</li>
+                <li>Where is my withdrawal?</li>
+                <li><span>Still need help?</span>    <span class="bc">Contact dealers</span></li>
+            </ul>
+        </div>
+    </div>
+
+<!--    <div class="slider-unit intro" v-if="current==4">
         <div class="row-unit">
             <p class="action-tip">USD-in &Crypto-out is not allowed!</p>
             <p class="action-tip">Please make sure the name of your bank account is smame to your verified name on our platform!</p>
@@ -354,17 +438,8 @@
         </div>
     </div>
 
-    <div class="slider-unit" v-if="current==5">
-        <div class="row-unit">
-            <div class="title">
-                <div class="u-out">
-                    <span class="u-title"><span>Deposit _</span> <span>US Dollar</span></span>
-                </div>
-            </div>
-            <p class="select-tip">Your account is not verified.Only Verified accounts can request USD deposit.Please <a href="" class="bc">Verify your account</a></p>
-        </div>
-    </div>
-     <div class="slider-unit" v-if="current==6">
+
+    <div class="slider-unit" v-if="current==6">
         <div class="row-unit">
             <p class="action-tip">USD-in &Crypto-out is not allowed!</p>
             <p class="action-tip">Please make sure the name of your bank account is smame to your verified name on our platform!</p>
@@ -378,7 +453,7 @@
             <p class="select-tip">choose the online dealer to continue. <span class="fc">(24 hours Supercode exchange)</span></p>
             <div class="social-numbers">
                 <div class="social-unit">
-                     <i class="icon-line"></i>
+                    <i class="icon-line"></i>
                     <p>Amanda</p>
                     <p>QQ:33333333</p>
                 </div>
@@ -416,17 +491,17 @@
                     <span class="u-title"><span>Help</span></span>
                 </div>
             </div>
-           <div class="help-item">
-               <div class="item-out">
-                   <p><span class="arrow right-arrow"></span><span>meet questions?</span></p>
-                   <p class="pc">if you have any questions or problems when trading with dealers,please concat our online support or email to www@superbit.com</p>
-               </div>
+            <div class="help-item">
+                <div class="item-out">
+                    <p><span class="arrow right-arrow"></span><span>meet questions?</span></p>
+                    <p class="pc">if you have any questions or problems when trading with dealers,please concat our online support or email to www@superbit.com</p>
+                </div>
 
-               </p>
-           </div>
+                </p>
+            </div>
         </div>
     </div>
-     <div class="slider-unit intro" v-if="current==7">
+    <div class="slider-unit intro" v-if="current==7">
         <div class="row-unit">
             <p class="action-tip">USD-in &Crypto-out is not allowed!</p>
             <p class="action-tip">Please make sure the name of your bank account is smame to your verified name on our platform!</p>
@@ -465,7 +540,7 @@
 
             </div>
         </div>
-    </div>
+    </div>-->
 
 
 </div>

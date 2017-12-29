@@ -1,3 +1,2 @@
-/**
- * Created by DELL on 2017/12/28.
- */
+require('../../css/assets.less');
+require('../../js/assets.js');
