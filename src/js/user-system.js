@@ -20,7 +20,7 @@ var app = new Vue({
     i18n,
     el: '#pageHome',
     data: {
-        main: 5, //0:account; 1:security; 2:notification; 3:verification 4:addressbook,5:report;
+        main:1, //0:account; 1:security; 2:notification; 3:verification 4:addressbook,5:report;
         sub:0,
         st:0,//安全组件默认认证类型 0 无1，phone 2.TFA
         reportsTransform :false,

@@ -5,11 +5,26 @@ import $ from '../lib/jquery-3.2.1.min';
 
 
 let template= require('./security.html');
+Vue.filter('filterName', function (value) {
+    var temp = value, targetStr="";
+    if(value.securityAuthenticationName == "loginSA"){
+        targetStr = "Login in"
+    }else if(value.securityAuthenticationName == "resetPasswordSA"){
+        targetStr = "Find your password"
+    }else if(value.securityAuthenticationName == "changeSensitiveInfomationSA"){
+        targetStr = "Senstive setting changes"
+    }
+    return targetStr;
+})
 let security = {
     template: template,
     props:['subMsg'],
     data: function() {
         return {
+            securityAuthenticationList:[],
+            areaCode:"86",
+            phone:"",//手机号
+            phoneCode:"",
             needRemote:true,
             securityAuthentication:0,//安全认证:0未设置，1手机，2谷歌2fa,
             smsTab:0,
@@ -19,16 +34,13 @@ let security = {
             tlc:false, //2fa login
             tpc:false, //2fa 密码修改
             tsc:false, //2fa 敏感设置
-
             slc:true, //手机 login
             spc:false, //手机  密码修改
             ssc:false, //手机  敏感设置
-
             tokencode:"",
             tokenerror:0,
             tokenempty:0,
             tokenverror:0,
-
             locationerror:0,
             locationempty:0,
             locationverror:0,
@@ -38,7 +50,7 @@ let security = {
             telerror:0,
             telempty:0,
             telverror:0,
-
+            securityInfo:{}
 
         }
     },
@@ -49,47 +61,26 @@ let security = {
             }
 
         },
-        eve:function(arg){
-            pageBus.$emit('change',arg);
+        eve:function(index,arg, type){
+            pageBus.$emit('change',index, arg, type);
         },
         getSecurityInfo() {
             var self = this;
             var paraObj = {
                 identifier:"",
             };
-
-            //拦截设置,模拟请求在error完成交互
-            Axios.interceptors.response.use(function (response){
-                return response;
-            }, function (error){
-                //手机或GL验证成功
-                let testSuccess1 = {
-                    "data": {
-                        "success": true,
-                        "data": {
-                            "areaCode": "区号",
-                            "phone": "手机号（前后两位为数字，其它为*号）",
-                            "securityAuthentication":1//  安全认证:0未设置，1手机，2谷歌
-                        }
-                    }
-                };
-                //手机或GL验证失败
-                let testSuccess2 = {
-                    "data":{
-                        "success":false,
-                        "code":"US707", //错误码
-                        "message":"错误信息"
-                    }
-                };
-                return Promise.reject(testSuccess1);
-            });
             Axios.get('/user_account.act?cmd=getUserSafeInfo&',{params:paraObj})
                 .then(function (response) {
                     let cuData = response.data;
                     if(cuData.success){ //成功
+                           self.securityInfo = cuData.data;
                            self.securityAuthentication = cuData.data.securityAuthentication;
+                           self.phone = cuData.data.phone;
                     }else{ //失败
 
+                    }
+                    if(self.securityAuthentication!=0){
+                        self.getApplicationSetting();
                     }
                 })
                 .catch(function (response) {
@@ -135,54 +126,35 @@ let security = {
                  }
 
                  if(check1&&check2&&check3){
-                      this.sendCode()
+                      this.sendSMSCode()
                  }
 
 
         },
         sendCode(){
-            var self =this;
-            if(1){ //sccuss
-                self.securityAuthentication = 1
+           /* var self =this;
+            if(1){
+                self.securityAuthentication = 1;
                 self.slc = true
                 self.spc = true
                 self.ssc = true
             }else{
 
-            }
+            }*/
         },
         getSMSCode(arg) {
-            var self = this,paraObj ={}, smsGetAPI = "";
-
-            if(self.nowTab ==1){
+            var self = this;
+            var paraObj = {
+                areaCode:"86",
+                phone:self.phone
+            }
+            console.log(self.phone)
+          /*  if(self.nowTab ==1){
                 paraObj.smsCaptcha = "";
             }else{
                 paraObj.googleCaptcha = "";
-            }
-
-            //拦截设置,模拟请求在error完成交互
-            Axios.interceptors.response.use(function (response){
-                return response;
-            }, function (error){
-                //手机验证成功
-                let testSuccess1 = {
-                    "data":{
-                        "success":true,
-                        "data":null
-                    }
-                };
-                //手机验证失败
-                let testSuccess2 = {
-                    "data":{
-                        "success":false,
-                        "code":"US707", //错误码
-                        "message":"错误信息"
-                    }
-                };
-
-                return Promise.reject(testSuccess1);
-            });
-            Axios.get('/user_security.act?cmd=securityAuthenticateSendSMS&',{params:paraObj})
+            }*/
+            Axios.get('/user_security.act?cmd=bindPhoneSendSMS&',{params:paraObj})
                 .then(function (response) {
                     let cuData =  response.data;
 
@@ -200,47 +172,19 @@ let security = {
         },
         sendSMSCode(arg) {
             var self = this,paraObj ={};
-            paraObj.smsCaptcha = "";
-            //拦截设置,模拟请求在error完成交互
-            Axios.interceptors.response.use(function (response){
-                return response;
-            }, function (error){
-                //手机验证成功
-                let testSuccess1 = {
-                    "data":{
-                        "success":true,
-                        "data":null
-                    }
-                };
-                //手机验证失败
-                let testSuccess2 = {
-                    "data":{
-                        "success":false,
-                        "code":"US707", //错误码
-                        "message":"错误信息"
-                    }
-                };
-                return Promise.reject(testSuccess1);
-            });
-            Axios.get('/user_account.act?cmd=getBackPasswordSendEmail&',{params:paraObj})
+            paraObj['smsCaptcha'] = self.phoneCode;
+            Axios.get('/user_security.act?cmd=bindPhone&',{params:paraObj})
                 .then(function (response) {
                     let cuData =  response.data;
-                })
-                .catch(function (response) {
-                    let cuData = response.data;
                     console.log(cuData)
                     if(cuData.success){ //成功
-                        if(self.isfromreset){ //reset 跳转的成功后提示重置成功
-                            self.nowTab = 3;
-                        }else{
-                            location.href="trade.html"
-                        }
-
+                      alert('You have successfully bound phone authentication!')
                     }else{ //失败
-
+                        alert(cuData.message)
                     }
 
-                });
+                })
+                .catch(function (response) {});
         },
         getCode(e,index){
             var self= this, countSecond = function (){
@@ -265,6 +209,45 @@ let security = {
             }else if(self.smsTab==1){
                 this.sendSMSCode();
             }
+        },
+        changeApplicationSet(arg){
+            var self = this, paraObj ={};
+            if(arg.status){
+                this.eve('0',self.securityInfo, "smsAuth")
+            }
+            paraObj = {
+                operationName:arg.securityAuthenticationName,
+                status:arg.status==1?0:1
+            }
+            Axios.get('/user_security.act?cmd=operationSecuritySet&',{params:paraObj})
+                .then(function (response){
+                    let cuData =  response.data;
+                    if(cuData.success){
+                       if(!response.data.execute){
+                           
+                       }else{
+                           arg.status=arg.status==1?0:1
+                       }
+                    }else{
+                        alert(cuData.message)
+                    }
+                })
+                .catch(function (response) {});
+        },
+        getApplicationSetting(){
+            var self = this;
+            Axios.get('/user_security.act?cmd=getUserAuthenticationSecuritySet')
+                .then(function (response) {
+                    let cuData =  response.data;
+                    if(cuData.success){
+                        self.securityAuthenticationList.push(cuData.data[0]);
+                        self.securityAuthenticationList.push(cuData.data[2]);
+                        self.securityAuthenticationList.push(cuData.data[5]);
+                    }
+
+
+                })
+                .catch(function (response) {});
         },
         unBindGLAction(){
             this.tokenerror = 0;

@@ -125,34 +125,12 @@ let account = {
         },
         getBaseInfo() {
             var self = this;
-
-         /*   //拦截设置,模拟请求在error完成交互
-            Axios.interceptors.response.use(function (response){
-                return response;
-            }, function (error){
-                //成功
-                let testSuccess1 = {
-                    "data":{
-                        "success":true,
-                        "data":{
-                            "userId":"5556",
-                            "email":"test1@test.com",
-                        }
-                    }
-                };
-                //失败
-                let testSuccess2 = {
-                    "data":{2FA and SMS only need to complete a certification
-                        "success":false,
-                        "code":"US707", //错误码
-                        "message":"错误信息"
-                    }
-                };
-                return Promise.reject(testSuccess1);
-            });*/
             Axios.get('/user_account.act?cmd=getUserBaseInfo')
                 .then(function (response) {
                     let cuData = response.data;
+                    console.log(cuData)
+                    console.log(cuData.data.email)
+                    console.log(cuData.success)
                     if(cuData.success){ //成功
                         self.email = cuData.data.email;
                     }else{ //失败

@@ -10,24 +10,22 @@ let usermotal = {
             smscode:"",
             gltoken:"",
             tip:0,
-            showpart:0, // 1:accounttip 2.2facheck 3:changemethod 4:enabletfa, 5:deltip
+            securityInfo:{},//手机验证存储信息
+            showpart:0, // 1:accounttip 2.2facheck 3:changemethod 4:enabletfa, 5:deltip 6:更改设置提示；
             smsTab:0,
             timer:null,
-
             smserror:0,
             smsempty:0,
             smsverror:0,
             glerror:0,
             glempty:0,
-            glverror:0,
-
-
+            glverror:0
         }
     },
     methods: {
         init:function(){},
         closeTip(){
-            this.tip=1,
+            this.tip=1;
             $('.modal-out').removeClass('show-box').addClass('hide-box')
         },
 
@@ -36,47 +34,25 @@ let usermotal = {
                 $('.modal-out').css('zIndex',-1)
             }
         },
-        getSMSCode(arg) {
-            var self = this,paraObj ={}, smsGetAPI = "";
-
-            if(self.nowTab ==1){
-                paraObj.smsCaptcha = "";
-            }else{
-                paraObj.googleCaptcha = "";
+        smsSubmit(){
+            if(1){
+               this.sendSMSCode();
             }
-
-            //拦截设置,模拟请求在error完成交互
-            Axios.interceptors.response.use(function (response){
-                return response;
-            }, function (error){
-                //手机验证成功
-                let testSuccess1 = {
-                    "data":{
-                        "success":true,
-                        "data":null
-                    }
-                };
-                //手机验证失败
-                let testSuccess2 = {
-                    "data":{
-                        "success":false,
-                        "code":"US707", //错误码
-                        "message":"错误信息"
-                    }
-                };
-
-                return Promise.reject(testSuccess1);
-            });
-            Axios.get('/user_security.act?cmd=securityAuthenticateSendSMS&',{params:paraObj})
+        },
+        getSMSCode(arg) {
+            var self = this;
+            var paraObj = {
+                areaCode:self.securityInfo.areaCode,
+                phone:self.securityInfo.phone
+            };
+            Axios.get('/user_security.act?cmd=bindPhoneSendSMS&',{params:paraObj})
                 .then(function (response) {
                     let cuData =  response.data;
 
                 })
                 .catch(function (response) {
                     let cuData = response.data;
-                    console.log(cuData)
                     if(cuData.success){ //成功
-
                     }else{ //失败
 
                     }
@@ -86,7 +62,6 @@ let usermotal = {
         sendSMSCode(arg) {
             var self = this,paraObj ={};
             paraObj.smsCaptcha = "";
-            //拦截设置,模拟请求在error完成交互
             Axios.interceptors.response.use(function (response){
                 return response;
             }, function (error){
@@ -127,7 +102,7 @@ let usermotal = {
 
                 });
         },
-        unBindAction(e,index){
+        unBindAction(e){
             var self= this, countSecond = function (){
                 var obt = $(e.target);
                 obt.html("60s");
@@ -137,8 +112,8 @@ let usermotal = {
                     self.second--;
                     obt.html(self.second+"s");
                     if(self.second <= 0){
-                        self.smsTab =2;
-                        obt.html("Submit");
+                        self.smsTab =0;
+                        obt.html("Resend");
                         clearInterval(self.timers);
                         self.timers = null;
                     }
@@ -147,8 +122,6 @@ let usermotal = {
             if(self.smsTab ==0){
                 countSecond();
                 this.getSMSCode();
-            }else if(self.smsTab==1){
-                this.sendSMSCode();
             }
         },
         unBindGLAction(){
@@ -222,9 +195,14 @@ let usermotal = {
     mounted: function() {
         var self =this;
         this.init();
-        pageBus.$on('change', function (type){
+        pageBus.$on('change', function (index, arg, type){
             self.tip = 0;
-            self.showpart = type;
+            self.showpart = index;
+            console.log("*****")
+            console.log(arg)
+            if(type == "smsAuth"){
+                this.securityInfo = arg;
+            }
             $('.modal-out').css('zIndex',1).removeClass('hide-box').addClass('show-box')
         });
 

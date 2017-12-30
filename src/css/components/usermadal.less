@@ -124,6 +124,56 @@
           letter-spacing: 0;
           line-height: 24px;
         }
+        .input-outest{
+          height: 42px;
+          line-height: 42px;
+          .clearfix();
+          .input-inner{
+             position: relative;
+             float: left;
+             margin-right: 30px;
+             width: 300px;
+            >input{
+               padding: 0 15px;
+              border:0;
+               float: left;
+               height: 42px;
+               line-height: 42px;
+               width: 204px;
+              opacity: 0.7;
+              font-family: HelveticaNeue;
+              font-size: 14px;
+              color: #000000;
+              letter-spacing: 0;
+            }
+            .get-code{
+              cursor: pointer;
+              float: left;
+              width:96px;
+              text-align: center;
+              line-height: 18px;
+              height: 18px;
+              margin-top: 12px;
+              border-left:1px solid #e5e5e5;
+              color:#284e6a;
+              &.disabled{
+                color:#b8b8b8;
+              }
+            }
+          }
+          .submit{
+            cursor: pointer;
+            width: 120px;
+            height: 42px;
+            background: #1F4764;
+            border-radius: 2px;
+            font-family: HelveticaNeue-Bold;
+            font-size: 16px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            border:0;
+          }
+        }
       }
       .modal-footer{
         margin-top: 100px;
@@ -134,7 +184,7 @@
          color: #000000;
          letter-spacing: 0;
          line-height: 20px;
-         .light{
+          .light{
            margin: 0 14px 0 10px;
            float: left;
            position: relative;

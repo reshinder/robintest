@@ -22,7 +22,7 @@
                     <div class="input-box">
                         <label>Phone Number</label>
                         <div class="input-inner">
-                            <span class="phone-num">+86</span><input type="text" id="tel" type="tel" placeholder="phone number" />
+                            <span class="phone-num">+86</span><input type="text" id="tel" v-model="phone" type="tel" placeholder="phone number" />
                             <div class="bottom-line" :class="this.telerror==1?'to-red':''"></div>
                             <transition name="error-tip" v-if="telerror==1">
                                 <p class="tip-p" v-if="telempty==1">Please enter your phone number.</p>
@@ -33,7 +33,7 @@
                     <div class="input-box">
                         <label>SMS Code</label>
                         <div class="input-inner">
-                            <input type="text" placeholder="code" id="code" /><span class="choose getc" @click.prevent.stop="getCode($event)">Get Code</span>
+                            <input type="text" placeholder="code" v-model="phoneCode" id="code" /><span class="choose getc" @click.prevent.stop="getCode($event)">Get Code</span>
                             <div class="bottom-line" :class="this.telerror==1?'to-red':''"></div>
                             <transition name="error-tip" v-if="smserror==1">
                                 <p class="tip-p" v-if="smsempty==1">Please enter your sms code.</p>
@@ -115,18 +115,16 @@
             <table class="tfa-table table-set">
                 <tr>
                     <td>Phone number</td>
-                    <td>86133****6789</td>
+                    <td>{{areaCode}}{{phone}}</td>
                     <td class="bc pl50 cup" @click.prevent.stop="eve(0)">Modify</td>
                     <td class="bc pl50 cup" @click.prevent.stop="eve(0)">Unbind</td>
                 </tr>
             </table>
         </div>
         <div class="unit setting-items">
-            <h2>2FA Application Setting</h2>
-            <ul class="choose-ul">
-                <li class="choose-out"><label :class="{chosen:slc}" @click="slc=!slc"></label><span>Login in</span></li>
-                <li class="choose-out"><label :class="{chosen:spc}" @click="slc=!spc"></label><span>Find your password</span></li>
-                <li class="choose-out"><label :class="{chosen:ssc}" @click="ssc=!ssc"></label><span>Senstive setting changes</span></li>
+            <h2>SMS Application Setting</h2>   <!--changeApplicationSet(item)-->
+             <ul class="choose-ul">
+                <li class="choose-out" v-for="(item,index) in securityAuthenticationList"><label :class="{chosen:item.status==1}" @click.prevent.stop="changeApplicationSet(item)"></label><span>{{item | filterName}}</span></li>
             </ul>
         </div>
         <div class="unit password">

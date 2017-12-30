@@ -84,12 +84,19 @@ let logindefault = {
             Axios.get('/user_account.act?cmd=login&',{params:paraObj})
                 .then(function (response) {
                     let cuData = response.data;
-                    if(cuData.success&&!cuData.data.execute){ //已经设置，进入验证页面
-                        helper.setItem('identifier',cuData.data.identifier);
-                        self.$emit('logincheck',{main:cuData.data.securityAuthentication})
-                    }else{ //未设置，进入交易页
-                        location.href = 'trade.html'
+                   alert(cuData.success)
+                    if(cuData.success){
+                        alert(cuData.data.execute)
+                         if(cuData.data.execute){
+                             helper.setItem('identifier',cuData.data.identifier);
+                             self.$emit('logincheck',{main:cuData.data.securityAuthentication})
+                         }else{
+                              location.href = 'trade.html'
+                         }
+                    }else{
+                        alert(cuData.message)
                     }
+
                 })
                 .catch(function (response) {
                      console.log(response)

@@ -1,4 +1,4 @@
-<div class="modal-out show-box">
+<div class="modal-out">
     <div class="modal-backdrop" @webkitTransitionEnd="ame()"></div>
     <div id="modal" class="modal">
         <span class="close" @click.prevent.stop="closeTip()"></span>
@@ -8,19 +8,19 @@
                 <p class="">This action requires an additional security check.Pleasure confirm using SMS code.</p>
             </div>
             <div class="modal-body">
-                <div class="input-out">
-                    <div class="input-inner">
-                        <input type="text" v-model="smscode" id="smscdode" placeholder="Enter SMS Code" />
-                        <div class="bottom-line" :class="this.smserror==1?'to-red':''"></div>
-                        <transition name="error-tip" v-if="smserror==1&&smsempty==1">
-                            <p class="tip-p">Please enter sms code.</p>
-                        </transition>
-                        <transition name="error-tip" v-if="smserror==1&&smsverror==1">
-                            <p class="tip-p more-p">Wrong code</p>
-                        </transition>
+                  <div class="input-outest">
+                     <div class="input-inner">
+                         <input type="text" v-model="smscode" id="smscdode" placeholder="Enter SMS Code" /><span :class="{'get-code':1,disabled:smsTab==1}" @click="unBindAction($event)" >Get code</span>
+                         <div class="bottom-line" :class="this.smserror==1?'to-red':''"></div>
+                         <transition name="error-tip" v-if="smserror==1&&smsempty==1">
+                             <p class="tip-p">Please enter sms code.</p>
+                         </transition>
+                         <transition name="error-tip" v-if="smserror==1&&smsverror==1">
+                             <p class="tip-p more-p">Wrong code</p>
+                         </transition>
                     </div>
-                    <button type="button" class="resend" :class="{disabled:smsTab==1}" id="getcode" @click="unBindAction()">Get Code</button>
-                </div>
+                      <button class="submit">Submit</button>
+            </div>
             </div>
             <div class="modal-footer">
                 <p class="small"><span class="light"></span>For the sake of your account safety.google-authentication or phone authentication is requires for large amount withdrawal,and strongly recommended for all the trading and withdrawal process.
@@ -99,6 +99,20 @@
                     <button type="button" class="active" @click.prevent.stop="closeTip()">Cancel</button>
                     <button type="button" @click.prevent.stop="closeTip()">Confirm</button>
                 </div>
+            </div>
+        </div>
+        <div class="modal-content enabletfa" v-if="showpart==6">
+            <div class="modal-header">
+                <h3>Close setting explain</h3>
+            </div>
+            <div class="modal-body">
+                <p class="only-p">Close tip login in explain </p>
+                <p class="only-p">Close tip Find password explain </p>
+                <p class="only-p">Close tip senstive explain </p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="okbtn" @click.prevent.stop="closeTip('send')">ok</button>
             </div>
         </div>
     </div>
