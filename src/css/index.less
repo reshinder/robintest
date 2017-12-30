@@ -223,8 +223,38 @@
     }
   }
 
-  .slide {
-    height: 530px;
+  .slide_wrap {
+    height: 600px;
+    /* jswbox */
+    #jswbox {
+      width: 1200px;
+      height: 400px;
+      margin: 0 auto;
+      position: relative;
+      .prev, .next {
+        display: none;
+      }
+      ul {
+        position: relative;
+        height: 600px;
+        li {
+          position: absolute;
+          width: 0;
+          height: 0;
+          z-index: 0;
+          cursor: pointer;
+          overflow: hidden;
+          top: 152px;
+          left: 10px;
+          img {
+            width: 100%;
+            height: 100%;
+            vertical-align: top;
+            float: left;
+          }
+        }
+      }
+    }
   }
 
   .imac_box {
