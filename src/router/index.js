@@ -26,19 +26,7 @@ export default new Router({
       ]
     },
     {
-      path: '/trade', component: Trade,
-      children: [
-        /* {
-         path: 'account',
-         component: Account
-         },
-         {
-         path: 'security',
-         component: Security
-         },
-         ...*/
-
-      ]
+      path: '/trade', component: Trade
     },
     {
       path: '/home', component: Home,
