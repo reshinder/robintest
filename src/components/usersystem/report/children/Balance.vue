@@ -1,11 +1,114 @@
 <template>
-  <router-view></router-view>
+
+  <div class="reports-out">
+    <div class="report-unit">
+      <div class="title">
+        <div class="u-out">
+          <span class="u-title">Balance</span>
+          <span class="executed">
+                   <span class="mo-choose"></span>
+                   <span>(Partially) Executed</span>
+                </span>
+        </div>
+
+        <div class="sub-right">
+          <div class="right-unit ok">OK</div>
+          <div class="right-unit">
+            <span class="title-c">10.12-11.12</span>
+            <span class="box-arrow"><i class="down_gray_arrow"></i></span>
+          </div>
+          <div class="right-unit">
+            <span class="title-c">BTC/USD</span>
+            <span class="box-arrow"><i class="down_gray_arrow"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="table-out">
+        <table>
+          <thead>
+          <tr>
+            <td><span class="clear-arrow">PAIR</span></td>
+            <td><span>CONTEXT</span></td>
+            <td><span>ORDER TYPE</span></td>
+            <td><span>TYPE</span></td>
+            <td><span>AMOUNT</span></td>
+            <td><span>PRICE</span></td>
+            <td><span>STATUS</span></td>
+            <td><span>PLACES</span></td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><span>BTC/USD</span></td>
+            <td><span>Exchange</span></td>
+            <td><span>Limit</span></td>
+            <td><span>Buy</span></td>
+            <td><span>500.<span class="gy">0000</span></span><span>/</span><span>700.2<span class="gy"></span></span></td>
+            <td><span>7,121.51</span></td>
+            <td><span>Executed</span></td>
+            <td><span>21-11-2017 10:45:32</span></td>
+          </tr>
+          <tr>
+            <td><span>BTC/USD</span></td>
+            <td><span>Exchange</span></td>
+            <td><span>Limit</span></td>
+            <td><span>Buy</span></td>
+            <td><span>500.<span class="gy">0000</span></span><span>/</span><span>700.2<span class="gy"></span></span></td>
+            <td><span>7,121.51</span></td>
+            <td><span class="bc">Partially Executed</span></td>
+            <td><span>21-11-2017 10:45:32</span></td>
+          </tr>
+          <tr>
+            <td><span>BTC/USD</span></td>
+            <td><span>Exchange</span></td>
+            <td><span>Limit</span></td>
+            <td><span>Buy</span></td>
+            <td><span>500.<span class="gy">0000</span></span><span>/</span><span>700.2<span class="gy"></span></span></td>
+            <td><span>7,121.51</span></td>
+            <td><span class="bc">Partially Executed</span></td>
+            <td><span>21-11-2017 10:45:32</span></td>
+          </tr>
+          <tr>
+            <td><span>BTC/USD</span></td>
+            <td><span>Exchange</span></td>
+            <td><span>Limit</span></td>
+            <td><span>Buy</span></td>
+            <td><span>500.<span class="gy">0000</span></span><span>/</span><span>700.2<span class="gy"></span></span></td>
+            <td><span>7,121.51</span></td>
+            <td><span class="bc">Partially Executed</span></td>
+            <td><span>21-11-2017 10:45:32</span></td>
+          </tr>
+          <tr>
+            <td><span>BTC/USD</span></td>
+            <td><span>Exchange</span></td>
+            <td><span>Limit</span></td>
+            <td><span>Buy</span></td>
+            <td><span>500.<span class="gy">0000</span></span><span>/</span><span>700.2<span class="gy"></span></span></td>
+            <td><span>7,121.51</span></td>
+            <td><span class="bc">Partially Executed</span></td>
+            <td><span>21-11-2017 10:45:32</span></td>
+          </tr>
+          <tr>
+            <td><span>BTC/USD</span></td>
+            <td><span>Exchange</span></td>
+            <td><span>Limit</span></td>
+            <td><span>Buy</span></td>
+            <td><span>500.<span class="gy">0000</span></span><span>/</span><span>700.2<span class="gy"></span></span></td>
+            <td><span>7,121.51</span></td>
+            <td><span>Executed</span></td>
+            <td><span>21-11-2017 10:45:32</span></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 
   export default {
-    name: 'Report',
+    name: 'Balance',
     data () {
       return {
         msg: ''
@@ -15,7 +118,7 @@
 </script>
 
 <style rel="stylesheet/less" lang="less" >
-  @import "../../assets/css/base.less";
+  @import "../../../../assets/css/base.less";
   .app{
     background-color: @bgcolor;
   }

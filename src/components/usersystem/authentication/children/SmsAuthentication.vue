@@ -1,6 +1,6 @@
 <template>
   <div class="row content-out" >
-    <div class="unit sms-authen" v-if="nowTab==1">
+    <div class="unit sms-authen">
       <h1>SMS Authentication</h1>
       <div class="input-out">
         <input type="text" id="smscode" value="" v-model="smscode" placeholder="Enter your SMS authentication token" />
@@ -15,35 +15,14 @@
         <button type="button" @click.prevnt.stop="submitAction(1)">Submit</button>
       </div>
     </div>
-    <div class="unit tfabox" v-if="nowTab==2">
-      <h1>2FA</h1>
-      <div class="input-out">
-        <input type="text" id="tfacode" value="" v-model="tfacode" placeholder="Enter your Google 2FA Token" />
-        <div class="bottom-line" :class="this.tfaerror==1?'to-red':''"></div>
-        <transition name="error-tip" v-if="tfaerror==1">
-          <p class="tip-p" v-if="tfaempty==1">Please enter your 2FA code.</p>
-          <p class="tip-p" v-if="tfaverror==1">Please enter a valid 2FA code.</p>
-        </transition>
-      </div>
-      <div class="button-out">
-        <button type="button" @click.prevnt.stop="submitAction(2)">Submit</button>
-      </div>
-    </div>
-    <div class="unit resetwordtip" v-if="nowTab==3">
-      <h1>Congratulations!</h1>
-      <p>Your password has been reset successfully.You can log in again with your new password.</p>
-      <p class="click-tip" @click.stop.prevent="toLogin">Log in now <span class="long-arrow"></span></p>
-    </div>
   </div>
 </template>
 
 <script>
-  import ModelTip from '../common/ModelTip.vue'
 
   export default {
-    name: 'Authentication',
+    name: 'SmsAuthentication',
     components:{
-      ModelTip:ModelTip
     },
     data () {
       return {
@@ -55,12 +34,13 @@
   }
 </script>
 
-<style rel="stylesheet/less" lang="less" >
-  @import "../../assets/css/base.less";
-  #app{
-    background: @white;
+<style rel="stylesheet/less" lang="less" scoped>
+  @import "../../../../assets/css/base.less";
+  .footer{
+    position: fixed;
   }
   .content-out{
+    background: @white;
     .unit{
       margin: 120px auto;
       width: 450px;

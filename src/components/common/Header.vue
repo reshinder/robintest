@@ -48,7 +48,7 @@
             </ul>
           </li>
         </ul>
-        <!-- <transition name="slide-fade">-->
+  <transition name="slide-fade">
         <ul class="mobile-nav" v-if="open" @click="open=!open">
           <li>
             <a class="link" href="">Trade</a>
@@ -72,7 +72,7 @@
           <li><a class="icon d"></a></li>
           <li><a class="icon e"></a></li>
         </ul>
-        <!--   </transition>-->
+   </transition>
 
       </div>
     </div>

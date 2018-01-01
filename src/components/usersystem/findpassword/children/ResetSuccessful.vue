@@ -1,64 +1,5 @@
 <template>
   <div class="row content-out" >
-    <div class="unit resetword">
-      <h1>Request Password Request</h1>
-      <div class="input-out">
-        <input id="remail" type="email" v-model="remail" value="" placeholder="Email address"  />
-        <div class="bottom-line" :class="this.emailerror==1?'to-red':''"></div>
-        <transition name="error-tip" v-if="emailerror==1&&emailempty==1">
-          <p class="tip-p">Please enter your Email address.</p>
-        </transition>
-        <transition name="error-tip" v-if="emailerror==1&&emailverror==1">
-          <p class="tip-p">Please enter a valid Email address</p>
-        </transition>
-      </div>
-      <p class="tip-b">
-        <span class="mo-choose" :class="{chosen:haschosen}" @click.prevent.stop="haschosen=!haschosen"></span> I acknowledge that my account will be put on 3 days withdrawal hold for a security precaution
-      </p>
-      <div class="button-out">
-        <button type="button" class="cancel active" @click.stop.prevent="toLogin">Cancel</button>
-        <button type="button" class="submit" @click.prevent.stop="toSendEmail">Submit</button>
-      </div>
-    </div>
-    <div class="unit resetwordtip">
-      <h1>Request Password Request</h1>
-      <p>An email has been sent with a link to reset your password.</p>
-      <p>We hava sent a reset password email {{remail}}. Please check it to proceed with the password reset process</p>
-      <p>If you have noe received your email within 5 minutes,please check the following:</p>
-      <ul>
-        <li>check if you hava the correct email</li>
-        <li>Please check your spam folder</li>
-        <li>Contact us at support@bitstar.com</li>
-      </ul>
-      <p class="click-tip" @click.prevent.stop="toLogin">Back to Home <span class="long-arrow"></span></p>
-    </div>
-    <div class="unit resetword">
-      <h1>Request Password</h1>
-      <div class="input-out">
-        <input id="password" class="password"  type="password" name="password" value="" placeholder="password"  />
-        <div class="bottom-line" :class="this.passworderror==1?'to-red':''"></div>
-        <transition name="error-tip" v-if="passworderror==1&&passempty==1">
-          <p class="tip-p">Please enter your Password.</p>
-        </transition>
-        <transition name="error-tip" v-if="passworderror==1&&passverror==1">
-          <p class="tip-p more-p">Passwords must be at least 8 characters with 1 capital letter, 1 lowercase character, and 1 number, and without spaces.</p>
-        </transition>
-      </div>
-      <div class="input-out">
-        <input id="confirmword" class="password"  type="password" name="confirmword" value="" placeholder="Confirm Password"  />
-        <div class="bottom-line" :class="this.confirmworderror==1?'to-red':''"></div>
-        <transition name="error-tip" v-if="confirmworderror==1">
-          <p class="tip-p">Please enter the same value again.</p>
-        </transition>
-      </div>
-      <p class="tip-b">
-        <span class="mo-choose" :class="{chosen:haschosen}" @click.prevent.stop="haschosen=!haschosen"></span> I acknowledge that my account will be put on 3 days withdrawal hold for a security precaution
-      </p>
-      <div class="button-out">
-        <button type="button" class="cancel active" @click.stop.prevent="toLogin">Cancel</button>
-        <button type="button" class="submit" @click.prevent.stop="toResetAction">Submit</button>
-      </div>
-    </div>
     <div class="unit resetwordtip">
       <h1>Congratulations!</h1>
       <p>Your password has been reset successfully.You can log in again with your new password.</p>
@@ -68,10 +9,10 @@
 </template>
 
 <script>
-  import ModelTip from '../common/ModelTip.vue'
+  import ModelTip from '../../../common/ModelTip.vue'
 
   export default {
-    name: 'FindPassword',
+    name: 'ResetSuccessful',
     components:{
       ModelTip:ModelTip
     },
@@ -173,12 +114,12 @@
 </script>
 
 <style rel="stylesheet/less" lang="less" scoped>
-  @import "../../assets/css/base.less";
+  @import "../../../../assets/css/base.less";
   .footer {
     position: fixed;
   }
   .content-out{
-     background: @white!important;
+    background: @white!important;
     .unit{
       margin: 120px auto;
       width:450px;

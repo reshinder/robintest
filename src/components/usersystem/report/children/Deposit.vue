@@ -1,9 +1,10 @@
 <template>
+
   <div class="reports-out">
     <div class="report-unit">
       <div class="title">
         <div class="u-out">
-          <span class="u-title">Order History</span>
+          <span class="u-title">Deposit</span>
           <span class="executed">
                    <span class="mo-choose"></span>
                    <span>(Partially) Executed</span>
@@ -107,7 +108,7 @@
 <script>
 
   export default {
-    name: 'OrderHistory',
+    name: 'Deposit',
     data () {
       return {
         msg: ''
@@ -117,7 +118,7 @@
 </script>
 
 <style rel="stylesheet/less" lang="less" >
-  @import "../../assets/css/base.less";
+  @import "../../../../assets/css/base.less";
   .app{
     background-color: @bgcolor;
   }
