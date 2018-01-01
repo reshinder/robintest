@@ -1,23 +1,33 @@
+<style scoped lang="less">
+      @import "../../assets/css/trade/index.less";
+</style>
 <template>
-  <div class="container content-wrap user-content">
-    <div class="row">
-      <h1>交易</h1>
-    </div>
+  <div class="content-wrap">
+      <div class="container">
+          <div class="row">
+              <sidebarview></sidebarview>
+              <sidemainview></sidemainview>
+          </div>
+      </div>
   </div>
 </template>
 
 <script>
+  import sidebarview from './components/sidebar.vue';
+  import sidemainview from './components/sidemain.vue';
   export default {
-    name: 'Trade',
+    components: {sidebarview, sidemainview},
     data () {
       return {
-        msg: ''
+
       }
+    },
+    methods: {
+
+    },
+    mounted(){
+
     }
+
   }
 </script>
-
-<style rel="stylesheet/less" lang="less" >
-  @import "../../assets/css/base.less";
-
-</style>

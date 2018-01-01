@@ -42,7 +42,7 @@
   }
 </script>
 
-<style rel="stylesheet/less" lang="less">
+<style rel="stylesheet/less" lang="less" scoped>
   @import "../../assets/css/base.less";
 
   .app {
