@@ -1,3 +1,6 @@
+<style scoped lang="less">
+      @import "../../../assets/css/trade/sidemain.less";
+</style>
 <template>
   <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 charts-line">
                 <div class="row unit-pan">
@@ -293,7 +296,6 @@
 <script>
   import jquery from '../../../assets/lib/jquery.js';
   import axios from '../../../assets/lib/axios_default.js';
-;
   import chartview from './chart.vue';
   export default {
     components: {chartview},
