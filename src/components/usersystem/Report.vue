@@ -1,39 +1,11 @@
 <template>
-  <div class="container content-wrap user-content">
-    <div class="row">
-      <div class="col-md-2 l-panel">
-        <ul class="first-nav">
-            <router-link to="/user/account" tag="li">Account</router-link>
-            <router-link to="/user/security" tag="li">Security</router-link>
-            <router-link to="/user/notification" tag="li">Notification</router-link>
-            <router-link to="/user/verification" tag="li">Verification</router-link>
-            <router-link to="/user/address_book" tag="li">Address Book</router-link>
-            <router-link to="/user/report" class="report" tag="li">Report
-            <span class="arrow down-arrow"></span>
-            <ul class="report-list">
-             <router-link to="/user/report/balance" tag="li">Balance</router-link>
-             <router-link to="/user/report/order_history" tag="li">Order Histrory</router-link>
-             <router-link to="/user/report/deposit" tag="li">Deposit</router-link>
-             <router-link to="/user/report/withdraw" tag="li">Withdraw</router-link>
-            </ul>
-            </router-link>
-        </ul>
-      </div>
-      <div class="col-md-10 r-tab">
-        <transition name="slide-fade">
-          <keep-alive>
-            <router-view></router-view>
-          </keep-alive>
-        </transition>
-      </div>
-    </div>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>
 
   export default {
-    name: 'User',
+    name: 'Report',
     data () {
       return {
         msg: ''
@@ -42,95 +14,78 @@
   }
 </script>
 
-<style rel="stylesheet/less" lang="less">
+<style rel="stylesheet/less" lang="less" >
   @import "../../assets/css/base.less";
-
-  .app {
+  .app{
     background-color: @bgcolor;
   }
-  .user-content {
+  .user-content{
     min-height: 700px;
-    .table-set {
+    .table-set{
       border-collapse: collapse;
       border: none;
-      tr {
+      tr{
         margin-bottom: 34px;
         opacity: 0.7;
         font-family: HelveticaNeue;
         font-size: 14px;
         line-height: 16px;
         color: #000000;
-        td, th {
+        td,th{
           text-align: left;
           height: 40px;
           line-height: 40px;
-          overflow: hidden;
+          overflow:hidden;
           white-space: nowrap;
-          text-overflow: ellipsis;
-          &:nth-child(1) {
-            width: 250px
-          }
-          &:nth-child(2) {
-            width: 160px
-          }
-          &:nth-child(3) {
-            width: 95px
-          }
-          &:nth-child(4) {
-            width: 95px
-          }
+          text-overflow:ellipsis;
+          &:nth-child(1){width:250px}
+          &:nth-child(2){width:160px}
+          &:nth-child(3){width:95px}
+          &:nth-child(4){width:95px}
         }
       }
     }
   }
-  @media (max-width: 768px) {
-    .user-content {
+  @media (max-width: 768px){
+    .user-content{
       min-height: 100px;
-      .table-set {
-        table-layout: fixed;
+      .table-set{
+        table-layout:fixed;
         width: 100%;
-        tr {
-          td, th {
+        tr{
+          td,th{
             text-align: center;
-            &:nth-child(1) {
-              width: auto
-            }
-            &:nth-child(2) {
-              width: auto;
-            }
-            &:nth-child(3) {
-              width: auto;
-            }
-            &:nth-child(4) {
-              width: auto;
-            }
+            &:nth-child(1){width:auto}
+            &:nth-child(2){width:auto;}
+            &:nth-child(3){width:auto;}
+            &:nth-child(4){width:auto;}
           }
         }
       }
-      td, th {
-        word-wrap: break-word;
-        word-break: break-all;
+      td,th{
+        word-wrap:break-word;
+        word-break:break-all;
       }
     }
 
   }
 
-  body, html {
+
+  body,html{
     background-color: @bgcolor;
   }
-
-  .content-wrap {
+  .content-wrap{
     margin-top: 20px;
     margin-bottom: 100px;
-    .l-panel {
+    .l-panel{
       float: left;
       width: 15%;
       margin-right: 20px;
       background-color: @white;
-      > ul.first-nav {
+      >ul{
         margin-left: -15px;
         margin-right: -15px;
-        >li {
+        li{
           height: 70px;
           line-height: 70px;
           text-align: center;
@@ -138,21 +93,21 @@
           font-family: HelveticaNeue;
           font-size: 14px;
           color: #000000;
-          &:last-child {
+          &:last-child{
             border-bottom: 0;
           }
-          &:hover {
+          &:hover{
             background: #6C94B0;;
             color: #fff;
             cursor: pointer;
           }
-          &.router-link-active {
+          &.active{
             color: #fff;
             background: #6C94B0;
           }
-          &.report {
-            >ul.report-list {
-              >li {
+          &.report{
+            ul{
+              li{
                 height: 50px;
                 line-height: 50px;
                 font-family: HelveticaNeue;
@@ -160,12 +115,12 @@
                 color: #000000;
                 letter-spacing: 0;
                 background: #f7f8f9;
-                &.router-link-active, &:hover {
-                  border-left: 3px solid #6c94b0;
-                  color: #6c94b0!important;
+                &.active,&:hover{
+                  border-left:3px solid #6c94b0;
+                  color: #6c94b0;
                   background: #fff;
                 }
-                .arrow {
+                .arrow{
                   background: #fff;
                 }
               }
@@ -174,7 +129,7 @@
         }
       }
     }
-    .r-tab {
+    .r-tab{
       float: left;
       position: relative;
       width: 83%;
@@ -182,82 +137,52 @@
 
     }
   }
-
-  @media (max-width: 1200px) {
-    .content-wrap {
-      .r-tab {
-        width: 82%;
-      }
-    }
-  }
-
-  @media (max-width: 992px) {
-
-  }
-
-  @media (max-width: 768px) {
-
-  }
-
-  @media (max-width: 750px) {
-    .content-wrap {
-      .l-panel {
-        display: none;
-        background-color: green;
-      }
-      .r-tab {
-        float: none;
-        width: 100%;
-      }
-    }
-  }
-
-  .reports-out {
+  .reports-out{
     background: @white;
     padding: 0 30px;
-    .report-unit {
-      .title {
+    .report-unit{
+      .title{
         height: 72px;
         line-height: 72px;
-        padding-left: 9px;
-        > div {
-          float: left;
-          span {
+        padding-left:9px;
+        >div{
+          float:left;
+          span{
             display: inline-block;
             vertical-align: middle;
-            &.u-title {
+            &.u-title{
               opacity: 0.9;
               font-family: HelveticaNeue-Bold;
               font-size: 24px;
               color: #000000;
               letter-spacing: 0;
             }
-            &.executed {
+            &.executed{
               font-family: HelveticaNeue;
               font-size: 14px;
               color: #000000;
               letter-spacing: 0;
-              .mo-choose {
+              .mo-choose{
                 margin-left: 25px;
                 margin-right: 10px;
               }
             }
           }
-          &.sub-right {
+          &.sub-right{
             margin-top: 19px;
             float: right;
-            > div {
+            >div{
               float: right;
-              &.right-unit {
+              &.right-unit{
                 margin-left: 20px;
                 width: 124px;
                 height: 32px;
-                border: 1px solid #b2b2b2;
-                > span {
-                  float: left;
+                border:1px solid #b2b2b2;
+                >span{
+                  float:left;
                   .clearfix();
-                  &.title-c {
-                    float: left;
+                  &.title-c{
+                    float:left;
                     width: 100px;
                     height: 32px;
                     line-height: 32px;
@@ -267,14 +192,14 @@
                     color: #000000;
                     letter-spacing: 0;
                   }
-                  &.box-arrow {
+                  &.box-arrow{
                     float: left;
                     position: relative;
                     width: 22px;
                     height: 32px;
                     line-height: 32px;
-                    border-left: 1px solid #b2b2b2;
-                    &:after {
+                    border-left:1px solid #b2b2b2;
+                    &:after{
                       content: "";
                       position: absolute;
                       right: 6px;
@@ -286,7 +211,7 @@
                     }
                   }
                 }
-                &.ok {
+                &.ok{
                   width: 50px;
                   text-align: center;
                   border-radius: 2px;
@@ -303,20 +228,20 @@
         }
 
       }
-      .table-out {
-        table {
+      .table-out{
+        table{
           width: 100%;
           border-collapse: collapse;
           border: none;
           text-align: center;
-          thead {
+          thead{
             background: #f0f4f7;
             color: #b2b5b8;
             height: 50px;
             line-height: 50px;
-            tr {
+            tr{
               background: #f0f4f7;
-              td {
+              td{
                 text-align: center;
                 font-family: HelveticaNeue;
                 font-size: 12px;
@@ -325,21 +250,21 @@
               }
             }
           }
-          tbody {
-            tr {
+          tbody{
+            tr{
               height: 70px;
               line-height: 70px;
-              td {
+              td{
                 opacity: 0.7;
                 font-family: HelveticaNeue;
                 font-size: 12px;
                 color: #000000;
                 letter-spacing: 0;
               }
-              &:nth-child(even) {
+              &:nth-child(even){
                 background: #f0f4f7;
               }
-              &:nth-child(odd) {
+              &:nth-child(odd){
                 background: #e2eaef;
               }
             }
@@ -348,6 +273,5 @@
       }
     }
   }
-
 
 </style>

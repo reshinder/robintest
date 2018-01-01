@@ -2,11 +2,11 @@
   <div class="head-wrap">
     <div class="container">
       <div class="row">
-        <div class="logo-word"><router-link to="/trade">SUPERBIT</router-link></div>
+        <div class="logo-word"><router-link to="/trade" class="link-a">SUPERBIT</router-link></div>
 
         <div class="trade">
           <a class="link">
-            <span><router-link to="/trade">Trade</router-link></span>
+            <span><router-link to="/trade" class="link-a">Trade</router-link></span>
             <em class="bot_cross_tip"></em>
           </a>
           <ul class="sub-menu">
@@ -38,13 +38,13 @@
           <li class="icon-li"><a class="c"></a></li>
           <li class="icon-li"><a class="d" href="aboutus.html"></a></li>
           <li class="icon-li user">
-            <a class="e"></a>
+            <a class="e" @click.prevent.stop="$router.push({ path: '/login' })"></a>
             <ul class="sub-menu">
               <li><router-link to="/user/account">Account</router-link></li>
-              <li><a href="usersystem.html?main=1">Security</a></li>
-              <li><a href="usersystem.html?main=2">Notification</a></li>
-              <li><a href="usersystem.html?main=3">Verification</a></li>
-              <li><a href="usersystem.html?main=4">Address Book</a></li>
+              <li><router-link to="/user/security" class="link-a">Security</router-link></li>
+              <li><router-link to="/user/notification" class="link-a">Notification</router-link></li>
+              <li><router-link to="/user/verification" class="link-a">Verification</router-link></li>
+              <li><router-link to="/user/address_book" class="link-a">Address Book</router-link></li>
             </ul>
           </li>
         </ul>
@@ -61,11 +61,11 @@
           <li><a class="link">Deposit</a></li>
           <li><a class="link">Withdraw</a></li>
           <li><a class="link">Asset</a></li>
-          <li><a class="link">Account</a></li>
-          <li><a class="link">Security</a></li>
-          <li><a class="link">Notification</a></li>
-          <li><a class="link">Verification</a></li>
-          <li><a class="link">Address Book</a></li>
+          <li><router-link to="/user/account" class="link-a">Account</router-link></li>
+          <li><router-link to="/user/security" class="link-a">Security</router-link></li>
+          <li><router-link to="/user/notification" class="link-a">Notification</router-link></li>
+          <li><router-link to="/user/verification" class="link-a">Verification</router-link></li>
+          <li><router-link to="/user/address_book" class="link-a">Address Book</router-link></li>
           <li><a class="icon a"></a></li>
           <li><a class="icon b"></a></li>
           <li><a class="icon c"></a></li>
@@ -90,9 +90,11 @@
   }
 </script>
 
-<style rel="stylesheet/less" lang="less" >
+<style rel="stylesheet/less" lang="less" scoped>
   @import "../../assets/css/base.less";
-
+   .link-a{
+     color: @white!important;
+   }
   .head-wrap{
     background: @blue1;
     .row{
