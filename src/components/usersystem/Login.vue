@@ -80,17 +80,20 @@
             let cuData = response.data;
             alert(cuData.success)
             if(cuData.success){
-              alert(cuData.data.execute)
               if(cuData.data.execute){
+                this.$store.commit('SAVE_BASE_DATA',paraObj); //保存输入信息
                 helper.setItem('identifier',cuData.data.identifier);
-                self.$emit('logincheck',{main:cuData.data.securityAuthentication})
+                if(cuData.data.identifier==1){
+                  self.$router.push({ path: '/authentication/google_authentication' })
+                }else if(cuData.data.identifier==2){
+                  self.$router.push({ path: '/authentication/sms_authentication' })
+                }
               }else{
-                location.href = 'trade.html'
+                self.$router.push({ path: '/trade' })
               }
             }else{
               alert(cuData.message)
             }
-
           })
           .catch(function (response) {
             console.log(response)
@@ -129,7 +132,7 @@
         if(check1 == true&&check2 == true){
           tem['loginName'] = email.val().trim();
           tem['password'] = password.val().trim();
-          this.$store.dispatch('getUserBase',tem);
+          this.remoteAction();
         }
       }
     },
