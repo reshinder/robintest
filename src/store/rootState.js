@@ -1,4 +1,7 @@
 const state = {
-    msg: '',
+  userName: '',
+  email: '',
+  password: "",
+  baseInfo:null
 }
 export default state;

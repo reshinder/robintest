@@ -1,1 +1,3 @@
-export const msg = state => state.msg;
+export default {
+
+}

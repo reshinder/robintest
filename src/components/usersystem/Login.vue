@@ -9,7 +9,7 @@
         <form id="loginForm">
           <div class="input-wrap">
             <div class="input-wrap">
-              <input id="email" class="email"  type="email" name="email" value="" placeholder="Email address"  />
+              <input id="email" class="email"  type="email" name="email" v-model="email" value="" placeholder="Email address"  />
               <div class="bottom-line" :class="this.emailerror==1?'to-red':''"></div>
               <transition name="error-tip" v-if="emailerror==1&&emailempty==1">
                 <p class="tip-p">Please enter your Email address.</p>
@@ -19,7 +19,7 @@
               </transition>
             </div>
             <div class="input-wrap">
-              <input id="password" class="password"  type="password" name="password" placeholder="Password"  value="" />
+              <input id="password" class="password"  type="password" v-model="password" name="password" placeholder="Password"  value="" />
               <div class="bottom-line" :class="this.passerror==1?'to-red':''"></div>
               <transition name="error-tip" v-if="passerror==1&&passempty==1">
                 <p class="tip-p">Please enter your Password.</p>
@@ -43,13 +43,10 @@
 
 <script>
   import $ from 'jquery'
-  import ModelTip from '../common/ModelTip.vue'
 
   export default {
     name: 'Login',
-    components:{
-      ModelTip:ModelTip
-    },
+    components:{},
     data: function() {
       return {
         screenWidth:"",
@@ -60,21 +57,18 @@
         passerror:0,
         passempty:0,
         passverror:0,
+        email:"",
+        password:"",
       }
     },
     methods: {
       init:function(){
           this.fixView()
       },
-      ame:function(){},
-      eve:function(){
-        //pageBus.$emit('change','accounttip');
-      },
       fixView(){
         var header = $('.head-wrap').outerHeight(true),footer = $('.footer-e').outerHeight(true);
         $('.content-wrap').css('height',$(window).height()-(header+footer))
       },
-
       remoteAction: function (arg) {
         var self = this;
         var paraObj = {
@@ -133,9 +127,9 @@
           }
         }
         if(check1 == true&&check2 == true){
-          tem['email'] = email.val().trim();
+          tem['loginName'] = email.val().trim();
           tem['password'] = password.val().trim();
-          self.remoteAction(tem)
+          this.$store.dispatch('getUserBase',tem);
         }
       }
     },
