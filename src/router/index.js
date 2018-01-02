@@ -16,6 +16,13 @@ import Authentication from '../components/usersystem/authentication/Authenticati
 import SmsAuthentication from '../components/usersystem/authentication/children/SmsAuthentication.vue' //登录认证界面sms
 import GoogleAuthentication from '../components/usersystem/authentication/children/GooleAuthentication.vue' //登录认证界面gl
 import AuthenticationSuccess from '../components/usersystem/authentication/children/AuthenticationSuccess.vue' //登录认证成功
+import Register from '../components/usersystem/register/Register.vue' //注册
+import RegisterInput from '../components/usersystem/register/children/RegisterInput.vue' //注册成功
+import RegisterSuccess from '../components/usersystem/register/children/RegisterSuccess.vue' //注册成功
+import RegisterWelcome from '../components/usersystem/register/children/RegisterWelcome.vue' //注册欢迎
+import LinkExpired from '../components/usersystem/register/children/LinkExpired.vue' //连接失效
+
+
 import Account from '../components/usersystem/Account.vue'
 import Security from '../components/usersystem/Security.vue'
 import Notification from '../components/usersystem/Notification.vue'
@@ -95,6 +102,28 @@ export default new Router({
     {
       path: '/login',
       component: Login,
+    },
+    {
+      path: '/register',
+      component: Register,
+      children: [
+        {
+          path: 'register_input',
+          component: RegisterInput
+        },
+        {
+          path: 'register_success',
+          component: RegisterSuccess
+        },
+        {
+          path: 'register_welcome',
+          component: RegisterWelcome
+        },
+        {
+          path: 'link_expired',
+          component: LinkExpired
+        }
+      ]
     },
     {
       path: '/findpassword',
