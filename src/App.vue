@@ -19,9 +19,11 @@ export default {
 }
 </script>
 
-<style scoped rel="stylesheet/less" lang="less" >
+<style rel="stylesheet/less" lang="less" >
   @import "./assets/css/base.less";
    #app {
-    background: @bgcolor;
+     height: 100%;
+     width: 100%;
+     background: @bgcolor;
    }
 </style>

@@ -122,7 +122,11 @@ export default new Router({
         {
           path: 'link_expired',
           component: LinkExpired
-        }
+        },
+        {
+          path: '',
+          redirect: 'register_input'
+        },
       ]
     },
     {

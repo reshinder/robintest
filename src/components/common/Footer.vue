@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="footer" v-if="showEmpty==false">
+    <div class="footer-e" v-if="showType==1">
+      <div class="copy-right"><p>@2017 superbit Corparation</p></div>
+    </div>
+    <div class="footer" v-else-if="showType==2">
       <div class="container">
         <div class="row">
           <div class="col-lg-2 col-md-12 col-sm-12  col-xs-12">
@@ -60,9 +63,7 @@
       </div>
       <div class="copy-right"><p>@2017 superbit Corparation</p></div>
     </div>
-    <div class="footer-e" v-if="showEmpty==true">
-      <div class="copy-right"><p>@2017 superbit Corparation</p></div>
-    </div>
+
   </div>
 
 </template>
@@ -73,17 +74,30 @@
     data () {
       return {
         open: '',
-        showEmpty:false
+        showType:2 //0:无，1：login型，2：正常
       }
     },
     methods:{
        init(){
-           this.showEmpty = this.$router.currentRoute.fullPath == '/login'?true:false;
+           let currentPath = this.$router.currentRoute.fullPath;
+           if(currentPath=='/register/register_input'){
+               this.showType = 0
+           }else if(currentPath=='/login'){
+             this.showType = 1
+           }
+
        }
     },
     watch:{
       '$route' (to, from) {
-        this.showEmpty = to.path!="/login"?false:true
+        let currentPath = to.path;
+        if(currentPath=='/register/register_input'){
+          this.showType = 0
+        }else if(currentPath=='/login'){
+          this.showType = 1
+        }else{
+          this.showType =2
+        }
       }
     },
     created: function() {},

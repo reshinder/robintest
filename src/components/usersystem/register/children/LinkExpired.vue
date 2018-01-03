@@ -1,9 +1,13 @@
 <template>
-  <div class="unit resetwordtip" v-if="nowTab==5">
-    <h1>Ooh!</h1>
-    <p>The link has expired, please make sure you click on the link in the latest confirmation email sent within one hour of registraion</p>
-    <p class="click-tip">Sign in now <span class="long-arrow"></span></p>
-  </div>
+  <div class="container">
+    <div class="row">
+      <div class="unit resetwordtip" v-if="nowTab==5">
+        <h1>Ooh!</h1>
+        <p>The link has expired, please make sure you click on the link in the latest confirmation email sent within one hour of registraion</p>
+        <p class="click-tip">Sign in now <span class="long-arrow"></span></p>
+      </div>
+    </div></div>
+
 
 </template>
 

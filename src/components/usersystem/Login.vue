@@ -1,41 +1,43 @@
 <template>
-  <div class="content-wrap row" >
-    <div class="left-wrap col-lg-6 col-md-6 col-sm-6" >
-      <p>SUPERBIT<br>SUPER LIFE</p>
-    </div>
-    <div class="right-wrap col-lg-6 col-md-6 col-sm-6">
-      <div class="row  content-out">
-        <h2>Log in</h2>
-        <form id="loginForm">
-          <div class="input-wrap">
+  <div class="container-fluid content-wrap" >
+    <div class="row">
+      <div class="left-wrap col-lg-6 col-md-6 col-sm-6" >
+        <p>SUPERBIT<br>SUPER LIFE</p>
+      </div>
+      <div class="right-wrap col-lg-6 col-md-6 col-sm-6">
+        <div class="row  content-out">
+          <h2>Log in</h2>
+          <form id="loginForm">
             <div class="input-wrap">
-              <input id="email" class="email"  type="email" name="email" v-model="email" value="" placeholder="Email address"  />
-              <div class="bottom-line" :class="this.emailerror==1?'to-red':''"></div>
-              <transition name="error-tip" v-if="emailerror==1&&emailempty==1">
-                <p class="tip-p">Please enter your Email address.</p>
-              </transition>
-              <transition name="error-tip" v-if="emailerror==1&&emailverror==1">
-                <p class="tip-p">Please enter a valid Email address</p>
-              </transition>
+              <div class="input-wrap">
+                <input id="email" class="email"  type="email" name="email" v-model="email" value="" placeholder="Email address"  />
+                <div class="bottom-line" :class="this.emailerror==1?'to-red':''"></div>
+                <transition name="error-tip" v-if="emailerror==1&&emailempty==1">
+                  <p class="tip-p">Please enter your Email address.</p>
+                </transition>
+                <transition name="error-tip" v-if="emailerror==1&&emailverror==1">
+                  <p class="tip-p">Please enter a valid Email address</p>
+                </transition>
+              </div>
+              <div class="input-wrap">
+                <input id="password" class="password"  type="password" v-model="password" name="password" placeholder="Password"  value="" />
+                <div class="bottom-line" :class="this.passerror==1?'to-red':''"></div>
+                <transition name="error-tip" v-if="passerror==1&&passempty==1">
+                  <p class="tip-p">Please enter your Password.</p>
+                </transition>
+                <transition name="error-tip" v-if="passerror==1&&passverror==1">
+                  <p class="tip-p more-p">Passwords must be at least 8 characters with 1 capital letter, 1 lowercase character, and 1 number, and without spaces.</p>
+                </transition>
+              </div>
+              <div class="input-forget">
+                <a  @click.prevent.stop="$router.push({ path: '/findpassword' })">Forget password?</a>
+              </div>
+              <div class="btns-out">
+                <button type="button" class="active" @click.prevnt.stop="loginAction">Login in</button>
+              </div>
             </div>
-            <div class="input-wrap">
-              <input id="password" class="password"  type="password" v-model="password" name="password" placeholder="Password"  value="" />
-              <div class="bottom-line" :class="this.passerror==1?'to-red':''"></div>
-              <transition name="error-tip" v-if="passerror==1&&passempty==1">
-                <p class="tip-p">Please enter your Password.</p>
-              </transition>
-              <transition name="error-tip" v-if="passerror==1&&passverror==1">
-                <p class="tip-p more-p">Passwords must be at least 8 characters with 1 capital letter, 1 lowercase character, and 1 number, and without spaces.</p>
-              </transition>
-            </div>
-            <div class="input-forget">
-              <a  @click.prevent.stop="$router.push({ path: '/findpassword' })">Forget password?</a>
-            </div>
-            <div class="btns-out">
-              <button type="button" class="active" @click.prevnt.stop="loginAction">Login in</button>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -150,7 +152,8 @@
       }
     },
     mounted(){
-      const that = this
+      const that = this;
+      that.init();
        window.onresize = () => {
         return (() => {
           window.screenWidth = document.body.clientWidth
@@ -169,114 +172,115 @@
       width: 100%;
       background: url("../../assets/login_backgrond.png") no-repeat center center ;
       background-size: 100% 100%;
-      div{
-        float: left;
-      }
-      .left-wrap{
-        position: relative;
+      >.row{
         height: 100%;
-        p{
-          width: 100%;
-          position: absolute;
-          padding-left: 160px;
-          bottom: 166px;
-          font-family: BodoniSvtyTwoSCITCTT-Book;
-          font-size: 72px;
-          color: #FFFFFF;
-          letter-spacing: 0;
-          line-height: 86px;
-        }
-      }
-      .right-wrap{
-        height: 100%;
-        background: #fff;
-        .content-out{
-          min-width: 400px;
-          padding-top:141px;
-          padding-left: 136px;
-          div{
-            float: left;
-            width: 380px;
-
-          }
-          h2{
+        .left-wrap{
+          position: relative;
+          height: 100%;
+          p{
             width: 100%;
-            margin: 0 auto 42px;
-            opacity: 0.9;
-            font-family: HelveticaNeue-Bold;
-            font-size: 36px;
-            color: #000000;
+            position: absolute;
+            padding-left: 160px;
+            bottom: 166px;
+            font-family: BodoniSvtyTwoSCITCTT-Book;
+            font-size: 72px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            line-height: 86px;
           }
-          .input-wrap {
-            float: none;
-            position: relative;
-            margin-bottom: 30px;
-            height: 50px;
-            line-height: 50px;
-            .bottom-line{
-              position: absolute;
-              bottom: 0;
-              left: 50%;
-              height: 1px;
-              background: #5e5e5e;
+        }
+        .right-wrap{
+          height: 100%;
+          background: #fff;
+          .content-out{
+            min-width: 400px;
+            padding-top:141px;
+            padding-left: 136px;
+            div{
+              float: left;
+              width: 380px;
+
+            }
+            h2{
               width: 100%;
-              transform: translateX(-50%);
-              &.to-red{
-                background: #D94242;
-                animation:linec 700ms 1;
-                -webkit-animation:linec 700ms 1;
-                animation-fill-mode:forwards;
-                -webkit-animation-fill-mode:forwards;
+              margin: 0 auto 42px;
+              opacity: 0.9;
+              font-family: HelveticaNeue-Bold;
+              font-size: 36px;
+              color: #000000;
+            }
+            .input-wrap {
+              float: none;
+              position: relative;
+              margin-bottom: 30px;
+              height: 50px;
+              line-height: 50px;
+              .bottom-line{
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                height: 1px;
+                background: #5e5e5e;
+                width: 100%;
+                transform: translateX(-50%);
+                &.to-red{
+                  background: #D94242;
+                  animation:linec 700ms 1;
+                  -webkit-animation:linec 700ms 1;
+                  animation-fill-mode:forwards;
+                  -webkit-animation-fill-mode:forwards;
+                }
+              }
+              .tip-p{
+                position: absolute;
+                bottom: -28px;
+                padding: 6px 14px;
+                opacity: 0.7;
+                font-family: HelveticaNeue;
+                font-size: 12px;
+                color: #D94242;;
+                letter-spacing: 0;
+                line-height: 14px;
+                &.more-p{
+                  bottom:-56px;
+                }
+              }
+              input{
+                margin-bottom: 5px;
+                padding: 0 15px;
+                background-color: #fff;
+                width: 100%;
+                line-height: 48px;
+                border: 0
               }
             }
-            .tip-p{
-              position: absolute;
-              bottom: -28px;
-              padding: 6px 14px;
-              opacity: 0.7;
-              font-family: HelveticaNeue;
-              font-size: 12px;
-              color: #D94242;;
-              letter-spacing: 0;
-              line-height: 14px;
-              &.more-p{
-                bottom:-56px;
+            .input-forget{
+              a{
+                display: block;
+                float: right;
+                color: #B0B02F;
+                cursor: pointer;
               }
             }
-            input{
-              margin-bottom: 5px;
-              padding: 0 15px;
-              background-color: #fff;
-              width: 100%;
-              line-height: 48px;
-              border: 0
-            }
-          }
-          .input-forget{
-            a{
-              display: block;
-              float: right;
-              color: #B0B02F;
-              cursor: pointer;
-            }
-          }
-          .btns-out{
-            button{
-              width: 120px;
-              height: 44px;
-              line-height: 44px;
-              text-align: center;
-              background-color: #1F4764;
-              color: #fff;
-              border-radius: 2px;
-              border: 0;
-              float: right;
-              margin-top: 72px;
-              cursor: pointer;
+            .btns-out{
+              button{
+                width: 120px;
+                height: 44px;
+                line-height: 44px;
+                text-align: center;
+                background-color: #1F4764;
+                color: #fff;
+                border-radius: 2px;
+                border: 0;
+                float: right;
+                margin-top: 72px;
+                cursor: pointer;
+              }
             }
           }
         }
       }
+
     }
   }
   @media (max-width: 1200px) {

@@ -1,79 +1,89 @@
 <template>
-  <div class="head-wrap">
-    <div class="container">
-      <div class="row">
-        <div class="logo-word"><router-link to="/trade" class="link-a">SUPERBIT</router-link></div>
+  <div>
+    <div class="head-wrap" v-if="showEmpty==false">
+      <div class="container">
+        <div class="row">
+          <div class="logo-word"><router-link to="/trade" class="link-a">SUPERBIT</router-link></div>
 
-        <div class="trade">
-          <a class="link">
-            <span><router-link to="/trade" class="link-a">Trade</router-link></span>
-            <em class="bot_cross_tip"></em>
-          </a>
-          <ul class="sub-menu">
-            <li><a href="#">BTC/USD</a></li>
-            <li><a href="#">LTC/USD</a></li>
-            <li><a href="#">ETH/USD</a></li>
-          </ul>
-        </div>
-
-        <button type="button" class="mobile-menu" @click.prevent.stop="open=!open">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <ul class="main-nav">
-          <!--<li class="trade">-->
-          <!--<a class="link">Trade</a>-->
-          <!--<ul class="sub-menu">-->
-          <!--<li><a href="#">BTC/USD</a></li>-->
-          <!--<li><a href="#">LTC/USD</a></li>-->
-          <!--<li><a href="#">ETH/USD</a></li>-->
-          <!--</ul>-->
-          <!--</li>-->
-          <li><a class="link" href="deposit.html?main=0">Deposit</a></li>
-          <li><a class="link" href="withdraw.html?main=0">Withdraw</a></li>
-          <li class="icon-li-b"><a class="link" href="assets.html?main=0">Asset</a></li>
-          <li class="icon-li"><a class="a" href="notice.html"></a></li>
-          <li class="icon-li"><a class="b"></a></li>
-          <li class="icon-li"><a class="c"></a></li>
-          <li class="icon-li"><a class="d" href="aboutus.html"></a></li>
-          <li class="icon-li user">
-            <a class="e" @click.prevent.stop="$router.push({ path: '/login' })"></a>
-            <ul class="sub-menu">
-              <li><router-link to="/user/account">Account</router-link></li>
-              <li><router-link to="/user/security" class="link-a">Security</router-link></li>
-              <li><router-link to="/user/notification" class="link-a">Notification</router-link></li>
-              <li><router-link to="/user/verification" class="link-a">Verification</router-link></li>
-              <li><router-link to="/user/address_book" class="link-a">Address Book</router-link></li>
-            </ul>
-          </li>
-        </ul>
-  <transition name="slide-fade">
-        <ul class="mobile-nav" v-if="open" @click="open=!open">
-          <li>
-            <a class="link" href="">Trade</a>
+          <div class="trade">
+            <a class="link">
+              <span><router-link to="/trade" class="link-a">Trade</router-link></span>
+              <em class="bot_cross_tip"></em>
+            </a>
             <ul class="sub-menu">
               <li><a href="#">BTC/USD</a></li>
               <li><a href="#">LTC/USD</a></li>
               <li><a href="#">ETH/USD</a></li>
             </ul>
-          </li>
-          <li><a class="link">Deposit</a></li>
-          <li><a class="link">Withdraw</a></li>
-          <li><a class="link">Asset</a></li>
-          <li><router-link to="/user/account" class="link-a">Account</router-link></li>
-          <li><router-link to="/user/security" class="link-a">Security</router-link></li>
-          <li><router-link to="/user/notification" class="link-a">Notification</router-link></li>
-          <li><router-link to="/user/verification" class="link-a">Verification</router-link></li>
-          <li><router-link to="/user/address_book" class="link-a">Address Book</router-link></li>
-          <li><a class="icon a"></a></li>
-          <li><a class="icon b"></a></li>
-          <li><a class="icon c"></a></li>
-          <li><a class="icon d"></a></li>
-          <li><a class="icon e"></a></li>
-        </ul>
-   </transition>
+          </div>
 
+          <button type="button" class="mobile-menu" @click.prevent.stop="open=!open">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <ul class="main-nav">
+            <!--<li class="trade">-->
+            <!--<a class="link">Trade</a>-->
+            <!--<ul class="sub-menu">-->
+            <!--<li><a href="#">BTC/USD</a></li>-->
+            <!--<li><a href="#">LTC/USD</a></li>-->
+            <!--<li><a href="#">ETH/USD</a></li>-->
+            <!--</ul>-->
+            <!--</li>-->
+            <li><a class="link" href="deposit.html?main=0">Deposit</a></li>
+            <li><a class="link" href="withdraw.html?main=0">Withdraw</a></li>
+            <li class="icon-li-b"><a class="link" href="assets.html?main=0">Asset</a></li>
+            <li class="icon-li"><a class="a" href="notice.html"></a></li>
+            <li class="icon-li"><a class="b"></a></li>
+            <li class="icon-li"><a class="c"></a></li>
+            <li class="icon-li"><a class="d" href="aboutus.html"></a></li>
+            <li class="icon-li user">
+              <a class="e" @click.prevent.stop="$router.push({ path: '/login' })"></a>
+              <ul class="sub-menu">
+                <li><router-link to="/user/account">Account</router-link></li>
+                <li><router-link to="/user/security" class="link-a">Security</router-link></li>
+                <li><router-link to="/user/notification" class="link-a">Notification</router-link></li>
+                <li><router-link to="/user/verification" class="link-a">Verification</router-link></li>
+                <li><router-link to="/user/address_book" class="link-a">Address Book</router-link></li>
+              </ul>
+            </li>
+          </ul>
+          <transition name="slide-fade">
+            <ul class="mobile-nav" v-if="open" @click="open=!open">
+              <li>
+                <a class="link" href="">Trade</a>
+                <ul class="sub-menu">
+                  <li><a href="#">BTC/USD</a></li>
+                  <li><a href="#">LTC/USD</a></li>
+                  <li><a href="#">ETH/USD</a></li>
+                </ul>
+              </li>
+              <li><a class="link">Deposit</a></li>
+              <li><a class="link">Withdraw</a></li>
+              <li><a class="link">Asset</a></li>
+              <li><router-link to="/user/account" class="link-a">Account</router-link></li>
+              <li><router-link to="/user/security" class="link-a">Security</router-link></li>
+              <li><router-link to="/user/notification" class="link-a">Notification</router-link></li>
+              <li><router-link to="/user/verification" class="link-a">Verification</router-link></li>
+              <li><router-link to="/user/address_book" class="link-a">Address Book</router-link></li>
+              <li><a class="icon a"></a></li>
+              <li><a class="icon b"></a></li>
+              <li><a class="icon c"></a></li>
+              <li><a class="icon d"></a></li>
+              <li><a class="icon e"></a></li>
+            </ul>
+          </transition>
+
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid head-out" v-else>
+      <div class="row">
+        <div class="logo">Superbit</div>
+        <div class="login-enter">
+          <p>Alredy have an account? <span @click.prevent.stop="$router.push({ path: '/login' })">Log in</span></p>
+        </div>
       </div>
     </div>
   </div>
@@ -84,9 +94,22 @@
     name: 'Header',
     data () {
       return {
-        open: ''
+        open:false,
+        showEmpty:true
       }
-    }
+    },
+    methods:{
+      init(){
+        this.showEmpty = this.$router.currentRoute.fullPath == '/register/register_input'?true:false;
+        console.log(this.showEmpty)
+      }
+    },
+    watch:{
+      '$route' (to, from) {
+        this.showEmpty = to.path!="/register/register_input"?false:true
+        console.log(this.showEmpty)
+      }
+    },
   }
 </script>
 
@@ -297,7 +320,66 @@
     }
 
   }
-
+  .head-out{
+    position: fixed;
+    top:42px;
+    width: 100%;
+    height: 38px;
+    line-height: 38px;
+    .clearfix();
+    .logo{
+      float: left;
+      margin-left: 120px;
+      font-family: HelveticaNeue;
+      font-size: 32px;
+      color: #FFFFFF;
+      letter-spacing: 0;
+    }
+    .login-enter{
+      float: right;
+      margin-right: 126px;
+      font-family: HelveticaNeue;
+      font-size: 16px;
+      color: #878889;
+      margin-top: 10px;
+      letter-spacing: 0;
+      line-height: 16px;
+      span{
+        color: @blue1;
+        cursor: pointer;
+      }
+    }
+  }
+  @media (max-width: 1200px){
+    .head-out{
+      .logo{
+        margin-left: 120px;
+      }
+      .login-enter{
+        margin-right: 126px;
+      }
+    }
+  }
+  @media (max-width: 992px){
+    .head-out{
+      .logo{
+        margin-left: 30px;
+      }
+      .login-enter{
+        margin-right: 30px;
+      }
+    }
+  }
+  @media (max-width: 768px){
+    .head-out{
+      .logo{
+        margin-left: 15px;
+      }
+      .login-enter{
+        margin-right: 15px;
+      }
+    }
+  }
   @media (max-width: 750px) {
     .head-wrap{
       background: @white;
@@ -326,7 +408,19 @@
       }
 
     }
+    .head-out{
+      .logo{
+        font-size: 22px;
+      }
 
+    }
   }
+
+
+
+
+
+
+
 
 </style>
